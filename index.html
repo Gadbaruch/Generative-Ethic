@@ -113,6 +113,52 @@
   .popover-link { display: inline-block; margin-top: 10px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); border-bottom: 1px solid var(--ink); cursor: pointer; padding-bottom: 1px; background: none; border-top: none; border-left: none; border-right: none; font-family: 'Lora', serif; }
   .popover-link:hover { color: var(--ink-faint); border-bottom-color: var(--ink-faint); }
 
+  /* ── MOBILE ── */
+  .hamburger {
+    display: none; flex-direction: column; justify-content: center; gap: 5px;
+    background: none; border: none; cursor: pointer; padding: 6px; margin-left: 4px;
+  }
+  .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--ink); transition: all 0.2s; }
+  .sidebar-overlay {
+    display: none; position: fixed; inset: 0; background: rgba(28,26,23,0.3);
+    z-index: 149; backdrop-filter: blur(1px);
+  }
+
+  @media (max-width: 768px) {
+    .hamburger { display: flex; }
+    .logo-tagline { display: none; }
+    .logo { font-size: 14px; letter-spacing: 0.12em; }
+    .nav-icon { width: 30px; height: 30px; }
+
+    .wiki-sidebar {
+      position: fixed; top: 0; left: -290px; height: 100%; width: 270px;
+      z-index: 150; transition: left 0.25s ease; padding-top: 56px;
+      border-right: 1px solid var(--rule); box-shadow: 4px 0 20px rgba(28,26,23,0.12);
+    }
+    .wiki-sidebar.open { left: 0; }
+    .sidebar-overlay.open { display: block; }
+
+    .right-panel { display: none; }
+
+    #wiki-view { height: calc(100vh - 56px); }
+    .wiki-main { padding: 28px 20px 80px; }
+    .wiki-content { max-width: 100%; }
+
+    .doc-mode-toggle { display: flex; width: 100%; }
+    .doc-mode-btn { flex: 1; text-align: center; padding: 12px 10px; font-size: 11px; }
+
+    .wiki-body p { font-size: 16px; }
+    .wiki-body blockquote { font-size: 16px; margin-left: 0; }
+    .wiki-body em, .wiki-body i { font-size: 16px; }
+    .wiki-title { font-size: 24px; }
+    .wiki-subtitle { font-size: 15px; }
+
+    .popover { max-width: calc(100vw - 32px); left: 16px !important; }
+
+    .about-credits { gap: 24px; }
+    .about-portrait, .about-logo { width: 100px; height: 100px; }
+  }
+
   /* ── MAP VIEW ── */
   #map-view { height: calc(100vh - 56px); position: relative; overflow: hidden; background: var(--cream); }
   #map-svg { width: 100%; height: 100%; cursor: grab; }
@@ -186,9 +232,17 @@
 </head>
 <body>
 
+<!-- SIDEBAR OVERLAY -->
+<div class="sidebar-overlay" id="sidebar-overlay" onclick="closeSidebar()"></div>
+
 <!-- NAV -->
 <nav>
-  <div class="nav-brand" onclick="loadDoc('core'); switchView('wiki')">
+  <div style="display:flex;align-items:center;gap:4px;">
+    <button class="hamburger" id="hamburger-btn" onclick="toggleSidebar()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-brand" onclick="loadDoc('core'); switchView('wiki')" style="position:absolute;left:50%;transform:translateX(-50%)">
     <img src="assets/ge-icon2.png?v=1780566202" class="nav-icon" alt="The Generative Ethic">
     <div>
       <div class="logo">The Generative Ethic</div>
@@ -1372,6 +1426,25 @@ function switchView(view) {
   document.getElementById('btn-map').classList.toggle('active', view==='map');
   if (view==='map') buildMap();
 }
+
+// ── MOBILE SIDEBAR ───────────────────────────────────────────────────────
+function toggleSidebar() {
+  const sidebar = document.querySelector('.wiki-sidebar');
+  const overlay = document.getElementById('sidebar-overlay');
+  const isOpen = sidebar.classList.contains('open');
+  sidebar.classList.toggle('open', !isOpen);
+  overlay.classList.toggle('open', !isOpen);
+}
+function closeSidebar() {
+  document.querySelector('.wiki-sidebar').classList.remove('open');
+  document.getElementById('sidebar-overlay').classList.remove('open');
+}
+// Close sidebar when a doc link is tapped on mobile
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.sidebar-link').forEach(l => {
+    l.addEventListener('click', () => { if (window.innerWidth <= 768) closeSidebar(); });
+  });
+});
 
 // ── EMAIL OBFUSCATION ─────────────────────────────────────────────────────
 function revealEmail(btn) {
