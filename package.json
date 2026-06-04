@@ -1,0 +1,12 @@
+{
+  "name": "generative-ethic",
+  "version": "1.0.0",
+  "description": "The Generative Ethic — a structural framework for existence, goodness, and the obligation of conscious agents",
+  "scripts": {
+    "build": "node build.js",
+    "dev": "node build.js && npx serve ."
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

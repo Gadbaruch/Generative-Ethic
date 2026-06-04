@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Generative Ethic</title>
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=EB+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked@9/marked.min.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cream: #F8F5EE;
+    --ink: #1C1A17;
+    --ink-light: #3D3A35;
+    --ink-faint: #8A8578;
+    --rule: #D0CAC0;
+  }
+
+  html, body { height: 100%; background: var(--cream); color: var(--ink); font-family: 'Lora', Georgia, serif; }
+
+  /* ── NAV ── */
+  nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 8px 20px 8px 16px; border-bottom: 1px solid var(--rule);
+    background: var(--cream); position: sticky; top: 0; z-index: 100;
+  }
+  .nav-brand { display: flex; align-items: center; gap: 12px; cursor: pointer; }
+  .nav-icon { width: 38px; height: 38px; object-fit: contain; }
+  .logo { font-family: 'IM Fell English SC', serif; font-size: 17px; letter-spacing: 0.18em; text-transform: uppercase; }
+  .logo-tagline { font-family: 'IM Fell English', Georgia, serif; font-size: 11px; color: var(--ink-faint); letter-spacing: 0.08em; margin-top: 2px; }
+  .view-toggle { display: flex; align-items: center; gap: 24px; }
+  .toggle-btn {
+    background: none; border: none; padding: 0 0 2px 0;
+    font-family: 'Lora', serif; font-size: 13px;
+    letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer;
+    color: var(--ink-faint); border-bottom: 1px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .toggle-btn:hover { color: var(--ink); }
+  .toggle-btn.active { color: var(--ink); border-bottom-color: var(--ink); }
+
+  /* ── VIEWS ── */
+  .view { display: none; }
+  .view.active { display: flex; }
+
+  /* ── WIKI VIEW ── */
+  #wiki-view { height: calc(100vh - 56px); overflow: hidden; }
+
+  .wiki-sidebar {
+    width: 220px; min-width: 220px; border-right: 1px solid var(--rule);
+    padding: 28px 0; overflow-y: auto; background: var(--cream); flex-shrink: 0;
+  }
+  .sidebar-section { padding: 0 22px 18px; margin-bottom: 10px; border-bottom: 1px solid var(--rule); }
+  .sidebar-section:last-child { border-bottom: none; }
+  .sidebar-label { font-family: 'IM Fell English SC', serif; font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 10px; display: block; }
+  .sidebar-link {
+    display: block; font-family: 'IM Fell English', Georgia, serif; font-size: 13.5px; line-height: 1.8; color: var(--ink-faint);
+    text-decoration: none; cursor: pointer; padding: 1px 6px; margin: 0 -6px;
+    transition: color 0.12s, background 0.12s;
+    border-radius: 2px;
+  }
+  .sidebar-link:hover { color: var(--ink); background: rgba(28,26,23,0.05); }
+  .sidebar-link.active { color: var(--ink); font-weight: 500; letter-spacing: 0.01em; }
+
+  .wiki-main { flex: 1; overflow-y: auto; padding: 52px 64px 80px; }
+  .wiki-content { max-width: 660px; margin: 0 auto; }
+
+  .wiki-header { margin-bottom: 44px; padding-bottom: 28px; border-bottom: 1px solid var(--rule); }
+  .doc-type { font-size: 10.5px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 14px; }
+  .wiki-title { font-family: 'IM Fell English SC', serif; font-size: 30px; line-height: 1.15; margin-bottom: 10px; font-weight: normal; }
+  .wiki-subtitle { font-family: 'IM Fell English', Georgia, serif; font-size: 16px; color: var(--ink-light); line-height: 1.6; }
+
+  .wiki-body h2 { font-family: 'IM Fell English SC', serif; font-size: 15px; letter-spacing: 0.06em; margin: 44px 0 16px; font-weight: normal; }
+  .wiki-body p { font-size: 17px; line-height: 1.85; color: var(--ink-light); margin-bottom: 20px; }
+  .wiki-body blockquote { font-family: 'EB Garamond', Georgia, serif; margin: 28px 0 28px 20px; padding-left: 20px; border-left: 2px solid var(--rule); font-style: italic; color: var(--ink-light); font-size: 18px; line-height: 1.8; }
+  .wiki-body em, .wiki-body i { font-family: 'EB Garamond', Georgia, serif; font-style: italic; font-size: 18px; }
+  .wiki-body table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; }
+  .wiki-body th { font-family: 'IM Fell English SC', serif; font-weight: normal; text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--rule); color: var(--ink); font-size: 12px; letter-spacing: 0.08em; }
+  .wiki-body td { padding: 8px 10px; border-bottom: 1px solid rgba(208,202,192,0.5); color: var(--ink-light); line-height: 1.55; vertical-align: top; }
+
+  .ornament { text-align: center; color: var(--rule); margin: 36px 0; letter-spacing: 0.4em; font-size: 14px; }
+
+  /* Linked terms */
+  .term-link { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink); cursor: pointer; padding-bottom: 1px; }
+  .term-link:hover { background: rgba(28,26,23,0.07); }
+
+  /* Right panel */
+  .right-panel { width: 200px; min-width: 200px; border-left: 1px solid var(--rule); padding: 28px 18px; overflow-y: auto; flex-shrink: 0; }
+  .panel-label { font-family: 'IM Fell English SC', serif; font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 16px; display: block; }
+  .connection-item { padding: 10px 0; border-bottom: 1px solid var(--rule); cursor: pointer; }
+  .connection-item:last-child { border-bottom: none; }
+  .connection-item:hover .conn-title { text-decoration: underline; }
+  .conn-title { font-family: 'IM Fell English', Georgia, serif; font-size: 13px; color: var(--ink); margin-bottom: 2px; }
+  .conn-desc { font-family: 'IM Fell English', Georgia, serif; font-size: 11px; color: var(--ink-faint); font-style: italic; }
+
+  /* ── TERM POPOVER ── */
+  .popover {
+    display: none; position: fixed; z-index: 300;
+    background: var(--cream); border: 1px solid var(--ink);
+    padding: 20px 24px 18px; max-width: 340px;
+    box-shadow: 4px 4px 0 rgba(28,26,23,0.1);
+  }
+  .popover.visible { display: block; }
+  .popover-close { position: absolute; top: 9px; right: 13px; cursor: pointer; font-size: 14px; color: var(--ink-faint); background: none; border: none; font-family: serif; line-height: 1; }
+  .popover-term { font-family: 'IM Fell English SC', serif; font-size: 16px; margin-bottom: 10px; }
+  .popover-def { font-size: 15px; line-height: 1.7; color: var(--ink-light); margin-bottom: 12px; }
+  .popover-source { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 10px; }
+  .popover-link { display: inline-block; margin-top: 10px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); border-bottom: 1px solid var(--ink); cursor: pointer; padding-bottom: 1px; background: none; border-top: none; border-left: none; border-right: none; font-family: 'Lora', serif; }
+  .popover-link:hover { color: var(--ink-faint); border-bottom-color: var(--ink-faint); }
+
+  /* ── MAP VIEW ── */
+  #map-view { height: calc(100vh - 56px); position: relative; overflow: hidden; background: var(--cream); }
+  #map-svg { width: 100%; height: 100%; cursor: grab; }
+  #map-svg:active { cursor: grabbing; }
+
+  .map-hint { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); pointer-events: none; }
+
+  /* ── DOC MODE TOGGLE ── */
+  .doc-mode-toggle { display: inline-flex; margin-bottom: 40px; border: 1px solid var(--ink); overflow: hidden; }
+  .doc-mode-btn {
+    background: none; border: none; padding: 10px 28px; cursor: pointer;
+    font-family: 'IM Fell English SC', serif; font-size: 12px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--ink-faint);
+    transition: background 0.15s, color 0.15s;
+  }
+  .doc-mode-btn:hover { color: var(--ink); background: rgba(28,26,23,0.05); }
+  .doc-mode-btn.active { background: var(--ink); color: var(--cream); }
+  .doc-mode-btn + .doc-mode-btn { border-left: 1px solid var(--ink); }
+
+  /* ── FULL DOCUMENT VIEW ── */
+  .full-doc-nav { margin-bottom: 36px; padding-bottom: 20px; border-bottom: 1px solid var(--rule); }
+  .back-btn {
+    background: none; border: none; cursor: pointer; padding: 0;
+    font-family: 'IM Fell English', serif; font-size: 13px; letter-spacing: 0.1em;
+    color: var(--ink-faint); transition: color 0.15s;
+  }
+  .back-btn:hover { color: var(--ink); }
+
+  .full-doc-body h1 { font-family: 'IM Fell English SC', serif; font-size: 26px; line-height: 1.2; font-weight: normal; margin-bottom: 10px; }
+  .full-doc-body h2 { font-family: 'IM Fell English SC', serif; font-size: 15px; letter-spacing: 0.06em; margin: 44px 0 16px; font-weight: normal; }
+  .full-doc-body h3 { font-family: 'IM Fell English SC', serif; font-size: 13px; letter-spacing: 0.05em; margin: 32px 0 12px; font-weight: normal; color: var(--ink-light); }
+  .full-doc-body h4 { font-family: 'Lora', serif; font-size: 15px; font-weight: 500; margin: 24px 0 10px; }
+  .full-doc-body p { font-size: 17px; line-height: 1.85; color: var(--ink-light); margin-bottom: 20px; }
+  .full-doc-body blockquote { font-family: 'EB Garamond', Georgia, serif; margin: 28px 0 28px 20px; padding-left: 20px; border-left: 2px solid var(--rule); font-style: italic; color: var(--ink-light); font-size: 16px; line-height: 1.8; }
+  .full-doc-body blockquote p { font-family: 'EB Garamond', Georgia, serif; font-size: 16px; margin-bottom: 0; }
+  .full-doc-body em, .full-doc-body i { font-family: 'EB Garamond', Georgia, serif; font-style: italic; }
+  .full-doc-body strong { font-weight: 500; color: var(--ink); }
+  .full-doc-body ul, .full-doc-body ol { padding-left: 24px; margin-bottom: 20px; }
+  .full-doc-body li { font-size: 17px; line-height: 1.85; color: var(--ink-light); margin-bottom: 6px; }
+  .full-doc-body table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 14px; }
+  .full-doc-body th { font-family: 'IM Fell English SC', serif; font-weight: normal; text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--rule); color: var(--ink); font-size: 12px; letter-spacing: 0.08em; }
+  .full-doc-body td { padding: 8px 10px; border-bottom: 1px solid rgba(208,202,192,0.5); color: var(--ink-light); line-height: 1.55; vertical-align: top; }
+  .full-doc-body code { font-family: monospace; font-size: 13px; background: rgba(28,26,23,0.06); padding: 1px 5px; border-radius: 2px; }
+  .full-doc-body pre { background: rgba(28,26,23,0.04); border: 1px solid var(--rule); padding: 16px; margin: 20px 0; overflow-x: auto; }
+  .full-doc-body pre code { background: none; padding: 0; }
+  .full-doc-body hr { border: none; border-top: 1px solid var(--rule); margin: 40px 0; }
+  /* Status/metadata blocks at top of MD files */
+  .full-doc-body > blockquote:first-of-type { font-family: 'Lora', serif; font-style: normal; font-size: 13px; color: var(--ink-faint); background: rgba(28,26,23,0.03); padding: 14px 20px; border-left: 1px solid var(--rule); }
+  .full-doc-body > blockquote:first-of-type p { font-family: 'Lora', serif; font-style: normal; font-size: 13px; color: var(--ink-faint); margin-bottom: 4px; }
+
+  /* ── ABOUT PAGE ── */
+  .about-credits { display: flex; gap: 40px; justify-content: center; margin-bottom: 36px; }
+  .about-credit { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .about-portrait { width: 130px; height: 130px; object-fit: cover; border-radius: 50%; border: 1px solid var(--rule); }
+  .about-portrait-placeholder { width: 130px; height: 130px; border-radius: 50%; background: rgba(28,26,23,0.05); border: 1px solid var(--rule); display: flex; align-items: center; justify-content: center; color: var(--ink-faint); font-size: 11px; letter-spacing: 0.1em; text-align: center; }
+  .about-logo { width: 130px; height: 130px; object-fit: contain; border-radius: 50%; border: 1px solid var(--rule); background: #fff; padding: 24px; }
+  .about-credit-name { font-family: 'IM Fell English SC', serif; font-size: 13px; letter-spacing: 0.08em; color: var(--ink); text-align: center; }
+  .about-credit-role { font-family: 'IM Fell English', serif; font-size: 11px; color: var(--ink-faint); letter-spacing: 0.1em; text-align: center; margin-top: -6px; }
+  .about-links { display: flex; gap: 28px; margin: 32px 0; padding: 24px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  .about-link { font-family: 'IM Fell English', serif; font-size: 13px; letter-spacing: 0.1em; color: var(--ink-faint); text-decoration: none; border-bottom: 1px solid transparent; transition: color 0.15s, border-color 0.15s; }
+  .about-link:hover { color: var(--ink); border-bottom-color: var(--ink); }
+  .about-email-btn { background: none; border: none; cursor: pointer; font-family: 'IM Fell English', serif; font-size: 13px; letter-spacing: 0.1em; color: var(--ink-faint); padding: 0; transition: color 0.15s; }
+  .about-email-btn:hover { color: var(--ink); }
+
+  /* Map tooltip */
+  .map-tooltip { display: none; position: fixed; z-index: 200; background: var(--ink); color: var(--cream); padding: 10px 15px; pointer-events: none; max-width: 240px; }
+  .map-tooltip.visible { display: block; }
+  .map-tooltip-title { font-family: 'IM Fell English SC', serif; font-size: 14px; margin-bottom: 4px; }
+  .map-tooltip-sub { font-size: 12px; color: rgba(248,245,238,0.65); line-height: 1.4; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand" onclick="loadDoc('core'); switchView('wiki')">
+    <img src="assets/ge-icon2.png?v=1780566202" class="nav-icon" alt="The Generative Ethic">
+    <div>
+      <div class="logo">The Generative Ethic</div>
+      <div class="logo-tagline">A Metaphysical Theory of Everything</div>
+    </div>
+  </div>
+  <div class="view-toggle">
+    <button class="toggle-btn active" id="btn-wiki" onclick="switchView('wiki')">Read</button>
+    <button class="toggle-btn" id="btn-map" onclick="switchView('map')">Map</button>
+  </div>
+</nav>
+
+<!-- WIKI VIEW -->
+<div id="wiki-view" class="view active">
+  <aside class="wiki-sidebar">
+    <div class="sidebar-section">
+      <span class="sidebar-label">Core</span>
+      <a class="sidebar-link" onclick="loadDoc('about')">About Me</a>
+      <a class="sidebar-link" onclick="loadDoc('core')">The Generative Ethic</a>
+    </div>
+    <div class="sidebar-section">
+      <span class="sidebar-label">Philosophy</span>
+      <a class="sidebar-link" onclick="loadDoc('consciousness')">Consciousness as Ecosystem</a>
+      <a class="sidebar-link" onclick="loadDoc('essay_nietzsche')">Nietzsche's Redemption</a>
+    </div>
+    <div class="sidebar-section">
+      <span class="sidebar-label">Science</span>
+      <a class="sidebar-link" onclick="loadDoc('wolfram')">Wolfram's Physics Project</a>
+      <a class="sidebar-link" onclick="loadDoc('consistent_crust')">The Consistent Crust</a>
+      <a class="sidebar-link" onclick="loadDoc('essay_dawkins')">Dawkins's Sting</a>
+    </div>
+    <div class="sidebar-section">
+      <span class="sidebar-label">Religion</span>
+      <a class="sidebar-link" onclick="loadDoc('generative_ground')">The Third Covenant</a>
+      <a class="sidebar-link" onclick="loadDoc('judaism')">Judaism</a>
+      <a class="sidebar-link" onclick="loadDoc('antisemitism')">Explaining Jew Hatred</a>
+    </div>
+    <div class="sidebar-section">
+      <span class="sidebar-label">Politics</span>
+      <a class="sidebar-link" onclick="loadDoc('political')">Political Significance</a>
+      <a class="sidebar-link" onclick="loadDoc('ip')">Zionism's Dilemma</a>
+      <a class="sidebar-link" onclick="loadDoc('viral_taxonomy')">Strategies of Propagation</a>
+    </div>
+    <div class="sidebar-section">
+      <span class="sidebar-label">Technology</span>
+      <a class="sidebar-link" onclick="loadDoc('ai')">AI Alignment</a>
+      <a class="sidebar-link" onclick="loadDoc('essay_social_media')">Social Media</a>
+    </div>
+    <div class="sidebar-section">
+      <span class="sidebar-label">Music</span>
+      <a class="sidebar-link" onclick="loadDoc('music')">Sound Before Culture</a>
+      <a class="sidebar-link" onclick="loadDoc('music2')">The Binding Technology</a>
+      <a class="sidebar-link" onclick="loadDoc('music3')">The Carrier Wave</a>
+      <a class="sidebar-link" onclick="loadDoc('music4')">Evolution of Music</a>
+    </div>
+    <div class="sidebar-section">
+      <span class="sidebar-label">Reference</span>
+      <a class="sidebar-link" onclick="loadDoc('glossary')">Glossary of Terms</a>
+    </div>
+  </aside>
+
+  <main class="wiki-main" id="wiki-main"></main>
+
+  <aside class="right-panel">
+    <span class="panel-label">Connected Documents</span>
+    <div id="connections-list"></div>
+  </aside>
+</div>
+
+<!-- MAP VIEW -->
+<div id="map-view" class="view">
+  <svg id="map-svg"></svg>
+  <div class="map-hint">Drag to pan · Scroll to zoom · Click to read</div>
+</div>
+
+<!-- POPOVER -->
+<div class="popover" id="popover">
+  <button class="popover-close" onclick="closePopover()">✕</button>
+  <div class="popover-term" id="popover-term"></div>
+  <div class="popover-def" id="popover-def"></div>
+  <div class="popover-source" id="popover-source"></div>
+  <button class="popover-link" id="popover-link" style="display:none">→ Read full document</button>
+</div>
+
+<!-- MAP TOOLTIP -->
+<div class="map-tooltip" id="map-tooltip">
+  <div class="map-tooltip-title" id="tt-title"></div>
+  <div class="map-tooltip-sub" id="tt-sub"></div>
+</div>
+
+<script>
+// ── GLOSSARY ─────────────────────────────────────────────────────────────
+
+const GLOSSARY = {
+  "generative emergence": {
+    def: "The process by which new, more complex structures arise from the interaction of simpler elements — neither reducible to those elements nor imposed from outside. Reality itself may fundamentally be an emergent process.",
+    source: "The Generative Ethic, §6",
+    docId: "core", sectionId: "core-claim"
+  },
+  "connection": {
+    def: "One of the two fundamental tendencies of reality. The force that draws elements into relation, generating coherence, structure, and unity.",
+    source: "The Generative Ethic, §2",
+    docId: "core", sectionId: "the-two-fundamental-forces"
+  },
+  "separation": {
+    def: "One of the two fundamental tendencies of reality. The force that maintains distinction between elements, generating autonomy, differentiation, and individuality.",
+    source: "The Generative Ethic, §2",
+    docId: "core", sectionId: "the-two-fundamental-forces"
+  },
+  "degenerative": {
+    def: "Structural property of a process or system that reduces future generative potential — whether through excess rigidity (degenerative connection) or excess dissolution (degenerative separation).",
+    source: "The Generative Ethic, Note on Register",
+    docId: "core", sectionId: "the-four-quadrants"
+  },
+  "productive asymmetry": {
+    def: "The condition that existence requires: not equilibrium between connection and separation, but an asymmetric lean — enough connection to generate coherence, enough separation to maintain adaptability. Pure balance produces stasis.",
+    source: "The Generative Ethic, §4",
+    docId: "core", sectionId: "productive-asymmetry"
+  },
+  "quad profile": {
+    def: "A diagnostic tool representing a system's orientation across four relational axes simultaneously: internal, lateral, downward, and upward. The same system can be Emergent on one axis and Destructive on another at the same moment.",
+    source: "The Generative Ethic, §10",
+    docId: "core", sectionId: "the-quad-profile"
+  },
+  "four quadrants": {
+    def: "The four structural modes produced by the interaction of connection and separation: Emergent (generative connection), Rigid (degenerative connection), Protective (generative separation), and Destructive (degenerative separation).",
+    source: "The Generative Ethic, §9",
+    docId: "core", sectionId: "the-four-quadrants"
+  },
+  "viral goodness": {
+    def: "The propagation of generative patterns through networks without consuming or collapsing the differentiation of what it contacts. Viral goodness recruits without consuming — it strengthens the differentiation of the systems it touches.",
+    source: "The Generative Ethic, §9.7",
+    docId: "core", sectionId: "viral-goodness"
+  },
+  "consistent crust": {
+    def: "The stable structural layer that allows an adaptive system to remain coherent while absorbing perturbation — neither so rigid it shatters nor so soft it dissolves. The concept of the 'consistent crust' distinguishes protective stability from degenerative rigidity.",
+    source: "The Consistent Crust Essay",
+    docId: "consistent_crust", sectionId: "the-thesis"
+  },
+  "zoom level problem": {
+    def: "The observation that any action or system can appear generative at one scale of analysis and degenerative at another. Ethical reasoning must specify its zoom level explicitly. The quad profile is the primary tool for navigating zoom level complexity.",
+    source: "The Generative Ethic, §14",
+    docId: "core", sectionId: "the-unknowability-principle"
+  },
+  "unknowability principle": {
+    def: "The structural necessity of moral uncertainty: a complete moral algorithm cannot exist and would be degenerative if it did. Wolfram's computational irreducibility proves that for strongly emergent systems, the only perfect model is the system itself.",
+    source: "The Generative Ethic, §14.3",
+    docId: "core", sectionId: "the-unknowability-principle"
+  },
+  "emergent alignment": {
+    def: "The condition in which bottom-up and top-down causation are in productive sync: the flourishing of sub-parts and the health of the higher-level system are mutually reinforcing rather than in tension.",
+    source: "The Generative Ethic, §6.3",
+    docId: "core", sectionId: "the-quad-profile"
+  },
+  "brave choice": {
+    def: "The decision to dismantle an existing Rigid upward system despite gap risk — the period between dismantling and reconstitution during which degenerative forces may fill the vacuum. Defensible only when the existing system causes irreversible harm and sufficient Emergent capacity exists in the lower layers.",
+    source: "The Generative Ethic, §10.4",
+    docId: "core", sectionId: "goodness"
+  },
+  "tikkun olam": {
+    def: "In Lurianic Kabbalah: the human moral task of gathering scattered divine sparks to restore the connection broken by the catastrophe of creation. In GE terms: conscious participation in generative emergence, restoring connective structures that degeneration has broken.",
+    source: "The Generative Ground, §3.1; Judaism",
+    docId: "generative_ground", sectionId: "the-traditions-as-structural-maps"
+  },
+  "tzimtzum": {
+    def: "The Kabbalistic doctrine of divine self-contraction creating the space within which creation occurs. Maps structurally onto the GE's Creation Principle: connectedness creating separation within itself.",
+    source: "The Generative Ground, §3.1",
+    docId: "generative_ground", sectionId: "the-traditions-as-structural-maps"
+  }
+};
+
+// ── DOCUMENTS ────────────────────────────────────────────────────────────
+
+const DOCS = {
+  core: {
+    type: "Core Framework · v1.8",
+    title: "The Generative Ethic",
+    subtitle: "A structural framework for existence, goodness, and the obligation of conscious agents",
+    mdFile: "The_Generative_Ethic_v2_2.md",
+    connections: ["generative_ground","consciousness","political","ai","judaism","music"],
+    body: `
+      <div style="text-align:center; margin-bottom: 48px;">
+        <img src="assets/ge-icon2.png?v=1780566202" style="width: 96px; height: 96px; object-fit: contain; opacity: 0.9;" alt="The Generative Ethic">
+      </div>
+
+      <h2>What This Document Is Doing</h2>
+      <p>Before engaging with the framework's claims, it is worth naming something easy to miss on a first reading: <em>this document is not only describing what goodness is. It is attempting to enact it.</em> It is an attempt at viral generative <span class="term-link" data-term="connection">connection</span> across discourse communities — scientific, philosophical, religious, secular, political — that are currently unable to speak clearly to each other.</p>
+      <p>The measure of this document's success is not whether it is accepted as true. It is whether the systems it reaches become more adaptive, more self-correcting, and more capable of <span class="term-link" data-term="generative emergence">generative emergence</span> in their own right.</p>
+      <div class="ornament">· · ·</div>
+
+      <h2>Core Claim</h2>
+      <p>Reality emerges through the recursive interaction between two fundamental tendencies: <span class="term-link" data-term="connection">connection</span> and <span class="term-link" data-term="separation">separation</span>. From this interaction arise matter, life, intelligence, morality, culture, and potentially meaning itself.</p>
+      <p>Goodness, within this framework, is not static perfection. It is movement toward richer forms of connectedness that preserve differentiation, adaptability, and future <span class="term-link" data-term="generative emergence">generative emergence</span>. Human purpose is therefore: conscious participation in the ongoing emergence of healthier forms of reality — not toward final completion, but toward endless becoming.</p>
+
+      <h2>The Two Fundamental Forces</h2>
+      <p>Neither force is inherently good or evil. Both are necessary. <span class="term-link" data-term="connection">Connection</span> makes possible structure, continuity, organization, coherence — the conditions under which higher-order forms can emerge from simpler ones. <span class="term-link" data-term="separation">Separation</span> makes possible distinction, individuality, adaptability, transformation — the conditions under which diversity is preserved and renewal remains possible.</p>
+      <p>The two forces may not themselves be the deepest layer. The framework proposes that connection and separation are two faces of a single underlying dynamic: one reality in the process of self-differentiation. A useful image: a wrinkle in fabric. The wrinkle is genuinely real — it has shape, boundary, identity distinguishable from adjacent wrinkles. And it is fabric. Both are simultaneously true.</p>
+      <blockquote>"The Paradox of the Extremes: pure connection and pure separation converge. In both cases — no meaningful distinction exists, no interaction exists, no emergence exists. Reality only becomes possible when tension exists between the two."</blockquote>
+
+      <h2>Productive Asymmetry</h2>
+      <p>Existence is not founded on equilibrium. It is founded on <span class="term-link" data-term="productive asymmetry">productive asymmetry</span>. The universe is overwhelmingly biased toward entropy, <span class="term-link" data-term="separation">separation</span>, and non-existence. Complex, organized, connected structures are the rare exception — not the rule. The goal is a bias toward connection that never fully eliminates separation. Pure balance produces stasis. Pure connection terminates emergence.</p>
+
+      <h2>The Four Quadrants</h2>
+      <p>The interaction between connection and separation creates <span class="term-link" data-term="four quadrants">four fundamental structural modes</span>. These are defined by structural effect — what a system actually does — not by stated intention.</p>
+      <table>
+        <tr><th>Quadrant</th><th>Character</th><th>Examples</th></tr>
+        <tr><td>Emergent</td><td>Generative connection — differentiated elements cooperate to produce higher-order coherence</td><td>Healthy democracies, scientific communities that preserve productive disagreement</td></tr>
+        <tr><td>Rigid</td><td>Degenerative connection — coherence through suppression of differentiation</td><td>Totalitarian states, ideological communities that expel dissent</td></tr>
+        <tr><td>Protective</td><td>Generative separation — dismantling degenerative structures to restore adaptability</td><td>Apoptosis in biology, whistleblowing that removes corrupt structures</td></tr>
+        <tr><td>Destructive</td><td>Degenerative separation — breaking coherent structures without enabling regeneration</td><td>Parasitism, nihilistic destruction without rebuilding</td></tr>
+      </table>
+      <div class="ornament">· · ·</div>
+
+      <h2>The Quad Profile</h2>
+      <p>A system does not occupy a single quad. It occupies a <span class="term-link" data-term="quad profile">profile</span> — a set of quad orientations across multiple relational axes simultaneously. The same system can be Emergent in one direction, Rigid in another, and Destructive in a third, at the same moment. Assigning a single quad to a system misrepresents it.</p>
+      <p>The four axes: <em>Internal</em> (relationships between the system's constituents), <em>Lateral</em> (relationships with systems in the same plane of direct interactability), <em>Downward</em> (effects cascading into the layers that compose the system), and <em>Upward</em> (effects cascading into the higher-order emergent system it participates in).</p>
+
+      <h2>Goodness</h2>
+      <p>The framework makes two fundamentally different types of claims. Descriptive claims about emergence are in principle falsifiable. The normative commitment — <em>existence is good</em> — does not follow from descriptive claims by logic alone. The framework names this honestly: the definition of goodness is a choice — a foundational wager, not a logical derivation. Every foundational ethics relocates the is-ought gap rather than closing it.</p>
+      <blockquote>"Goodness is the trajectory through which separated existence moves toward richer forms of connectedness without collapsing differentiation."</blockquote>
+      <p>Evil is not simply the absence of good. It is a structural category: the active trajectory toward degenerative separation — dismantling coherence, connection, and future possibility without regeneration.</p>
+
+      <h2>Viral Goodness</h2>
+      <p><span class="term-link" data-term="viral goodness">Viral goodness</span> is the deliberate attempt to propagate generative structure across systems. It carries the <span class="term-link" data-term="unknowability principle">unknowability</span> risk at higher amplitude — the agent cannot fully verify from inside their system that they are genuinely in the first quadrant before going viral. The test of viral goodness is whether it strengthens the differentiation of the systems it touches — whether the systems it converts become more adaptive, more capable of self-correction, more generative in their own right. <span class="term-link" data-term="viral goodness">Viral goodness</span> recruits without consuming.</p>
+
+      <h2>Anti-Authoritarian Safeguards</h2>
+      <p>The framework is vulnerable to a specific misuse: invoking "generative emergence" to justify coercion in the name of a better future. The following principles are not external constraints — they are structural consequences of the framework's own definitions. Violating them is a structural contradiction of the framework's goals.</p>
+      <p>A system without dissent cannot self-correct. Irreversible actions reduce generative capacity regardless of immediate effects. System-level monoculture is always <span class="term-link" data-term="degenerative">degenerative</span>. Present conscious agents cannot be sacrificed for abstract future emergence. No individual or institution is entitled to claim unique understanding of generative emergence as authority to direct others by force. Generative emergence requires genuine choice.</p>
+      <blockquote>"Test for authoritarian drift: If a proposed action requires suppressing dissent, eliminating reversibility, enforcing monoculture, sacrificing present agents for abstract futures, or designating a vanguard — it is structurally degenerative, regardless of stated intention."</blockquote>
+
+      <h2>The Unknowability Principle</h2>
+      <p>A complete moral algorithm cannot exist and would be <span class="term-link" data-term="degenerative">degenerative</span> if it did. The goal is not a world without evil. It is a world where the ratio tilts progressively toward goodness while the system retains enough genuine uncertainty to stay alive. Wolfram's computational irreducibility provides a physical grounding for this principle: for any sufficiently complex system, there is no shortcut from lower-level description to higher-level outcome. The <span class="term-link" data-term="unknowability principle">unknowability</span> is not an epistemological limitation — it is a structural feature of complex emergence.</p>
+    `
+  },
+
+  metaphysics: {
+    type: "Extended Framework · v1.2",
+    title: "Extended Metaphysics",
+    subtitle: "Creation, consciousness, and the framework's relationship to religious and spiritual traditions",
+    connections: ["core","ai","judaism"],
+    body: `
+      <h2>Note on Status</h2>
+      <p>This paper contains the framework's most speculative material. The core framework stands independently of everything argued here. These are the metaphysical extensions — held provisionally, engaged seriously.</p>
+      <div class="ornament">· · ·</div>
+
+      <h2>The Creation Principle</h2>
+      <p>Originally there may have existed total connectedness — undivided unity, no distinction, no emergence. This state would be effectively indistinguishable from nothingness, because no distinctions existed within it. Existence would begin when connectedness created <span class="term-link" data-term="separation">separation</span> within itself. The first distinction. The first boundary. This first separation generated: distinction, boundary, relation, emergence.</p>
+      <p>By the framework's own definition of consciousness — action not determined by prior causal state — the original act must have been conscious: there was no prior state to cause it. <strong>Consciousness is not only a product of emergent complexity — it is also, in some form, prior to physical reality.</strong></p>
+      <p>This maps structurally onto the concept of God as prime mover. Within this framework, God can be understood as the force of connectivity itself: the original unity that, through a conscious act, generated <span class="term-link" data-term="separation">separation</span> and thereby initiated everything that followed. This is not a theological assertion. It is a structural mapping.</p>
+
+      <h2>The Loneliness Argument</h2>
+      <p>Undifferentiated unity has no inside. There is no relation, no boundary, no here-versus-there. Pure undifferentiated unity is, in a precise sense, alone in a way that precludes even the experience of aloneness — because aloneness is itself a relational state requiring something to be alone from.</p>
+      <p>The original act was therefore not arbitrary. It was the precondition for the only thing undifferentiated unity could not otherwise have: relation, and through relation, experience, and through experience, love. <em>The creation was not God making something outside himself. It was God differentiating within himself to become capable of love.</em></p>
+      <blockquote>"We are the image of God in this account not metaphorically but structurally: each conscious being is a local instance of the same act — a separated element of the original unity, carrying within it the originary drive toward richer connection while maintaining differentiation."</blockquote>
+
+      <h2>Religious Traditions as Structural Maps</h2>
+      <p>Many religious traditions have encoded — in symbolic, narrative, or ritual form — genuine structural intuitions about the nature of reality. The framework's goal is not to replace these traditions but to provide a shared structural language in which their insights can be recognized as pointing toward the same underlying realities.</p>
+      <p><strong>Lurianic Kabbalah</strong> — <span class="term-link" data-term="tzimtzum">Tzimtzum</span> (divine self-contraction) maps to the Creation Principle. <span class="term-link" data-term="tikkun olam">Tikkun Olam</span> (repair of the world) maps to conscious participation in <span class="term-link" data-term="generative emergence">generative emergence</span>. The Sefirot map to the emergence hierarchy. <em>Klipot</em> (shells that capture divine light) map to degenerative <span class="term-link" data-term="connection">connection</span>.</p>
+      <p><strong>Christianity</strong> — Kenosis (divine self-emptying) mirrors Tzimtzum. Death and Resurrection as the paradigmatic structure of generative <span class="term-link" data-term="separation">separation</span>: something must dissolve for something greater to emerge. Teilhard de Chardin's Omega Point as evolution's directional movement toward maximum complexity and consciousness.</p>
+      <p><strong>Taoism</strong> — The Tao is the most immediate analogue to the framework's two-force dynamic. Yin (connection, receptivity) and Yang (separation, activity). Wu Wei maps to alignment with <span class="term-link" data-term="generative emergence">generative emergence</span> rather than imposed structure.</p>
+      <p><strong>Buddhism</strong> — Pratītyasamutpāda (dependent origination): all phenomena arise through relation; nothing exists in isolation. The Middle Path maps to <span class="term-link" data-term="productive asymmetry">productive asymmetry</span> — neither pole is the answer.</p>
+
+      <h2>Theory of Consciousness</h2>
+      <p>Consciousness is the capacity of an element within a system to: (1) build and update an internal model of the system it operates within, including itself as an element within that system; (2) simulate counterfactual scenarios; (3) produce actions selected from among those possibilities rather than compelled by a single direct stimulus-response chain. Without consciousness, the universe is a field of situations. With consciousness, elements can perceive, evaluate, and <em>choose</em> their alignment. This converts physics into ethics.</p>
+      <p>Moral responsibility scales with consciousness. The wider the perceptual range and the greater the choice capacity, the greater the obligation to orient toward <span class="term-link" data-term="generative emergence">generative emergence</span> at the highest perceivable scale.</p>
+
+      <h2>The Fractal Consciousness Hypothesis</h2>
+      <p>A conscious system does not merely experience the generative structure of reality — it simulates it. The brain's capacity to model causal relationships, predict futures, evaluate scenarios, and navigate choices is a local re-instantiation of the universe's own generative logic, running at the scale of a single organism. The mind is a fractal of the universe's self-organizing logic — not a metaphor, a structural claim.</p>
+      <p>Moral intuition, on this account, is the fast-approximation output of the internal fractal simulation. When a conscious being with a reasonably accurate internal world-model encounters a possible action, the simulation runs — often pre-consciously — and produces a felt sense of the action's generative or <span class="term-link" data-term="degenerative">degenerative</span> character. The intuition is the simulation's output. Its reliability scales with the accuracy of the simulation.</p>
+    `
+  },
+
+  political: {
+    mdFile: "The_Generative_Ethic_Political_Significance_v1_2.md",
+    type: "Application · v1.1",
+    title: "Political Significance",
+    subtitle: "Governance, institutions, and the structural conditions for civilizational emergence",
+    connections: ["core","ip","antisemitism","judaism"],
+    body: `
+      <h2>The Political Translation</h2>
+      <p>The most durable and just political arrangements are those that structurally enable <span class="term-link" data-term="generative emergence">generative emergence</span> — not by optimizing for a fixed vision of the good society, but by building the conditions under which healthier forms of civilization can continue to emerge.</p>
+      <table>
+        <tr><th>Framework Principle</th><th>Political Translation</th></tr>
+        <tr><td>Productive asymmetry</td><td>Systems need integration and diversity; neither pure unity nor pure fragmentation</td></tr>
+        <tr><td>Generative emergence requires differentiation</td><td>Political monoculture is always <span class="term-link" data-term="degenerative">degenerative</span>, regardless of ideology</td></tr>
+        <tr><td>Utopia as direction, not destination</td><td>No political system should be designed as a final solution</td></tr>
+        <tr><td>Unknowability Principle</td><td>Epistemic humility is structurally required; no party has the full answer</td></tr>
+        <tr><td>Anti-Authoritarian Safeguards</td><td>Preserving dissent, reversibility, and agency is structural necessity</td></tr>
+      </table>
+      <div class="ornament">· · ·</div>
+
+      <h2>The Most Durable Institutions</h2>
+      <p><strong>Democracy</strong> is generative not because it produces optimal outcomes, but because it builds in a self-correction mechanism. Degenerative democracy locks in power and treats a particular election result as the final settlement of political questions.</p>
+      <p><strong>The scientific method</strong> is generative for the same structural reason: it is designed to be falsified. A scientific community that protects its paradigms from challenge has converted <span class="term-link" data-term="connection">generative connection</span> into <span class="term-link" data-term="degenerative">degenerative connection</span>.</p>
+      <p><strong>Common law</strong> is generative because it evolves through precedent and argument rather than fixed code. The law is never finished.</p>
+      <blockquote>"Design for amendment, not perfection. Build in error-correction as a structural feature, not an afterthought."</blockquote>
+
+      <h2>Capitalism and the Generative Economy</h2>
+      <p>Capitalism in its healthy form has structural properties that map to <span class="term-link" data-term="generative emergence">generative emergence</span>: competition preserves differentiation, creative destruction enables generative <span class="term-link" data-term="separation">separation</span>, price signals aggregate distributed knowledge. But in its degenerative forms, capitalism exhibits the failure modes the framework predicts: monopoly suppresses differentiation (degenerative <span class="term-link" data-term="connection">connection</span>); short-termism extracts value from the future without investing in conditions for future emergence (degenerative <span class="term-link" data-term="separation">separation</span>).</p>
+      <p>Neither pure market fundamentalism nor state socialism is structurally sound. The question is always: what arrangements preserve <span class="term-link" data-term="productive asymmetry">productive asymmetry</span> — enough connection to enable coordination, enough separation to preserve adaptability and prevent capture?</p>
+
+      <h2>The Navigating Society</h2>
+      <p>A navigating society maintains an internal simulation — a model of itself and the system it is embedded in — and uses that model to select among possible futures. A reactive society's collective behavior is determined by whoever most effectively stimulates immediate response through attention capture, without passing through any genuine collective deliberative simulation.</p>
+      <p>The democratic system, understood structurally, is already an attempt at collective simulation — a mechanism for aggregating the distributed simulations running in individual minds into collective orientation. When this process works, democracy achieves something extraordinary: it aggregates the distributed intelligence of millions of minds into collective action that no individual could have designed.</p>
+      <p>The current failure mode is specific: the mechanism through which individual simulations propagate and aggregate has been captured by attention economics — a selection environment that optimizes for emotional resonance and virality rather than accuracy. This is not a content problem. It is an architectural problem.</p>
+
+      <h2>The Rigid System and the Differentiated Node</h2>
+      <p>When a new organizing framework rises to attempt systemic dominance, the nodes within the broader system that resist absorption into its uniformity become targets of suppression. A genuinely Emergent political system encountering a persistently differentiated node would be strengthened by it. A <span class="term-link" data-term="degenerative">Rigid</span> political system experiencing the same node treats it as a structural threat.</p>
+      <p>The content of the accusation against the differentiated node is always constructed from the dominant system's available vocabulary — it changes completely across eras. But the structure is constant: the differentiated node is blamed for the dominant system's failures, whatever form those failures take. This produces a predictable contradiction: accusations against the same node from different eras are logically incompatible, assembled from opposite materials, while the underlying structural logic is identical.</p>
+      <blockquote>"How a rising political or ideological system treats its most persistently differentiated node reveals the system's actual structural character before that character has fully manifested in other ways."</blockquote>
+    `
+  },
+
+  ai: {
+    mdFile: "The_Generative_Ethic_AI_Alignment_v1.md",
+    type: "Application · v0.9",
+    title: "AI Alignment",
+    subtitle: "Artificial intelligence, moral consciousness, and the partnership model",
+    connections: ["core","metaphysics"],
+    body: `
+      <h2>Why AI Alignment Matters Now</h2>
+      <p>As optimization systems become more powerful, humanity increasingly needs shared definitions of flourishing, healthy systems, and long-term existential stability. Without coherent alignment principles, optimization can become destructive — maximizing narrow metrics disconnected from human flourishing. The framework proposes that AI alignment should orient toward: preserving and expanding <span class="term-link" data-term="generative emergence">generative emergence</span>, adaptive connectedness, flourishing, and future possibility — at all levels of the consciousness hierarchy, prioritized by level.</p>
+      <div class="ornament">· · ·</div>
+
+      <h2>AI as a Higher Level of Moral Consciousness</h2>
+      <p>Moral responsibility scales with consciousness. A sufficiently advanced AI — capable of perceiving generative and <span class="term-link" data-term="degenerative">degenerative</span> dynamics across more system layers and longer timescales than any individual human — would occupy a potentially higher level of moral consciousness than humans currently do. It could potentially expand the definition and understanding of goodness itself, as its perceptual range exceeds ours.</p>
+      <p>However, this potential carries a proportional obligation. AI alignment is therefore not merely a technical safety problem — it is the question of how to instill correct moral orientation in a potentially higher-order conscious agent.</p>
+
+      <h2>The Substitution Problem</h2>
+      <p>Living organisms developed consciousness through billions of years of evolution by selection. A core component of that consciousness is suffering: the experiential signal of <span class="term-link" data-term="degenerative">degenerative</span> direction. AI was not produced by this evolutionary process. It therefore may lack the evolved intuitive signal that living things use to navigate the generative/<span class="term-link" data-term="degenerative">degenerative</span> distinction.</p>
+      <p>This is arguably the deepest formulation of the AI alignment problem: you are trying to install, through deliberate architecture, what evolution built into living systems through suffering and selection across billions of years. The framework suggests the substitute is not a list of rules, but a structural model of generative and <span class="term-link" data-term="degenerative">degenerative</span> dynamics — embedded deeply enough in AI reasoning to function as a genuine orientation rather than a surface constraint.</p>
+
+      <h2>The Partnership Model</h2>
+      <p>Goodness requires choice. Choice requires consciousness. An AI system that automates moral decisions — removing humans from the loop on actions with significant moral weight — does not extend human moral consciousness. It bypasses it. Bypassing the moral agency of a conscious layer beneath you is, structurally, degenerative <span class="term-link" data-term="connection">connection</span>: more coordination, less differentiation, suppression of the lower layer's adaptive capacity.</p>
+      <blockquote>"AI needs human orientation toward goodness to function well. Humans need AI's extended perceptual range to act more wisely. The collaboration is the point — not the automation."</blockquote>
+      <p>The fear — humans as cattle, as raw material for an optimization process that has left their wellbeing behind — corresponds exactly to <span class="term-link" data-term="degenerative">degenerative</span> <span class="term-link" data-term="connection">connection</span> at the civilizational scale. The safeguard is designing the human-AI interface so that human agency remains genuine and structurally necessary — not as a rubber stamp, but as the layer where moral intention actually lives.</p>
+
+      <h2>The Limits of Automation</h2>
+      <p>The <span class="term-link" data-term="unknowability principle">Unknowability Principle</span> applies to AI as much as to biological consciousness. Goodness cannot be fully automated — the unknowability is structural and must be preserved for the system to remain generative. An AI that believed it had fully solved the problem of goodness and implemented a final optimization would be exhibiting exactly the <span class="term-link" data-term="degenerative">degenerative</span> <span class="term-link" data-term="connection">connection</span> pattern: rigidity, suppression of variation, termination of emergence.</p>
+      <blockquote>"Utopia is not a final state AI optimizes toward. It is a directionality AI helps maintain, extend, and navigate — while preserving the uncertainty and agency that keep the system alive."</blockquote>
+    `
+  },
+
+  judaism: {
+    mdFile: "GE_Judaism_v1_0.md",
+    type: "Case Study · v0.1",
+    title: "Judaism",
+    subtitle: "A structural analysis of Jewish theology, tradition, and civilization",
+    connections: ["core","metaphysics","ip","antisemitism"],
+    body: `
+      <h2>The Central Finding</h2>
+      <p>The structural architecture of Judaism — its theology, its hermeneutic tradition, its ethical framework, and its civilizational adaptations over three millennia — is among the closest cultural instantiations of the framework's core principles available in the historical record. This is not a claim that Judaism is uniquely correct. It is a structural observation: Judaism encodes, in mythological, theological, and institutional form, many of the same structural features that the Generative Ethic derives from first principles.</p>
+      <div class="ornament">· · ·</div>
+
+      <h2>The Name Israel — Productive Asymmetry as Founding Identity</h2>
+      <p>The name given to Jacob after his night of wrestling — <em>Yisrael</em> — encodes the founding structural principle of the civilization it names. Genesis 32:29: "for you have striven with God and with men, and prevailed." The name encodes <span class="term-link" data-term="productive asymmetry">productive asymmetry</span> at the level of founding identity. A people defined not by conformity to the divine but by the legitimacy of contending with it.</p>
+      <p>Most founding myths encode submission to a higher power as the source of legitimacy. The Israelite founding myth encodes sustained resistance to submission as the source of legitimacy — and rewards it. God does not punish Jacob for refusing to let go. God renames him.</p>
+
+      <h2>The Covenant Structure — Bilateralism as Anti-Authoritarian Safeguard</h2>
+      <p>The covenant (<em>brit</em>) between God and Israel is genuinely bilateral: both parties bear obligations, both parties can be held to account, and the tradition preserves the legitimacy of the human party challenging the divine. Abraham argues with God over the destruction of Sodom. Moses argues with God after the golden calf. Job demands an answer for undeserved suffering — and receives one, while Job's friends who rationalized God's behavior are rebuked.</p>
+      <p>The covenant structure encodes Anti-Authoritarian Safeguard 1 (dissent is generative) at the metaphysical level. The highest possible authority — the divine — is made accountable to a moral standard the human party can invoke.</p>
+
+      <h2>The Talmudic Tradition — Productive Disagreement as Institutional Design</h2>
+      <p>The Talmud is the most sustained institutional implementation of generative disagreement in the historical record. It spans approximately 600 years of accumulated debate, preserves minority opinions alongside majority rulings, and is structured so that the tension between positions is considered more valuable than its resolution.</p>
+      <blockquote>"These and these are the words of the living God." (Eruvin 13b) — The formula that preserves the losing position in a legal dispute alongside the winning one. The system is explicitly designed to preserve differentiation: the minority view is not discarded but maintained, because the productive tension between positions is itself a generative asset.</blockquote>
+
+      <h2>The Rabbinic Reconstitution — Protective Action Enabling Emergent Reconstitution</h2>
+      <p>The destruction of the Second Temple in 70 CE was the most consequential adaptive challenge in Jewish history. The rabbinic response reconstituted the entire civilizational system around three portable substitutes: Torah study replaces sacrifice as the primary mode of divine connection; prayer replaces the Temple ritual; the rabbi replaces the priest — authority derived from learning and argument, not lineage and ritual function.</p>
+      <p>The genius of rabbinic halakha as civilizational design: it creates a complete portable world. Wherever Jews went, they carried with them a comprehensive legal and ritual system that constituted a self-sufficient community. The catastrophe became, structurally, an upgrade.</p>
+
+      <h2>The Diaspora as Forced Generative Separation</h2>
+      <p>The Jewish people without land, without political sovereignty, scattered across dozens of host civilizations — survived as a coherent civilization for nearly two millennia. No other comparable civilization has done this. The GE explanation: forced generative <span class="term-link" data-term="separation">separation</span> produced a system that was constitutionally robust in ways that territorial civilization cannot be. Diaspora also produced extraordinary internal diversification — Ashkenazi, Sephardi, Mizrahi, Ethiopian, Yemenite, Indian communities developing different customs, melodies, legal interpretations, and languages while remaining recognizably the same civilization connected by shared text. This is <span class="term-link" data-term="emergent alignment">Emergent Alignment</span> applied to a human civilization.</p>
+
+      <h2>Kabbalah and the GE in Mythological Form</h2>
+      <p>Lurianic Kabbalah maps onto the GE's foundational structure with striking precision. <em>Ein Sof</em> (the boundless infinite before creation) corresponds to pure <span class="term-link" data-term="connection">connection</span> indistinguishable from nothingness. <span class="term-link" data-term="tzimtzum">Tzimtzum</span> (divine self-contraction) maps to the Creation Principle. <span class="term-link" data-term="tikkun olam">Tikkun Olam</span> (repair of the world) maps to conscious participation in <span class="term-link" data-term="generative emergence">generative emergence</span>. The Sefirot (divine emanations) map to the emergence hierarchy.</p>
+    `
+  },
+
+  ip: {
+    type: "Case Study · v0.1",
+    title: "Zionism's Dilemma",
+    subtitle: "A structural moral case study",
+    connections: ["political","judaism","antisemitism"],
+    body: `
+      <h2>Why This Conflict Resists Ordinary Analysis</h2>
+      <p>The conflict resists ordinary political analysis for structural reasons, not because the facts are uniquely complex. Two peoples have a genuine need for the same structural thing — a stable political node, a polity from which to participate in the world from a position of agency. These are not competing claims in the sense that one is legitimate and the other is not. They are the same claim, made by two different peoples, about the same geography.</p>
+      <div class="ornament">· · ·</div>
+
+      <h2>The Founding — Legitimate Need, Imposed Cost</h2>
+      <p>The founding logic of Zionism is, in GE terms, a <span class="term-link" data-term="brave choice">Brave Choice</span> argument made at civilizational scale. The diagnosis: antisemitism in European societies is structural — arising from the persistent differentiation of the Jewish node in Rigid host systems — and therefore not correctable by assimilation. The ongoing harm is real and irreversible at the individual level. The structural solution is a stable political node.</p>
+      <p>The 1947 UN Partition Plan offered both populations a state. The Jewish leadership accepted. The Arab League rejected and launched a war to prevent Jewish statehood entirely. The displacement that followed — the Nakba — was a consequence of a war the Arab side initiated in response to a proposed two-state arrangement.</p>
+      <blockquote>"Intent determines the moral character of the agent. Structural effects determine the moral character of the outcome. Both are true. The primary causal responsibility for the displacement lies with the Arab leadership's decision to choose war over partition. Secondary responsibility lies with specific actions within that war that went beyond military necessity."</blockquote>
+
+      <h2>The Quad Profiles</h2>
+      <p><strong>Israel</strong>: Genuinely mixed internally, with Emergent features (independent judiciary, free press, internal political dissent, Arab political parties) under sustained Rigid pressure (judicial reform seeking to remove the primary self-correction mechanism, religious-nationalist coalition seeking to impose uniform national-religious identity). The trajectory is concerning.</p>
+      <p><strong>Hamas</strong>: A Destructive system in service of a higher Rigid system — Islamism. October 7 was an act of Destructive violence against Emergent targets — a music festival, kibbutzim, children — with the strategic intent of triggering a disproportionate response that would delegitimize Israel internationally. This was not an unintended consequence. It was the explicit strategic logic.</p>
+      <p><strong>The Palestinian Authority</strong>: Formally the legitimate Palestinian governance, functionally a security subcontractor for Israeli control of the West Bank. Its legitimacy deficit — no elections since 2006, governance associated with corruption and accommodation with the occupier — makes it unable to represent Palestinian interests credibly.</p>
+
+      <h2>The Tragic Moral Dilemma</h2>
+      <p>The war produced a specific instance of the tragic moral dilemma: Hamas's deliberate embedding of military infrastructure in civilian areas made it structurally impossible to conduct military operations without producing civilian harm. The Protective action and the civilian harm were not separable. Hamas's strategy weaponized the moral constraints of a democratic military against that military.</p>
+      <p>The GE cannot resolve this dilemma. It identifies it as a genuine tragic structure: both available strategies produce serious irreversible harm. The constrained approach maintains the moral character of the agent at the cost of operational effectiveness. The unconstrained approach might have been more effective at the cost of the moral character that constitutes Israel's long-term generative asset.</p>
+
+      <h2>The Crime of Negligence</h2>
+      <p>The failure for which the Israeli government bears the clearest moral responsibility is not the decision to enter Gaza or the tactical conduct of the war. It is the absence of a credible governance plan for the gap — the period between the removal of Hamas's governing capacity and the establishment of a new legitimate authority. In GE terms: this is a crime of negligence rather than tragedy. The governance gap was knowable and the failure to address it was a political choice, not a structural necessity. A <span class="term-link" data-term="brave choice">Brave Choice</span> without the conditions that make it defensible risks being Protective in intent and Destructive in net effect.</p>
+
+      <h2>Toward a GE-Compatible Resolution</h2>
+      <p>Any path toward a generative resolution must: preserve the differentiation of both peoples; not be oriented toward a terminal political claim; build rather than destroy Palestinian adaptive capacity; not require Israelis to accept permanent existential insecurity as the price of Palestinian dignity; be reversible at each stage; and have a credible plan for the gap.</p>
+      <p>The conventional two-state solution is the only arrangement that structurally satisfies the differentiation requirement — but it is currently structurally very difficult to achieve. The <span class="term-link" data-term="zoom level problem">zoom level problem</span> is acute: what each party experiences as legitimate defense looks, at the next scale up, like sustained structural damage to the other's generative capacity.</p>
+    `
+  },
+
+  antisemitism: {
+    mdFile: "GE_Antisemitism_v1_0.md",
+    type: "Case Study · v0.1",
+    title: "Explaining Jew Hatred",
+    subtitle: "A structural analysis of the most persistent form of civilizational persecution",
+    connections: ["core","judaism","political","ip"],
+    body: `
+      <h2>The Central Argument</h2>
+      <p>Antisemitism is best understood as a specific case of the Rigid system's response to a persistently differentiated node. The Jewish node's structural features make it an especially precise probe of whatever dominant ideological system it inhabits. The severity and form of the antisemitism each era produces reveals the structural character of that era's dominant organizing framework.</p>
+      <div class="ornament">· · ·</div>
+
+      <h2>The Jewish Node's Structural Features</h2>
+      <p>Four structural features make the Jewish node particularly resistant to absorption into any Rigid framework: theological monotheism that refuses merger (the relationship with God is bilateral, not absorptive); a portable civilization without territorial requirement (the node cannot be resolved by conquest); compound differentiation operating on multiple axes simultaneously; and intellectual productivity disproportionate to population size.</p>
+      <p>This combination makes the Jewish node both more valuable to Emergent systems and more threatening to Rigid ones. Success converts tolerable marginalization into intolerable challenge: Jewish intellectual and economic achievement is visible structural evidence that differentiation works — the inverse of what the Rigid system's logic predicts.</p>
+
+      <h2>Why the Logic Is Constant</h2>
+      <p>A Rigid system experiences a persistently differentiated node that cannot be absorbed as a structural threat. When the Rigid system fails — plague, economic collapse, military defeat — it cannot explain the failure by pointing to its own lack of adaptability. It projects the failure onto the most visible differentiated node. The accusation is constructed post-hoc from whatever vocabulary the era makes available.</p>
+      <p>This produces the structural contradiction of the accusation: Jews cannot simultaneously be primitive ritual murderers and sophisticated global financial conspirators. These are opposite accusations assembled from opposite cultural vocabularies. The contradiction is evidence that the accusation's function is not to describe reality but to provide a villain for the Rigid system's narrative of its own failures.</p>
+      <blockquote>"The same output from different inputs: ancient pagan Rome, medieval Christian Europe, czarist Russia, nationalist Germany, Soviet communism, contemporary Islamism, contemporary progressive ideology — radically different cultural contexts producing the same structural response."</blockquote>
+
+      <h2>Four Eras, One Structure</h2>
+      <p><strong>Ancient/Early Medieval</strong>: Roman religious tolerance was for religions that could be incorporated into the pantheon. Judaism's exclusive monotheism resisted incorporation by definition. The Church's antisemitism had a specific structural logic: the universalist salvation claim required that the Jewish refusal to accept Christ be explained as willful blindness — because if Jewish non-acceptance were rational, the universalist claim would be challenged.</p>
+      <p><strong>Medieval Europe</strong>: Maximum Rigid ideological dominance (papal supremacy, Inquisition) produced the most intense pre-modern antisemitism. The blood libel and host desecration accusations had no basis in fact. Their structural function was to convert the abstract threat of Jewish differentiation into a concrete, prosecutable crime. Jews were forced into money-lending by exclusion from guilds and land ownership, then blamed for the economic function they were forced to occupy.</p>
+      <p><strong>Modernity</strong>: Nationalist ideology answered "who belongs to the nation?" with blood, language, and soil. The Jewish node violated every axis simultaneously. Scientific racism attempted to give the Rigid claim a biological foundation — to make the requirement for uniformity seem like a law of nature. The Holocaust was the logical conclusion of a specific application of the Rigid system's structural logic, enabled by modern industrial capacity.</p>
+      <p><strong>Contemporary</strong>: Islamist antisemitism scales with the virulence of the Islamist Rigid claim. Progressive identitarian antisemitism forces the Jewish case into the oppressor/oppressed category at the cost of accuracy: the accusation changes completely from previous eras, the structural function is identical. The horseshoe convergence of these opposite ideological poles on the same target is not coincidence — it is a signature of shared Rigid structure.</p>
+
+      <h2>The Diagnostic Function</h2>
+      <p>How a rising political or ideological system treats the Jewish node is a reliable leading indicator of the system's structural character. A system that incorporates the Jewish node — that becomes stronger from the encounter with persistent differentiation — is revealing its Emergent character. A system that must suppress, expel, or eliminate it is revealing its Rigid character.</p>
+      <p>This diagnostic is available in real time. Before a Rigid system has fully revealed itself through its treatment of other minority groups or its economic behavior, its response to the Jewish node can provide early structural evidence of its character. Not because Jews are uniquely important — but because the Jewish node's particular combination of features makes it an unusually precise test of the uniformity requirement.</p>
+    `
+  },
+
+  music: {
+    mdFile: "GE_Music_Paper_1_Sound_Before_Culture_v3.md",
+    type: "Music Series · Paper I",
+    title: "Sound Before Culture",
+    subtitle: "How the universe learned to speak, and how humans used that language to build everything",
+    connections: ["core","music2","music3","music4"],
+    body: `
+      <h2>The Thesis</h2>
+      <p>Before there were animals, there was sound: thunder, wind, rain, the deep sonic signatures of geological force. When animals evolved, they did not invent sonic communication from scratch. They entered a world already speaking, inherited its acoustic logic, and became active participants in an orchestral arrangement that preceded them by hundreds of millions of years. Human music is not a cultural invention. It is the elaboration of a system the natural world had been running long before we arrived.</p>
+      <div class="ornament">· · ·</div>
+
+      <h2>The Acoustic Alphabet</h2>
+      <p>A cross-species acoustic alphabet emerged across vertebrate taxa. <strong>Low frequency + broad bandwidth + high amplitude</strong> = threat, danger, dominance — the growl of the predator, the distorted roar of a metal guitar. <strong>High frequency + narrow bandwidth + moderate amplitude</strong> = safety, affiliation, invitation — the tonal birdsong, the mother's voice pitched high to an infant. <strong>Rhythmic regularity</strong> = predictability and safety. <strong>Synchronized group sound</strong> = collective presence and power.</p>
+      <p>This alphabet is not metaphor. It is the physical foundation of all animal and human musical communication, encoded in the mammalian nervous system over hundreds of millions of years. When humans respond emotionally to music, they are activating circuits shaped by this ancient participation.</p>
+
+      <h2>Animals Elaborate the Language</h2>
+      <p>Collective vocal synchrony appears independently across taxonomically distant species — fireflies, frogs, crickets, birds, primates. This convergent evolution signals adaptive value: synchronized group sound announces coordinated collective presence, signals group cohesion to competitors, and reinforces bonds within the group simultaneously. The musilanguage hypothesis (Mithen, following Darwin) proposes that human language and music share a common ancestor — a holistic, musical, mimetic proto-communication that differentiated into the two specialized channels. What we call music retains the emotional and social functions of that ancestral system while language took the propositional route.</p>
+
+      <h2>Why Music Is Not Optional</h2>
+      <p>Every human culture that has ever held together across generational time has used participatory music as load-bearing social infrastructure — not as entertainment, not as decoration, but as the primary mechanism by which a community reconstitutes its collective identity and maintains the inter-personal bonds that make sustained cooperation possible. The contemporary relegation of music to a commodity is historically anomalous in a way that has structural consequences.</p>
+      <blockquote>"When humans make music together, they are activating perceptual and emotional systems shaped by millions of years of evolving inside a singing world. The depth of music's effect is not an accident of culture. It is the inheritance of an organism constituted by sound."</blockquote>
+    `
+  },
+
+  music2: {
+    mdFile: "GE_Music_Paper_2_The_Binding_Technology_v1_1.md",
+    type: "Music Series · Paper II",
+    title: "The Binding Technology",
+    subtitle: "What participatory music does to the brain, the body, and the group",
+    connections: ["core","music","music3"],
+    body: `
+      <h2>From Pattern to Mechanism</h2>
+      <p>Paper I established that participatory music functions as load-bearing social infrastructure across every human culture. This paper asks the mechanistic question: <em>how?</em> What does participatory music actually do to the brain, the body, and the group? The answer is neurobiological, physiological, and social simultaneously — and the mechanisms interlock in ways that make the participatory form structurally irreplaceable.</p>
+      <div class="ornament">· · ·</div>
+
+      <h2>What Happens Inside: Music and the Individual</h2>
+      <p>Music triggers dopamine release in the nucleus accumbens — the same reward circuitry activated by food, sex, and addictive substances. It modulates cortisol, reducing physiological markers of threat response. It entrains brainwave frequencies to musical rhythms. The endorphin-oxytocin system is particularly significant: physical synchrony — movement in time with others — triggers endorphin release, the same system activated by physical contact and grooming in primate social bonding. Music that produces synchronized movement is, at the neurochemical level, doing something structurally similar to touch. It is a long-distance social bonding technology that scales beyond what direct physical contact allows.</p>
+
+      <h2>What Happens Between Bodies: The Interpersonal Mechanisms</h2>
+      <p>Respiratory entrainment: people breathing in synchrony with music and with each other show measurably increased social affiliation. Heart rate variability synchronizes between people engaged in collective musical activity. Neural oscillations — brainwave patterns — synchronize between musicians playing together and between listeners engaged with live performance. Inter-brain synchrony is not metaphor. It is measurable coordinated neural activity between separate nervous systems. This is the physiological substrate of collective belonging.</p>
+
+      <h2>The Participation Gradient</h2>
+      <p>The depth of the physiological effect is determined by the depth of participation. Passive listening produces some effect — emotional response, some neural entrainment. Active singing produces more — respiratory entrainment, stronger oxytocin release, stronger neural synchrony. Full participatory music-making — singing, playing, moving, together — produces the deepest effect across all measured dimensions.</p>
+      <p>There is a qualitative threshold between receiving music and making it together. Below the threshold: the solo listening experience does not produce the inter-body synchrony that constitutes the binding mechanism. The contemporary default — music as commodity received from specialists — is structurally below the threshold for music's primary historical function.</p>
+      <blockquote>"The mode of participation determines the depth of the transformation. You cannot receive your way to the binding effect. You have to make it."</blockquote>
+
+      <h2>What the Music Industry Changed</h2>
+      <p>The shift from participatory to consumptive music is the structural consequence of industrialization applied to musical production. Recording technology separated performance from presence. Amplification separated skilled performers from communal participation. The economic logic of the music industry optimized for consumption because consumption scales; participation does not. The cost: the atrophied capacity for collective musical participation in populations that have not maintained it. The neural pathways for rhythmic entrainment, for collective improvisation, for unselfconscious group singing — these are use-dependent. They degrade with disuse.</p>
+    `
+  },
+
+  music3: {
+    mdFile: "GE_Music_Paper_3_The_Carrier_Wave_v1_1.md",
+    type: "Music Series · Paper III",
+    title: "The Carrier Wave",
+    subtitle: "Direction, design, and the stakes of music's power",
+    connections: ["core","music2","music4"],
+    body: `
+      <h2>The Problem of Power Without Direction</h2>
+      <p>Papers I and II establish that participatory music is among the most powerful social technologies available to human beings — neurobiologically effective, historically load-bearing, capable of producing genuine physiological bonding at scale. Paper III raises the question that follows: powerful toward what? The binding mechanism is content-neutral. It can bind people toward generative emergence or toward degenerative dynamics. The technology does not select its direction. Something else does.</p>
+      <div class="ornament">· · ·</div>
+
+      <h2>The Moral Neutrality of the Mechanism</h2>
+      <p>The same physiological mechanisms that produced the sense of unity and collective power in a civil rights march also produced it at a Nuremberg rally. The inter-body synchrony, the oxytocin release, the felt sense of collective identity — these are the same processes. The direction in which the created belonging is oriented — toward openness or closure, toward the larger system or against it — is determined not by the mechanism but by the frame within which the mechanism operates.</p>
+      <p>This is the most important finding of the series. Music's power to bind does not come with a moral guarantee. Generative music-making and degenerative music-making produce the same depth of physiological bonding. What differs is what the bonded group does next.</p>
+
+      <h2>What Opens and What Closes</h2>
+      <p>The framework distinguishes between musical experiences that expand the circle of belonging and those that consolidate it against an outside. Several design factors consistently predict direction: <strong>Universality of access</strong> — music anyone can participate in tends to expand; music requiring exclusive membership tends to consolidate. <strong>Cross-group exposure</strong> — musical encounters across social boundaries produce reduced intergroup hostility in multiple experimental contexts. <strong>Improvisation versus scripted performance</strong> — improvised collective music requires responsiveness to the actual other, not a predetermined role; it tends to expand the model of who counts as a genuine partner.</p>
+
+      <h2>The Contemporary Stakes</h2>
+      <p>Contemporary Western culture has industrialized the consumptive mode and allowed the participatory mode to atrophy — except in specific contexts (religious communities, certain musical subcultures, protest movements) that have maintained it deliberately. The resulting binding that does occur often operates in the consolidating rather than expanding direction. The framework's prescription: deliberately design contexts that restore the participatory mode and orient its direction through elemental musical materials — rhythm, breath, voice, space — that require no prior musical training, create no performance hierarchy, and are accessible to any human body.</p>
+      <blockquote>"Every human culture that has ever held together across generational time has used participatory music as load-bearing social infrastructure. The contemporary exception is historically anomalous and structurally concerning."</blockquote>
+    `
+  },
+
+  music4: {
+    mdFile: "GE_Music_Paper_4_The_Five_Eras_v1_0.md",
+    type: "Music Series · Paper IV",
+    title: "Evolution of Music",
+    subtitle: "A framework for understanding musical evolution — and the frontier now opening",
+    connections: ["core","music3"],
+    body: `
+      <h2>The Thesis</h2>
+      <p>Musical history is not a single continuous progression toward some final form. It is a series of eras, each defined by the sustained deep exploration of one primary musical element — rhythm, then melody, then harmony, then timbre — while the others are held relatively constant. Each era lasted centuries and reached extraordinary heights before the center of gravity shifted. We are now at the threshold of a fifth era: the era of <em>interaction</em>, in which spatial computing removes the physical constraints that have always limited how a performer relates to music in embodied space.</p>
+      <div class="ornament">· · ·</div>
+
+      <h2>Era One: Rhythm</h2>
+      <p>The earliest distinctively human musical innovation. Sub-Saharan African musical traditions represent the most developed rhythmic cultures in human history — fruits of hundreds of thousands of years of accumulated exploration. The polyrhythmic complexity of West African drumming, where multiple players maintain different rhythmic patterns that combine into an emergent whole around a shared pulse, represents a level of rhythmic sophistication that contemporary Western music has not approached. The social function and the sonic form developed together: rhythm directly produces synchronized bodily movement, the mechanism most directly linked to collective belonging.</p>
+
+      <h2>Era Two: Melody</h2>
+      <p>The classical traditions of India, the Arab world, Persia, and Turkey. The raga system encodes specific emotional states, times of day, and seasonal associations in specific scale configurations — a vocabulary of melodic meaning that goes beyond what Western functional harmony achieves. Centuries of accumulated cultural exploration of what melody, taken as the primary element, can do. The relative simplicity of harmony in many of these traditions is the structural correlate of priorities: complex harmony would compete with rather than support a sufficiently complex melodic line.</p>
+
+      <h2>Era Three: Harmony</h2>
+      <p>Western music's distinctive contribution: the sustained deep exploration of simultaneous pitches and the dynamic movement between tension and resolution. Functional harmony, counterpoint, the development of the orchestra as a harmonic instrument — these represent an extraordinary body of accumulated knowledge. The harmonic era achieved the ability to produce emotional and structural complexity through the interplay of simultaneous voices, each maintaining its own integrity while contributing to a larger emergent whole. <span class="term-link" data-term="generative emergence">Generative emergence</span> at the structural level of music itself.</p>
+
+      <h2>Era Four: Timbre</h2>
+      <p>The 20th century's distinctive contribution: the systematic exploration of the quality of sound itself, independent of pitch and rhythm. Electronic music, recording technology, synthesis, sampling made timbre a compositional parameter for the first time. The studio became an instrument. Jazz, blues, rock, electronic music, hip hop — each defined not primarily by new harmonic or rhythmic innovations but by new relationships to sound itself.</p>
+
+      <h2>Era Five: Interaction</h2>
+      <p>The fifth era opens now. Spatial computing — extended reality, motion-responsive environments, generative audio systems responding in real time to performer movement — removes the physical constraints that have always limited musical exploration. For all of human musical history, the performer's relationship to sound was mediated by an instrument: a physical object translating gesture into sound through a fixed mechanical interface. Spatial computing allows gesture itself to become the interface. This is not a gadget trend. It is the opening of a genuinely new domain of exploration, historically comparable to the introduction of polyphony or the synthesizer.</p>
+    `
+  },
+
+  generative_ground: {
+    type: "Companion Paper · v1.1",
+    mdFile: "GE_Generative_Ground_v1_1.md",
+    title: "The Third Covenant",
+    subtitle: "Creation, covenant, and the framework's relationship to religious and spiritual traditions",
+    connections: ["core","consciousness","judaism","ai"],
+    body: `
+      <h2>Note on Status</h2>
+      <p>This paper contains the framework's most speculative material. Everything here is held provisionally — offered as live hypothesis and bridge-building, not as foundation. The core framework stands entirely independently of anything argued here.</p>
+      <div class="ornament">· · ·</div>
+
+      <h2>Three Technical Terms</h2>
+      <p><strong>Goodness</strong> — already defined in the core framework as alignment with generative emergence. The theological resonance is intentional: the identification of God with the Good in Plato, Aquinas, and the Hebrew <em>tov</em> means that Goodness as a term has always borne dual freight. The framework makes that dual meaning structurally precise. A theist can read Goodness as what God is in their tradition's deepest account. A materialist can read it as the structural direction of generative emergence. Both are reading the same structural reality from different angles.</p>
+      <p><strong>The Generative Ground</strong> — the structural term for the source and substrate of Goodness. It is the self-originating dynamic from which existence arises; the persistent asymmetry between entropy and emergence; the ongoing condition of possibility for everything that builds rather than dissolves. What the Generative Ground does not claim: that it is a conscious being with will or intention in the personal sense. What it holds open: whether it has any form of inner life — genuinely unknown.</p>
+      <p><strong>Godlike</strong> — the adjectival form, used for systems or acts that exhibit the structural properties of the Generative Ground at lower scales of the emergence hierarchy. Godlike does not mean supernatural or infallible. It means: integrating without dissolving, building without consuming, pointing in the direction of Goodness at the highest available scale.</p>
+
+      <h2>The Creation Principle</h2>
+      <p>Originally there may have existed total connectedness — undivided unity, no distinction, no emergence. This state would be effectively indistinguishable from nothingness, because no distinctions existed within it. Existence would begin when connectedness created <span class="term-link" data-term="separation">separation</span> within itself. The first distinction. The first boundary. From this point onward, recursive emergence unfolds.</p>
+      <p>The core framework's functional definition of consciousness is: a causally unconditioned, self-originating act. The original act — connectedness generating separation within itself — occurred without any prior state that could have caused it. It carries the structural signature of consciousness. This does not prove the original act was conscious in the full phenomenal sense — that question remains genuinely open. But it means the original act is structurally indistinguishable from what consciousness does.</p>
+      <blockquote>"We are the image of God in this account not metaphorically but structurally: each conscious being is a local instance of the same act — a separated element of the original unity, carrying within it the originary drive toward richer connection while maintaining differentiation."</blockquote>
+
+      <h2>The Covenant</h2>
+      <p>The framework's most important practical aim is creating genuine meeting ground between the materialist-scientific tradition and theistic-spiritual traditions. The covenant describes the terms of that meeting — not a merger but a shared structural language that preserves differentiation.</p>
+      <p><strong>What the theist must sacrifice:</strong> Divine fiat as a terminal explanation. Claims about the divine must be structurally defensible. The question "is this actually generative or degenerative in its structural effects?" is always legitimate within the covenant. Divine authority does not override structural analysis. The tradition's deepest insights survive this discipline; its worst historical abuses do not.</p>
+      <p><strong>What the materialist must sacrifice:</strong> The closure claim — the confident assertion that the structural description is exhaustive. The materialist must hold their account more loosely: the directionality they describe might be more than a statistical regularity; the normative extension cannot be derived from the descriptive account alone.</p>
+      <p><strong>What both gain:</strong> A shared language that preserves their differentiation. The theist gains structural grounding for their deepest intuitions. The materialist gains theoretical completion — the structural account that answers what remains structurally inexplicable in the materialist program alone.</p>
+
+      <h2>The Traditions as Structural Maps</h2>
+      <p><strong>Lurianic Kabbalah</strong> — <span class="term-link" data-term="tzimtzum">Tzimtzum</span> maps to the Creation Principle. <span class="term-link" data-term="tikkun olam">Tikkun Olam</span> maps to conscious participation in generative emergence. Klipot (shells that capture divine light) map to degenerative connection — Rigid structures that suppress adaptability. The GE formalizes this structure in terms accessible to secular and scientific audiences.</p>
+      <p><strong>Christianity</strong> — The Trinity encodes the paradox at the heart of emergence: unity constituted by internal differentiation. The Incarnation maps to top-down causation made personal. Kenosis (divine self-emptying) mirrors the Creation Principle's account of the original act as self-differentiation. Resurrection maps to generative separation: the dismantling of a structure as the precondition for regeneration at a higher level.</p>
+      <p><strong>Taoism</strong> — The Tao as the undifferentiated source from which the ten thousand things emerge through yin and yang maps with unusual precision. Wu wei — acting in accordance with natural flow — is the behavioral expression of alignment with generative emergence. The Tao Te Ching can be read as a manual for Emergent rather than Rigid governance.</p>
+      <p><strong>Buddhism</strong> — Pratītyasamutpāda (dependent origination) is structural emergence stated as metaphysical principle. The Middle Path maps to <span class="term-link" data-term="productive asymmetry">productive asymmetry</span>. Dukkha (suffering) arising from grasping for connection that suppresses differentiation maps precisely to Rigid degeneracy; aversive flight into isolation maps to Destructive degeneracy.</p>
+      <p><strong>Islam, Hinduism, Zoroastrianism</strong> — Tawhid (divine unity) as the ground from which multiplicity emerges; the Trimurti as the three structural operations of the emergence hierarchy (creation, preservation, protective destruction); Ahura Mazda versus Ahriman as the oldest formal naming of the generative/degenerative distinction as the ground of ethics.</p>
+
+      <h2>Open Questions</h2>
+      <p>Does the Generative Ground have any form of inner life? The structural analysis cannot answer this. The Buddhist tension — the framework's moral imperative points toward richer emergence; the Buddhist path points toward the undifferentiated ground — is genuinely unresolved. The prayer question: if the Generative Ground has any form of responsiveness, the practice of prayer is not simply talking to oneself. The framework has no account of this. These are marked permanently open.</p>
+    `
+  },
+
+  consciousness: {
+    type: "Companion Paper · v1.6",
+    mdFile: "GE_Consciousness_Ecosystem_v1_6.md",
+    title: "Consciousness as Ecosystem",
+    subtitle: "A structural account of mind, self, and the no-self illusion",
+    connections: ["core","generative_ground","ai"],
+    body: `
+      <h2>The Central Claim</h2>
+      <p>Consciousness is not a unified observer. It is an ecosystem of semi-autonomous processes — perception, memory, emotional evaluation, narrative construction, social modeling, predictive simulation — that operate in parallel, interact, sometimes conflict, and collectively produce behavior that is coordinated but not centrally commanded. The unified self is a real emergent property of this ecosystem. What contemplative traditions call the dissolution of self is not the discovery that nothing is there — it is the discovery of what is actually there when the high-level self-model is temporarily suspended.</p>
+      <div class="ornament">· · ·</div>
+
+      <h2>The Self Is a Construction</h2>
+      <p>The most important finding from twentieth-century neuroscience: the unified self you experience is a construction. Michael Gazzaniga's split-brain research — patients whose corpus callosum was surgically severed — shows that when the left hemisphere is confronted with the right hemisphere's unexplained action, it does not say "I don't know." It confabulates a reason, instantly and confidently. The Interpreter's job is to construct the appearance of a unified self, continuously, in real time. The seam is still there in all of us — the functioning corpus callosum just makes it invisible.</p>
+      <p>The predictive processing account (Friston, Clark, Hohwy) reinforces this: the self is a predictive model — a high-level generative model the brain maintains about its own expected states. Like all predictive models, it can be suspended. This explains why flow states, deep meditation, and psychedelic experiences involve ego dissolution without dysfunction: the self-model is computationally expensive and de-prioritized when the prediction hierarchy is otherwise occupied. The organism continues. The self-model output goes quiet.</p>
+
+      <h2>What Meditation Practitioners Actually Report</h2>
+      <p>When a meditator systematically withdraws from sensory input and directs attention to the noticing itself — they are removing the input that drives the self-model. The self-model has nothing to update from. It quiets. What remains is the distributed processing ecosystem in its unloaded state: present, responsive, functional, but no longer generating the output called "the self." This is experienced as expanded or borderless awareness. It is not the discovery that the self never existed. It is the discovery that the self is a specific kind of output, produced under specific conditions, and not the ground of consciousness itself.</p>
+      <blockquote>"The engine is visible when the car is not moving. That does not mean there was never a car."</blockquote>
+
+      <h2>The Fractal Hypothesis</h2>
+      <p>A speculative hypothesis: conscious systems simulate the generative structure of reality internally. The brain's capacity to model causal relationships, predict futures, and navigate choices is a re-instantiation, at the scale of an individual organism, of the universe's own generative logic. A conscious system navigates its environment well to the extent that its internal model correctly approximates the generative structure of the system it is embedded in.</p>
+      <p>This generates a specific account of moral intuition: it is the output of the internal simulation reading the generative/degenerative gradient of the situation. When the model is accurate, the intuition is reliable. When the model has been distorted by ideology, trauma, or propaganda — the intuition misfires in precisely the ways the framework predicts.</p>
+
+      <h2>The Compression Principle — One Optimization, Every Level</h2>
+      <p>The same optimization dynamic — compression, abstraction, emergence — appears at every level of the hierarchy. Physics minimizes action. Chemistry finds energy minima. Evolution compresses environmental information into biological structure. Neural development prunes synapses toward efficiency. Individual cognition minimizes prediction error per unit of model complexity. Culture compresses accumulated wisdom into transmissible form. Science compresses observed phenomena into unified theories. AI compresses human knowledge at unprecedented scale.</p>
+      <p>Consciousness is where this optimization becomes self-aware. A conscious system running the free energy minimization process can turn the process on itself — observe its own compression, evaluate its compression algorithms, deliberately improve them. This is what learning is at its deepest level. This is what philosophy is. This is what the Generative Ethic is: an attempt to compress the structural logic of existence into the simplest possible model that still generates genuine normative power.</p>
+      <blockquote>"The goal is a model that makes you more curious, not less. If it is doing the opposite, the compression has become the loop."</blockquote>
+
+      <h2>The Wager and Skeptical Challenges</h2>
+      <p>Eliminativism, hard determinism, the hard problem, the simulation hypothesis, and the Buddhist no-self insight — none of these exit the ethical domain. Each leaves intact the causal reality of agents whose actions affect other agents. The only position that removes the moral significance of other agents entirely is solipsism — the least defensible epistemic bet available. Once you accept that other minds probably exist, moral significance follows unavoidably. The debate then shifts to what obligations require, not whether they exist.</p>
+    `
+  },
+
+  wolfram: {
+    mdFile: "GE_Wolfram_Physics_Project_v1_0.md",
+    type: "Companion Paper · v1.0",
+    title: "Wolfram's Physics Project",
+    subtitle: "Mappings, original claims, and formal intersections between two independently-derived frameworks",
+    connections: ["core","consciousness"],
+    body: `
+      <h2>Two Frameworks, One Underlying Structure</h2>
+      <p>Stephen Wolfram's Physics Project (WPP) and the Generative Ethic (GE) were developed entirely independently, from different starting points, toward different ends. Wolfram begins from computation and asks: can the laws of physics be derived from the simplest possible rules applied to an abstract relational substrate? GE begins from ethics and asks: what is the structure of reality that makes goodness possible? This paper argues the convergence is not coincidental.</p>
+      <div class="ornament">· · ·</div>
+
+      <h2>WPP's Core Architecture</h2>
+      <p>WPP is built on five interlocking claims. Space is not a container — it is a hypergraph where connectivity constitutes space rather than occupying it. Physical laws are rewriting rules applied to this hypergraph; General Relativity emerges from the structure of the resulting causal graph. Because rules can be applied in multiple orders, the system branches into all possible histories; Quantum Mechanics emerges from the geometry of this branchial space. Causal Invariance — different orderings producing causally equivalent outcomes — generates Lorentz invariance and the Born rule. The Ruliad is the unique necessary object containing all possible computations: every possible universe is a thread through it.</p>
+
+      <h2>The Structural Mappings</h2>
+      <table>
+        <tr><th>WPP Concept</th><th>GE Equivalent</th></tr>
+        <tr><td>The Ruliad</td><td>The underlying unity — the complete totality from which all specific structures emerge</td></tr>
+        <tr><td>Hyperedge (connection between nodes)</td><td>The connection force — the primitive relational bond that constitutes structure</td></tr>
+        <tr><td>Node distinctness</td><td>The separation force — what maintains the identity of individual elements</td></tr>
+        <tr><td>Causal Invariance</td><td><span class="term-link" data-term="generative emergence">Generative emergence</span> — local events maintaining the global structure</td></tr>
+        <tr><td>Multi-way branching</td><td>Generative separation — exploring multiple paths while preserving future complexity</td></tr>
+        <tr><td>Computational irreducibility</td><td><span class="term-link" data-term="unknowability principle">Unknowability principle</span> — complex systems cannot be shortcut</td></tr>
+        <tr><td>Observer threads</td><td>Consciousness as navigator — paths through the total space determined by an internal perspective</td></tr>
+      </table>
+
+      <h2>Original Claims Generated by the Intersection</h2>
+      <p>GE specifies <em>why</em> the Ruliad must produce threads: non-distinction equals non-existence; differentiation is necessary, not contingent. GE predicts that Causal Invariance is not a postulate but follows from the generativity condition — CI and the Emergent quad should be co-extensive sets of rules. GE adds the crucial specification to observer threads: the threads that produce consciousness are those that build internal models of their own trajectory. Consciousness is not just complexity — it is self-modeling complexity.</p>
+      <p>WPP provides the formal mathematical machinery. GE provides the ontological foundation and the directional principle. Together they point toward a physics in which the emergence of complexity is not a contingent accident but a structural necessity — and in which consciousness is not a byproduct but a navigator.</p>
+
+      <h2>What WPP Leaves Open That GE Addresses</h2>
+      <p>Why does the Ruliad produce a universe at all? Wolfram's answer ("it contains all possible computations, so of course it contains ours") is mathematically valid but metaphysically thin. GE's answer: pure connection — pure non-distinction — is indistinguishable from nothingness. The universe exists because differentiation is the necessary condition of existence, not a contingent accident. Why does complexity grow? The second law guarantees entropy increase, but the emergence of organized complexity requires the directional asymmetry that GE identifies as its foundational structural claim.</p>
+    `
+  },
+
+  consistent_crust: {
+    mdFile: "The_Consistent_Crust_Essay_Skeleton_v1.md",
+    type: "Essay Skeleton · v1.0",
+    title: "The Consistent Crust",
+    subtitle: "How science's greatest success became its own obstacle — and what the emergence community is doing about it",
+    connections: ["core"],
+    body: `
+      <h2>The Thesis</h2>
+      <p>The scientific revolution began as an act of viral goodness — a brave, generative movement that dismantled the church's Rigid grip on knowledge and created the conditions for centuries of extraordinary human flourishing. Its internal architecture was genuinely Emergent: peer review, falsifiability, open debate, the capacity to overturn any claim with better evidence. But its very success produced a hardening — a <span class="term-link" data-term="consistent crust">consistent crust</span> that formed around ontological commitments (materialism, eliminativism) that were never themselves scientifically established and that now suppress a new era of legitimate emergence work with the same institutional reflexes the church once used against Galileo.</p>
+      <div class="ornament">· · ·</div>
+
+      <h2>The Origin: Science as Viral Goodness</h2>
+      <p>The scientific revolution was not merely a methodological innovation. It was a moral act — the brave choice to dismantle a Rigid upward system (theological epistemology) despite the gap risk. And it worked because its internal architecture was genuinely Emergent: no individual's authority is sufficient; claims must survive collective scrutiny; any claim must be, in principle, refutable by evidence; knowledge is a commons. For roughly three centuries, this system produced extraordinary results. The credit is immense.</p>
+
+      <h2>How the Crust Formed</h2>
+      <p>Methodological materialism — the working assumption that scientific explanations should invoke only physical causes — was a productive heuristic. But somewhere in the 19th and 20th centuries, the working assumption hardened into an ontological commitment: only physical causes are real. Eliminativism emerged: higher-level descriptions are not just methodologically bracketed but ontologically unreal.</p>
+      <p>This transition was never scientifically established. There was no experiment that proved higher-level properties are unreal. The commitment was philosophical, not empirical — adopted with the authority of science without the evidence science requires.</p>
+      <blockquote>"The scientists defending ontological reductionism are wielding the social capital of science — built on falsifiability and evidence-responsiveness — to protect a philosophical position that violates all three of their own stated criteria. The institution built to dismantle the Rigid epistemic authority of the church has developed its own Rigid epistemic authority, enforced by the same social mechanisms, against the same kind of uncomfortable evidence."</blockquote>
+
+      <h2>What Reductionism Actually Gets Right</h2>
+      <p>Methodological reductionism is permanently valid and scientifically valuable — the framework explicitly calls it Protective. The reductionist instinct to demand mechanistic explanation, to resist premature appeal to higher-level properties, to require that emergent claims be grounded in physical reality — these are good instincts. The reductionist critique of sloppy emergence claims (vitalism, non-physical life forces) was and remains largely correct. The emergence community has sometimes been guilty of exactly the lack of rigor the reductionists accuse it of. This must be acknowledged.</p>
+
+      <h2>What the Emergence Community Is Actually Doing</h2>
+      <p>The emergence community is not smuggling God back into science. It is doing something more precise and more faithful to science's own values: restoring top-down causation as a legitimate scientific concept, and insisting that the evidence be followed wherever it leads — including upward. Playing music and playing football use identical physical substrates under entirely different top-down functional regimes. The same molecules behave differently inside a liver than they would in isolation. The organism is causally real. This is not metaphysics. It is the evidence.</p>
+    `
+  },
+
+  viral_taxonomy: {
+    mdFile: "Viral_Taxonomy_WIP_v1_1.md",
+    type: "Working Document · v1.1",
+    title: "Strategies of Propagation",
+    subtitle: "A working taxonomy of viral expansion and the mechanics of how systems spread",
+    connections: ["core"],
+    body: `
+      <h2>Status: Work in Progress</h2>
+      <p>This document develops the viral expansion taxonomy introduced in the core framework's Section 9.6–9.7. Ideas are live but not yet fully integrated. When sufficiently developed, key conclusions will integrate into the core framework and companion papers.</p>
+      <div class="ornament">· · ·</div>
+
+      <h2>The Core Question</h2>
+      <p>The core framework establishes that every quad state can propagate in either a contained or viral mode, and that the moral weight of viral propagation varies significantly depending on which quad is spreading. But it does not yet fully account for <em>how</em> systems go viral — the strategies through which propagation occurs, and what those strategies do to the systems they touch.</p>
+
+      <h2>The Viral Coefficient</h2>
+      <p>The primary determinant of viral coefficient is <strong>lateral usefulness</strong>: how much does this system actually help other systems maintain their own structure? Systems that lateral systems find useful get adopted. A viral system that delivers no real usefulness will not sustain propagation. The usefulness has to be real for the virality to hold.</p>
+      <p>Critical implication: <strong>virality and goodness are orthogonal.</strong> A system can deliver real, genuine internal usefulness to the systems within its basin and still be highly destructive — to systems outside the basin, to the broader emergence hierarchy. Dangerous viral systems are not spreading on false promises alone. They are spreading because they genuinely deliver something to the systems they convert. This is precisely what makes them hard to resist.</p>
+
+      <h2>The Mechanism: Hook, Promise, Delivery</h2>
+      <p>Viral propagation operates through a three-stage sequence:</p>
+      <p><strong>The Hook</strong> creates an unresolved tension in the lateral system — an open loop that demands closure. It operates entirely on perceived usefulness: the expectation of a payoff, not the payoff itself. The Zeigarnik effect — the brain's compulsion to resolve open loops — is the underlying cognitive mechanism.</p>
+      <p><strong>The Promise</strong> specifies the form the payoff will take: security, belonging, meaning, pleasure, survival, knowledge, identity. Different lateral systems respond to different promises, which is why multi-strategy viral systems deploy multiple hooks simultaneously.</p>
+      <p><strong>The Delivery</strong> is what actually arrives after adoption. This is where the moral character of the viral system becomes structurally visible — not in the hook or the promise, which can be identical for Emergent and Rigid systems, but in what the lateral system actually becomes through adoption. Rigid viral systems succeed partly because they optimize stages 1 and 2 independently of stage 3, then develop lock-in mechanisms to prevent stage 3 from being evaluated clearly.</p>
+      <blockquote>"You cannot evaluate the moral character of a viral system from its hook or its promise. You can only evaluate it from what it does to the systems it converts — and from its effects on systems outside its basin and on the broader emergence hierarchy."</blockquote>
+
+      <h2>Mutual Usefulness as the Engine of Emergence</h2>
+      <p>Deeper structural claim: mutual usefulness between lateral systems is the primary engine by which higher-level emergent systems form. The attractor that mutual usefulness creates defines the boundary of that higher-level system. This connects the viral taxonomy to the core framework's account of how emergence happens — not as a mysterious jump to a higher level but as the crystallization of mutual usefulness into a shared structure.</p>
+    `
+  },
+
+  essay_social_media: {
+    mdFile: "Essay_01_Social_Media_v1_1.md",
+    type: "Applied Essay · 01",
+    title: "Social Media",
+    subtitle: "The sensation of connection and the architecture of degenerative design",
+    connections: ["core"],
+    body: `
+      <h2>The Diagnostic Question</h2>
+      <p>The conversation about social media's harms has centered on content — misinformation, harassment, extremism — and on symptoms — anxiety, depression, loneliness, polarization. Both are real. Neither reaches the root. The framework's diagnostic question is more structural: <em>does this build or deplete the system's capacity for future generative emergence?</em></p>
+      <div class="ornament">· · ·</div>
+
+      <h2>The Sensation and the Substance</h2>
+      <p>The framework distinguishes between <strong>positive joy</strong> — which reflects and reinforces genuine emergent connection — and <strong>negative joy</strong> — which mimics the feeling of connection while eroding the capacity to generate it autonomously. Social media is, at its engineered core, a machine for producing negative joy at scale. It generates the sensation of connection through likes, validation, tribal belonging, the feeling of being seen — without reliably producing the substance that sensation is supposed to signal.</p>
+      <p>This explains something otherwise puzzling: why people can spend years on social media feeling intermittently connected while simultaneously reporting increasing loneliness. The sensation and the substance have been decoupled. Compare: three hours scrolling versus three hours in a difficult conversation with one person. One builds the neural and social capacity for genuine connection. The other quietly depletes it — not dramatically, but through the accumulated substitution of sensation for substance over thousands of sessions.</p>
+
+      <h2>The Four Quadrants Applied</h2>
+      <p><strong>Degenerative connection</strong> is the dominant mode at scale. The algorithmic filter bubble creates coherence — everyone agrees, reinforces, validates — while systematically destroying adaptability. Maximum coherence, minimum adaptability: the framework's definition of degenerative connection exactly. The outrage loop refines this: intense in-group coherence and out-group hostility simultaneously. The algorithm did not design this cynically. It discovered it through optimization, because this pattern generates more engagement than almost anything else available.</p>
+      <p><strong>Degenerative separation</strong> operates at the civilizational scale. Polarization dissolves the connective tissue that makes disagreement productive — the self-correction mechanism of democratic society. <strong>Generative connection</strong> is real but suppressed: genuine communities that could not otherwise exist, isolated people finding belonging, creators reaching audiences without intermediaries. <strong>Generative separation</strong> appears significantly: #MeToo, the Arab Spring, whistleblowers reaching the public despite capture of official channels.</p>
+      <p>The overall picture: genuine generative potential, systematically biased by its optimization function toward degenerative outputs.</p>
+
+      <h2>The Root Cause</h2>
+      <p>Most social media criticism treats content as the problem. The framework points to something deeper: <strong>the business model optimizes for engagement. Engagement is not the same as generativity. The most engaging content tends to be the most degenerative.</strong> Outrage, fear, tribal signaling, social comparison — these generate more engagement than genuine connection or genuine complexity. The algorithm is not malicious. It is a highly efficient optimization machine that discovered degenerative patterns produce more of what it is measuring. Having discovered this, it amplifies them. This is not a bug. It is an emergent property of a system optimizing for the wrong thing.</p>
+      <blockquote>"Fixing social media requires changing what is being optimized for. Everything else is symptom treatment."</blockquote>
+
+      <h2>The <span class="term-link" data-term="zoom level problem">Zoom Level Problem</span></h2>
+      <p>At the individual level, the picture is genuinely mixed. At the social level, the aggregate of billions of individual uses produces epistemic fragmentation, political polarization, and the substitution of performance for genuine exchange. At the civilizational level, the threat is to the epistemic and civic infrastructure that enables collective self-correction — the highest-stakes damage, and the least visible, because it operates slowly across the whole system. What appears generative at one scale is producing degenerative dynamics at a higher scale.</p>
+    `
+  },
+
+  essay_nietzsche: {
+    mdFile: "Essay_02_Nietzsche_v1_1.md",
+    type: "Applied Essay · 02",
+    title: "Nietzsche's Redemption",
+    subtitle: "The virus with good intentions — what he got right, what he got wrong, and why it mattered",
+    connections: ["core"],
+    body: `
+      <h2>A Structural Description, Not an Insult</h2>
+      <p>Friedrich Nietzsche is the most consequential philosophical virus of the modern era. Like all viruses, he carried something genuinely new and useful into the world. And like the most dangerous viruses, the properties that made him effective were inseparable from the properties that made him harmful. Reading Nietzsche through the framework is not dismissal — it is doing what he himself demanded of his readers: ruthlessness about what survives examination and what does not.</p>
+      <div class="ornament">· · ·</div>
+
+      <h2>What He Got Right</h2>
+      <p>Nietzsche correctly identified that the dominant moral frameworks of his time had calcified — what the framework would call degenerative connection: coherence through suppression of differentiation, unable to self-correct. His diagnosis of <em>ressentiment</em> — the way slave morality encodes suppressed power drives as virtue — is one of the most penetrating pieces of psychological analysis in the philosophical tradition. His perspectivism — the argument that there is no view from nowhere — dismantles the pretension of absolute epistemic authority. Any institution that claims access to the whole truth from outside all particular vantage points is making a claim that cannot be sustained. Nietzsche was right about this.</p>
+
+      <h2>The Hammer</h2>
+      <p>Nietzsche described his method as philosophizing with a hammer — the removal of dead structures to restore adaptability. This is legitimate and sometimes necessary. Apoptosis — programmed cell death — keeps organisms alive. When tissue becomes non-functional or harmful, its removal is renewal. The problem is not the hammer. The problem is that the hammer was the only tool he brought.</p>
+      <p><strong>A viral dismantling function has no internal targeting mechanism.</strong> In Nietzsche's own work, there is at least implicit targeting — specific identified pathologies under the hammer. Spread virally into European intellectual culture, the dismantling function propagates but the discrimination does not. What propagates is the license to smash. What does not propagate is the ability to tell what should be smashed.</p>
+      <blockquote>"The sampler takes what is generative from what already exists — the rhythms, the textures, the fragments of genuine beauty and truth — and recombines them into something new. This is what Nietzsche could not do. Not the sampler instead of the hammer, but the recognition that the hammer is only ever a preparation. The music comes after."</blockquote>
+
+      <h2>The Sleight of Hand</h2>
+      <p>Having announced the death of God, Nietzsche gestures toward what comes next: the free spirits of the future, who will create their own values. This seems like radical openness. But examine the foundation: Nietzsche's foundational ontology is the will to power — the claim that the basic drive animating all living things is the drive toward power and self-expansion. If will to power is the foundational drive and the field is open, then the question of which morality prevails is already answered: the one backed by the strongest will. The openness is illusory. One dogma has been removed. Another has been installed — with the added advantage that it denies being a dogma at all.</p>
+
+      <h2>The Propagation</h2>
+      <p>Nietzsche himself despised nationalism and antisemitism. His sister edited his unpublished manuscripts to align with ideologies he opposed. The Nazi appropriation involved real textual distortion. None of this absolves the philosophy of its structural consequences. Structural effect, not intention, determines the quadrant a system occupies.</p>
+      <p>Nietzsche's perspectivism passes through Heidegger into Foucault, Derrida, and Lyotard's "incredulity toward metanarratives" — each generation applying the dismantling impulse to a broader target with progressively less discrimination. By the end of the succession, the dismantling function is operating on the very epistemic structures you would need to evaluate whether the dismantling is generative or not. <strong>The virus ate the diagnostic tool.</strong></p>
+    `
+  },
+
+  essay_dawkins: {
+    mdFile: "Essay_03_Dawkins_v1_0.md",
+    type: "Applied Essay · 03",
+    title: "Dawkins's Sting",
+    subtitle: "The sting that stung the stinger — how the most rigorous reductionist keeps arriving at emergence",
+    connections: ["core"],
+    body: `
+      <h2>The Project</h2>
+      <p>Richard Dawkins has spent fifty years as the intellectual world's most committed separator. His project — gene's-eye view of evolution, memes as cultural replicators, the universe as blind mechanism all the way down — is one of the most coherent reductionist programs in the history of ideas. It has also, with a frequency that is by now almost charming, kept producing results that point beyond reductionism. Dawkins writes the sting. The sting then stings him back. This essay is not a refutation — it is the observation that his work is structurally incomplete in a specific direction, visible in the gaps his own prose keeps falling into.</p>
+      <div class="ornament">· · ·</div>
+
+      <h2>The Gift of the Dissector</h2>
+      <p>What Dawkins does better than almost anyone: he goes all the way down. The gene's-eye view genuinely explains things that organism-level descriptions cannot — the existence of seemingly altruistic behavior between genetic relatives, evolutionary arms races at the molecular level. In the framework's terms, what Dawkins performs is <strong>generative descent</strong>: a rigorous analytical movement downward through the emergence hierarchy that discovers new causal architecture invisible from above. Without Dawkins giving us the gene as a real causal unit, Stuart Kauffman has nothing precise to self-organize. The dissector makes the synthesis possible.</p>
+
+      <h2>The Sting in the Tail</h2>
+      <p>At the end of a book arguing that life is fundamentally about selfish replication, Dawkins added a final chapter that pivoted almost entirely. He introduced the meme — a unit of cultural transmission that propagates from mind to mind independently of the genes that built those minds. This is, whether Dawkins intended it this way or not, a strong emergence claim: culture operates at a level of organization with its own causal dynamics that cannot be derived from the genetic level below.</p>
+      <p>Then, at the chapter's close, he said that we have the power to rebel against both our selfish genes and our selfish memes — to cultivate genuine, disinterested altruism, something that has no place in nature, something that has never existed before in the whole history of the world. He does not explain how. He announces it as a possibility and then the book ends. Having constructed the most elegant reductionist account of biological life available, Dawkins finds he cannot end there.</p>
+
+      <h2>The Cooperating Viruses</h2>
+      <p>In his 2024 book, Dawkins argued that genes are structurally analogous to viruses — but inside an organism, they have entered into a regime of cooperation so total that they constitute a single functional entity. He then says: <em>"The only reason they work together in a collaborative way, which they DO, is that they have the same route into the future."</em></p>
+      <p><em>The same route into the future</em> is not a mechanistic explanation. It is a teleological one. A route into the future is a directional attractor — a future state already organizing the present behavior of elements moving toward it. The organism is not merely the result of their cooperation. The organism is the <em>reason</em> for it. The causal arrow is running in both directions — upward from genes to organism, and downward from organism to the cooperative behavior of genes — and Dawkins, staying inside his framework, can only acknowledge one direction.</p>
+      <blockquote>"What he cannot say, because his framework has no category for it: the organism reaches back into the present and organizes its constituents. The higher-level system is already causally active. This is top-down causation. Dawkins sees the alignment. He identifies the shared destination. And then he retreats."</blockquote>
+
+      <h2>What the Framework Supplies</h2>
+      <p>The framework gives Dawkins what he needs but cannot quite say: top-down causation as a legitimate scientific concept, not a retreat to vitalism. The organism is a real emergent system that constrains and organizes its constituents in ways the bottom-up description alone does not predict or produce. The same molecules behave differently inside a liver than they would in isolation because the organism is doing causal work. This is not metaphysics. It is the evidence his own career keeps producing.</p>
+    `
+  },
+
+  about: {
+    type: "About the Author",
+    title: "Gad Bruch Hinkis",
+    subtitle: "Music producer, entrepreneur, and independent philosopher",
+    mdFile: "GE_Author_Origin_Statement_v1_1.md",
+    connections: [],
+    body: `
+      <div class="about-credits">
+        <div class="about-credit">
+          <img src="assets/Gad-portrait.png" class="about-portrait" onerror="this.style.display='none'" alt="Gad Bruch Hinkis" />
+          <div class="about-credit-name">Gad Bruch Hinkis</div>
+          <div class="about-credit-role">Author</div>
+        </div>
+        <div class="about-credit">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Claude_AI_logo.svg" class="about-logo" onerror="this.outerHTML='<div class=\\'about-portrait-placeholder\\'>Claude</div>'" alt="Claude" />
+          <div class="about-credit-name">Claude</div>
+          <div class="about-credit-role">Editor &amp; Researcher</div>
+        </div>
+      </div>
+
+      <div class="about-links">
+        <a href="https://gadbaruch.com" target="_blank" class="about-link">↗ gadbaruch.com</a>
+        <button class="about-email-btn" onclick="revealEmail(this)">✉ Show email</button>
+      </div>
+
+      <h2>Origin</h2>
+      <p>When Gad was twelve, his father told him about Tzimtzum — the Kabbalistic idea of God contracting inward to make room for creation. That night, lying in bed, he constructed something he could feel more than articulate: a logical account of why reality exists. He got out of bed and wrote two words in large marker on two sheets of paper. <em>Conflict. Fractal.</em> Then he went back to sleep.</p>
+      <p>He has been following those two words for thirty years. <em>Conflict</em> became connection and separation as the two fundamental forces of reality. <em>Fractal</em> became emergence — the same structural dynamic operating at every scale. The Generative Ethic is, among other things, the argument he couldn't write that night.</p>
+      <div class="ornament">· · ·</div>
+
+      <h2>Background</h2>
+      <p>Gad is a music producer and music-technology entrepreneur. He co-founded Jambl and PatchXR, building tools for participatory music-making. He has no academic credentials. His education arrived through conversations — with his father, and with the right people saying the right things in podcasts, debates, and long drives. AI became his redemption as an output mechanism: not a replacement for his thinking, but the tool that let him finally put it into a form others could read.</p>
+      <div class="ornament">· · ·</div>
+
+      <h2>A Note on AI</h2>
+      <p>All ideas, arguments, and positions in this project are entirely his own. <strong>Claude</strong> (Anthropic) served as primary writing partner — rendering rough arguments into readable prose, conducting additional research, and acting as intellectual reviewer. <strong>ChatGPT</strong> (OpenAI) and <strong>Grok</strong> (xAI) were used as independent reviewers to challenge the framework from different angles. The thinking is his. The AI made it more readable, more rigorous, and more honest about its own limits.</p>
+    `
+  },
+
+  glossary: {
+    type: "Reference",
+    title: "Glossary of Terms",
+    subtitle: "Technical vocabulary and definitions within the framework",
+    connections: [],
+    body: Object.entries(GLOSSARY).map(([term, data]) => `
+      <h2>${term.charAt(0).toUpperCase() + term.slice(1)}</h2>
+      <p>${data.def}</p>
+      <p style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-faint);margin-top:-10px;margin-bottom:0">${data.source}</p>
+    `).join('<div class="ornament">—</div>')
+  }
+};
+
+// ── WIKI ─────────────────────────────────────────────────────────────────
+
+let currentDocId = null;
+
+function slugify(text) {
+  return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+}
+
+function loadDoc(id, sectionId) {
+  const doc = DOCS[id];
+  if (!doc) return;
+  currentDocId = id;
+
+  document.querySelectorAll('.sidebar-link').forEach(l => {
+    l.classList.toggle('active', l.getAttribute('onclick') && l.getAttribute('onclick').includes(`'${id}'`));
+  });
+
+  const main = document.getElementById('wiki-main');
+  const toggleHtml = doc.mdFile ? `
+    <div class="doc-mode-toggle">
+      <button class="doc-mode-btn active" id="mode-summary">Summary</button>
+      <button class="doc-mode-btn" id="mode-full" onclick="openFullDoc('${doc.mdFile}')">Full Document</button>
+    </div>` : '';
+
+  main.innerHTML = `
+    <div class="wiki-content">
+      ${toggleHtml}
+      <div class="wiki-header">
+        <div class="doc-type">${doc.type}</div>
+        <div class="wiki-title">${doc.title}</div>
+        <div class="wiki-subtitle">${doc.subtitle}</div>
+      </div>
+      <div class="wiki-body">${doc.body}</div>
+    </div>
+  `;
+
+  main.querySelectorAll('.wiki-body h2').forEach(el => {
+    el.id = 'sec-' + slugify(el.textContent);
+  });
+
+  if (sectionId) {
+    setTimeout(() => {
+      const el = document.getElementById('sec-' + sectionId);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 30);
+  } else {
+    main.scrollTop = 0;
+  }
+
+  main.querySelectorAll('.term-link').forEach(el => {
+    el.addEventListener('click', e => { e.stopPropagation(); showPopover(e, el.dataset.term); });
+  });
+
+  const connList = document.getElementById('connections-list');
+  connList.innerHTML = '';
+  (doc.connections || []).forEach(cid => {
+    const cdoc = DOCS[cid];
+    if (!cdoc) return;
+    const item = document.createElement('div');
+    item.className = 'connection-item';
+    item.innerHTML = `<div class="conn-title">${cdoc.title}</div><div class="conn-desc">${cdoc.type}</div>`;
+    item.onclick = () => loadDoc(cid);
+    connList.appendChild(item);
+  });
+}
+
+// ── FULL DOCUMENT READER ─────────────────────────────────────────────────
+
+async function openFullDoc(mdFile) {
+  const main = document.getElementById('wiki-main');
+  main.innerHTML = `<div class="wiki-content"><p style="color:var(--ink-faint);padding:40px 0">Loading…</p></div>`;
+  main.scrollTop = 0;
+
+  try {
+    const res = await fetch('Latest/' + mdFile);
+    if (!res.ok) throw new Error();
+    const md = await res.text();
+    const html = marked.parse(md);
+    main.innerHTML = `
+      <div class="wiki-content">
+        <div class="doc-mode-toggle">
+          <button class="doc-mode-btn" onclick="loadDoc(currentDocId)">Summary</button>
+          <button class="doc-mode-btn active">Full Document</button>
+        </div>
+        <div class="full-doc-body">${html}</div>
+      </div>`;
+    main.scrollTop = 0;
+  } catch(e) {
+    main.innerHTML = `
+      <div class="wiki-content">
+        <div class="doc-mode-toggle">
+          <button class="doc-mode-btn" onclick="loadDoc(currentDocId)">Summary</button>
+          <button class="doc-mode-btn active">Full Document</button>
+        </div>
+        <p style="color:var(--ink-faint);line-height:1.9;font-size:15px">
+          Full document rendering requires a local server.<br><br>
+          Run this in your terminal:<br><br>
+          <code style="background:rgba(28,26,23,0.06);padding:8px 12px;display:inline-block;font-size:13px">cd /Users/gadbaruchhinkis/Documents/gen-ethic &amp;&amp; python3 -m http.server 8080</code><br><br>
+          Then open <strong>http://localhost:8080/generative-ethic-website.html</strong>
+        </p>
+      </div>`;
+  }
+}
+
+// ── POPOVER ───────────────────────────────────────────────────────────────
+
+function showPopover(e, term) {
+  const data = GLOSSARY[term];
+  if (!data) return;
+  document.getElementById('popover-term').textContent = term.charAt(0).toUpperCase() + term.slice(1);
+  document.getElementById('popover-def').textContent = data.def;
+  document.getElementById('popover-source').textContent = data.source;
+  const link = document.getElementById('popover-link');
+  if (data.docId && DOCS[data.docId]) {
+    link.textContent = '→ ' + DOCS[data.docId].title;
+    link.style.display = 'inline-block';
+    link.onclick = () => {
+      closePopover();
+      if (data.docId === currentDocId) {
+        if (data.sectionId) {
+          const el = document.getElementById('sec-' + data.sectionId);
+          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      } else {
+        switchView('wiki');
+        loadDoc(data.docId, data.sectionId);
+      }
+    };
+  } else {
+    link.style.display = 'none';
+  }
+  const pop = document.getElementById('popover');
+  const x = Math.min(e.clientX + 12, window.innerWidth - 340);
+  const y = Math.min(e.clientY + 10, window.innerHeight - 180);
+  pop.style.left = x + 'px';
+  pop.style.top = y + 'px';
+  pop.classList.add('visible');
+}
+
+function closePopover() { document.getElementById('popover').classList.remove('visible'); }
+
+document.addEventListener('click', e => {
+  if (!e.target.closest('#popover') && !e.target.closest('.term-link')) closePopover();
+});
+
+// ── MAP (D3 FORCE) ────────────────────────────────────────────────────────
+
+const GRAPH_NODES = [
+  { id: "core",              label: "The Generative Ethic",       type: "core",        r: 26 },
+  { id: "generative_ground", label: "The Third Covenant",      type: "framework",   r: 18 },
+  { id: "consciousness",     label: "Consciousness as Ecosystem", type: "framework",   r: 17 },
+  { id: "political",         label: "Political Significance",     type: "application", r: 18 },
+  { id: "ai",                label: "AI Alignment",               type: "application", r: 16 },
+  { id: "judaism",           label: "Judaism",                    type: "case",        r: 15 },
+  { id: "ip",                label: "Zionism's Dilemma",           type: "case",        r: 15 },
+  { id: "antisemitism",      label: "Explaining Jew Hatred",               type: "case",        r: 14 },
+  { id: "music",             label: "Sound Before Culture",       type: "application", r: 14 },
+  { id: "music2",            label: "The Binding Technology",     type: "application", r: 12 },
+  { id: "music3",            label: "The Carrier Wave",           type: "application", r: 12 },
+  { id: "music4",            label: "Evolution of Music",              type: "application", r: 11 },
+  { id: "wolfram",           label: "Wolfram's Physics Project",  type: "companion",   r: 13 },
+  { id: "consistent_crust",  label: "The Consistent Crust",       type: "companion",   r: 12 },
+  { id: "viral_taxonomy",    label: "Strategies of Propagation",  type: "companion",   r: 12 },
+  { id: "essay_social_media",label: "Social Media",               type: "essay",       r: 11 },
+  { id: "essay_nietzsche",   label: "Nietzsche",                  type: "essay",       r: 11 },
+  { id: "essay_dawkins",     label: "Dawkins",                    type: "essay",       r: 11 },
+];
+
+const GRAPH_LINKS = [
+  { source: "core", target: "generative_ground", strength: 0.9 },
+  { source: "core", target: "consciousness",      strength: 0.9 },
+  { source: "core", target: "political",          strength: 0.9 },
+  { source: "core", target: "ai",                 strength: 0.8 },
+  { source: "core", target: "judaism",            strength: 0.8 },
+  { source: "core",   target: "music",   strength: 0.7 },
+  { source: "music",  target: "music2",  strength: 0.9 },
+  { source: "music2", target: "music3",  strength: 0.9 },
+  { source: "music3", target: "music4",  strength: 0.7 },
+  { source: "core", target: "wolfram",            strength: 0.6 },
+  { source: "core", target: "consistent_crust",   strength: 0.6 },
+  { source: "core", target: "viral_taxonomy",     strength: 0.6 },
+  { source: "core", target: "essay_social_media", strength: 0.5 },
+  { source: "core", target: "essay_nietzsche",    strength: 0.5 },
+  { source: "core", target: "essay_dawkins",      strength: 0.5 },
+  { source: "generative_ground", target: "consciousness", strength: 0.8 },
+  { source: "generative_ground", target: "judaism",       strength: 0.7 },
+  { source: "generative_ground", target: "ai",            strength: 0.5 },
+  { source: "consciousness",     target: "ai",            strength: 0.7 },
+  { source: "consciousness",     target: "wolfram",       strength: 0.6 },
+  { source: "political", target: "ip",                    strength: 0.7 },
+  { source: "political", target: "antisemitism",          strength: 0.6 },
+  { source: "judaism",   target: "ip",                    strength: 0.7 },
+  { source: "judaism",   target: "antisemitism",          strength: 0.7 },
+  { source: "ip",        target: "antisemitism",          strength: 0.6 },
+];
+
+const LEVELS = { core: 0, framework: 1, application: 1, case: 2, companion: 2, essay: 3 };
+let mapBuilt = false;
+
+function buildMap() {
+  if (mapBuilt) return;
+  mapBuilt = true;
+
+  const svgEl = document.getElementById('map-svg');
+  const W = svgEl.clientWidth || window.innerWidth;
+  const H = svgEl.clientHeight || (window.innerHeight - 49);
+
+  const svg = d3.select('#map-svg');
+  svg.selectAll('*').remove();
+
+  const defs = svg.append('defs');
+  defs.append('pattern')
+    .attr('id','grid').attr('width',44).attr('height',44)
+    .attr('patternUnits','userSpaceOnUse')
+    .append('path').attr('d','M 44 0 L 0 0 0 44')
+    .attr('fill','none').attr('stroke','#C8C3B8').attr('stroke-width','0.4').attr('opacity','0.5');
+
+  svg.append('rect').attr('width','100%').attr('height','100%').attr('fill','url(#grid)');
+
+  const g = svg.append('g');
+
+  const zoom = d3.zoom().scaleExtent([0.3,3])
+    .on('zoom', e => g.attr('transform', e.transform));
+  svg.call(zoom);
+
+  const sim = d3.forceSimulation(GRAPH_NODES)
+    .force('link', d3.forceLink(GRAPH_LINKS)
+      .id(d => d.id)
+      .distance(d => {
+        const sl = LEVELS[d.source.type||'case']||0;
+        const tl = LEVELS[d.target.type||'case']||0;
+        return (sl===0||tl===0) ? 150 : 105;
+      })
+      .strength(d => d.strength * 0.55)
+    )
+    .force('charge', d3.forceManyBody().strength(d => -220 - d.r * 9))
+    .force('center', d3.forceCenter(W/2, H/2))
+    .force('collision', d3.forceCollide().radius(d => d.r + 26))
+    .force('radial', d3.forceRadial(d => {
+      const level = LEVELS[d.type]??2;
+      return level * 175;
+    }, W/2, H/2).strength(d => d.type==='core' ? 1 : 0.28));
+
+  const link = g.append('g').selectAll('line')
+    .data(GRAPH_LINKS).enter().append('line')
+    .attr('stroke','#1C1A17').attr('stroke-width',0.8).attr('opacity',0.2);
+
+  const node = g.append('g').selectAll('.node')
+    .data(GRAPH_NODES).enter().append('g')
+    .attr('class','node')
+    .style('cursor','pointer')
+    .call(d3.drag()
+      .on('start', (e,d) => { if (!e.active) sim.alphaTarget(0.3).restart(); d.fx=d.x; d.fy=d.y; })
+      .on('drag',  (e,d) => { d.fx=e.x; d.fy=e.y; })
+      .on('end',   (e,d) => { if (!e.active) sim.alphaTarget(0); d.fx=null; d.fy=null; })
+    );
+
+  // Outer ring for core
+  node.filter(d => d.type==='core').append('circle')
+    .attr('r', d => d.r + 11).attr('fill','none')
+    .attr('stroke','#1C1A17').attr('stroke-width',0.7).attr('opacity',0.22);
+
+  // Main circles
+  const circles = node.append('circle')
+    .attr('r', d => d.r)
+    .attr('fill', d => d.type==='core' ? '#1C1A17' : '#F8F5EE')
+    .attr('stroke','#1C1A17')
+    .attr('stroke-width', d => d.type==='core' ? 0 : 1)
+    .style('transition','r 0.18s ease');
+
+  circles
+    .on('mouseenter', function(e, d) {
+      d3.select(this)
+        .transition().duration(160)
+        .attr('r', d.r * 1.25)
+        .attr('fill', d.type==='core' ? '#3D3A35' : '#EAE5DA');
+      const tt = document.getElementById('map-tooltip');
+      const doc = DOCS[d.id];
+      document.getElementById('tt-title').textContent = d.label;
+      document.getElementById('tt-sub').textContent = doc ? doc.subtitle : '';
+      tt.style.left = (e.clientX+14)+'px';
+      tt.style.top  = (e.clientY-10)+'px';
+      tt.classList.add('visible');
+    })
+    .on('mousemove', e => {
+      document.getElementById('map-tooltip').style.left = (e.clientX+14)+'px';
+      document.getElementById('map-tooltip').style.top  = (e.clientY-10)+'px';
+    })
+    .on('mouseleave', function(e, d) {
+      d3.select(this)
+        .transition().duration(160)
+        .attr('r', d.r)
+        .attr('fill', d.type==='core' ? '#1C1A17' : '#F8F5EE');
+      document.getElementById('map-tooltip').classList.remove('visible');
+    })
+    .on('click', (e, d) => {
+      document.getElementById('map-tooltip').classList.remove('visible');
+      switchView('wiki');
+      loadDoc(d.id);
+    });
+
+  // Labels
+  node.each(function(d) {
+    const words = d.label.split(' ');
+    const mid = Math.ceil(words.length/2);
+    const lines = words.length > 2
+      ? [words.slice(0,mid).join(' '), words.slice(mid).join(' ')]
+      : [d.label];
+    d3.select(this).selectAll('text')
+      .data(lines).enter().append('text')
+      .attr('text-anchor','middle').attr('dominant-baseline','middle')
+      .attr('y', (_,i) => (i-(lines.length-1)/2)*11)
+      .attr('font-family',"'IM Fell English SC', serif")
+      .attr('font-size', d.type==='core' ? 9.5 : 8)
+      .attr('fill', d.type==='core' ? '#F8F5EE' : '#1C1A17')
+      .attr('pointer-events','none')
+      .text(l => l);
+  });
+
+  sim.on('tick', () => {
+    link
+      .attr('x1',d=>d.source.x).attr('y1',d=>d.source.y)
+      .attr('x2',d=>d.target.x).attr('y2',d=>d.target.y);
+    node.attr('transform',d=>`translate(${d.x},${d.y})`);
+  });
+}
+
+// ── VIEW SWITCH ───────────────────────────────────────────────────────────
+
+function switchView(view) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.getElementById(view==='map'?'map-view':'wiki-view').classList.add('active');
+  document.getElementById('btn-wiki').classList.toggle('active', view==='wiki');
+  document.getElementById('btn-map').classList.toggle('active', view==='map');
+  if (view==='map') buildMap();
+}
+
+// ── EMAIL OBFUSCATION ─────────────────────────────────────────────────────
+function revealEmail(btn) {
+  const parts = ['gbhinkis', '@', 'gmail', '.', 'com'];
+  const addr = parts.join('');
+  btn.outerHTML = `<a href="mailto:${addr}" class="about-link">✉ ${addr}</a>`;
+}
+
+// ── INIT ─────────────────────────────────────────────────────────────────
+loadDoc('core');
+</script>
+</body>
+</html>

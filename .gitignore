@@ -1,0 +1,8 @@
+.DS_Store
+node_modules/
+*.log
+.env
+Backups/
+Incoming/
+*.zip
+clay_series_ip_progress.md
