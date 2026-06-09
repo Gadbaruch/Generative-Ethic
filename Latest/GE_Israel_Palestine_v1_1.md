@@ -1,8 +1,10 @@
 # The Generative Ethic: The Israel-Palestine Conflict
 ### A moral case study
 
-> **Status:** Working draft — v0.1
-> **Last updated:** 2026-05-27
+> **Status:** Working draft — v1.1
+> **Last updated:** 2026-06-10
+> **Changes from v1.0:** Terminology — the relational quad formerly labeled “Consistent” renamed to “Rigid” throughout, aligning with core framework v2.6. No substantive changes.
+
 > **Depends on:** The Generative Ethic (Core Framework v1.7), Political Significance (v1.1), GE: Antisemitism, GE: Judaism
 > **Note:** This paper is a moral case study, not a political advocacy document. It applies the GE framework consistently across all actors. It is written with the awareness that no analysis of this conflict is fully neutral, and the framework's own anti-authoritarian safeguards apply to the analysis itself: the paper should be read critically, its conclusions should be contested where they are wrong, and no part of it should be treated as a final verdict.
 
@@ -16,7 +18,7 @@ The Israel-Palestine conflict resists ordinary political analysis for structural
 
 2. **Asymmetric power with asymmetric vulnerability.** Israel is dramatically more powerful militarily, economically, and institutionally. But Israeli civilian vulnerability to existential attack — historically demonstrated, not merely claimed — is real. The more powerful party in this conflict is also a party with genuine historical reason to treat certain threats as existential.
 
-3. **The presence of multiple Consistent systems with Destructive capacity as third parties.** Neither Israel nor the Palestinian people are the only actors in this conflict. Regional state actors, Islamist movements, international institutions, and global ideological frameworks all have structural interests in the conflict's continuation or resolution that do not align with the interests of the populations most directly affected.
+3. **The presence of multiple Rigid systems with Destructive capacity as third parties.** Neither Israel nor the Palestinian people are the only actors in this conflict. Regional state actors, Islamist movements, international institutions, and global ideological frameworks all have structural interests in the conflict's continuation or resolution that do not align with the interests of the populations most directly affected.
 
 4. **Accumulated historical irreversibility.** Decisions made over 75+ years have created facts on the ground — population distributions, infrastructure, expectations, legal frameworks, political cultures — that significantly constrain the options available now. The analysis of what should be done in the present is not independent of the analysis of what was done in the past, but it cannot be reducible to it.
 
@@ -28,7 +30,7 @@ The GE framework's contribution: a structural language that makes it possible to
 
 ### 1.1 The Zionist Project as Brave Choice
 
-The founding logic of Zionism is, in GE terms, a Brave Choice argument made at civilizational scale. The diagnosis: antisemitism in European societies is not a bounded, manageable problem. It is structural — arising from the persistent differentiation of the Jewish node in Consistent host systems — and therefore not correctable by assimilation, which the Consistent system would treat as evidence of success demanding further absorption rather than as a resolution. The ongoing harm is real and irreversible at the individual level (each pogrom kills real people). The structural solution is a stable political node.
+The founding logic of Zionism is, in GE terms, a Brave Choice argument made at civilizational scale. The diagnosis: antisemitism in European societies is not a bounded, manageable problem. It is structural — arising from the persistent differentiation of the Jewish node in Rigid host systems — and therefore not correctable by assimilation, which the Rigid system would treat as evidence of success demanding further absorption rather than as a resolution. The ongoing harm is real and irreversible at the individual level (each pogrom kills real people). The structural solution is a stable political node.
 
 The Brave Choice: accept the gap risk (the period between the creation of the new node and the establishment of sufficient security and legitimacy) in order to resolve the irreversible ongoing harm of statelessness. The GE's conditions for a defensible Brave Choice were substantially met: the harm of statelessness was irreversible at the individual level, Emergent capacity within the Yishuv (pre-state Jewish settlement) was genuinely high, and the early Zionist leadership — in its dominant secular stream — explicitly did not claim a vanguard mandate.
 
@@ -52,13 +54,13 @@ The Arab citizens of Israel today — approximately 20% of the population — ha
 
 ### 2.1 The State of Israel — Full Profile
 
-**Internal axis:** Genuinely mixed, trending toward Consistent under current political pressures.
+**Internal axis:** Genuinely mixed, trending toward Rigid under current political pressures.
 
 Emergent features: independent judiciary (under attack but still functioning), free press (critical of government during wartime), internal political dissent including from within the military establishment, Arab political parties with seats in the Knesset, Supreme Court that has ruled against government on multiple occasions. These are genuine Emergent signals.
 
-Consistent pressures: the judicial reform effort sought to remove the primary self-correction mechanism from the democratic system (override by simple Knesset majority = effectively no independent judiciary). The religious-nationalist coalition partners represent Viral Consistent — seeking to impose a uniform national-religious identity onto a genuinely diverse society. Ultra-Orthodox non-participation in shared civic obligations (military service, proportional taxation) is contained degenerative connection — internal coherence within a node that exploits the generative capacity of the larger system without contributing to it.
+Rigid pressures: the judicial reform effort sought to remove the primary self-correction mechanism from the democratic system (override by simple Knesset majority = effectively no independent judiciary). The religious-nationalist coalition partners represent Viral Rigid — seeking to impose a uniform national-religious identity onto a genuinely diverse society. Ultra-Orthodox non-participation in shared civic obligations (military service, proportional taxation) is contained degenerative connection — internal coherence within a node that exploits the generative capacity of the larger system without contributing to it.
 
-**Net internal assessment:** Sufficient Emergent capacity remains to self-correct, but that capacity is under sustained pressure. The trajectory is concerning; a phase transition to predominantly Consistent internal structure is possible within a decade if current political trends continue.
+**Net internal assessment:** Sufficient Emergent capacity remains to self-correct, but that capacity is under sustained pressure. The trajectory is concerning; a phase transition to predominantly Rigid internal structure is possible within a decade if current political trends continue.
 
 **Lateral axis — Palestinian territories:** Structurally the most contested axis of the analysis.
 
@@ -66,27 +68,27 @@ West Bank: Israeli military control of Area C (60% of West Bank territory) const
 
 Gaza pre-October 7: Israel maintained border control (with Egypt) without internal military presence. This is a specific configuration — external constraint without internal occupation — that is neither occupation nor genuine independence. Its structural effect was to allow Hamas to consolidate internally while maintaining Israeli control over external connectivity.
 
-**Net lateral assessment — occupied territories:** The settlement enterprise in its current form is structurally incompatible with either a two-state solution or a generative one-state arrangement. Its trajectory is Consistent-viral in the political sense (each new settlement making the generative resolution harder to achieve, accumulating toward irreversibility). The state's accommodation of the settler project for security and political reasons has allowed a Protective function to be captured by an ideological one.
+**Net lateral assessment — occupied territories:** The settlement enterprise in its current form is structurally incompatible with either a two-state solution or a generative one-state arrangement. Its trajectory is Rigid-viral in the political sense (each new settlement making the generative resolution harder to achieve, accumulating toward irreversibility). The state's accommodation of the settler project for security and political reasons has allowed a Protective function to be captured by an ideological one.
 
 **Upward axis — international norms:** Deteriorating. Non-compliance with ICJ provisional measures, rejection of ceasefire proposals, ICC warrants for leadership — Israel has moved into an increasingly Destructive relationship with the international normative order. The historical justification (international institutions are biased against Israel, which is documented) does not dissolve the structural effect: a state that systematically positions itself above international law weakens the norms that protect everyone.
 
 ### 2.2 Hamas — Structural Analysis
 
-Hamas is a Destructive system in service of a higher Consistent system — Islamism. Its founding charter (substantially maintained in practice despite 2017 rhetorical revision) frames Jewish sovereignty in any portion of historical Palestine as permanently illegitimate. Its governance of Gaza (2007-present) eliminated political competition, suppressed civil society, prosecuted LGBTQ+ Gazans, and oriented the entire political economy of Gaza toward military confrontation.
+Hamas is a Destructive system in service of a higher Rigid system — Islamism. Its founding charter (substantially maintained in practice despite 2017 rhetorical revision) frames Jewish sovereignty in any portion of historical Palestine as permanently illegitimate. Its governance of Gaza (2007-present) eliminated political competition, suppressed civil society, prosecuted LGBTQ+ Gazans, and oriented the entire political economy of Gaza toward military confrontation.
 
 October 7 was an act of Destructive violence against Emergent targets: a music festival, kibbutzim, children. In GE terms: Destructive action aimed at Emergent civilian systems, with the specific strategic intent of triggering a disproportionate response that would delegitimize Israel internationally. This was not an unintended consequence — it was the explicit strategic logic.
 
-Hamas's popularity in Gaza reflects the GE's principle that Consistent systems deliver real internal value to their members (security, identity, belonging, meaning, resistance to genuine oppression) even while being Destructive at the lateral and upward levels. The popularity does not validate the system's structural character.
+Hamas's popularity in Gaza reflects the GE's principle that Rigid systems deliver real internal value to their members (security, identity, belonging, meaning, resistance to genuine oppression) even while being Destructive at the lateral and upward levels. The popularity does not validate the system's structural character.
 
 ### 2.3 The Palestinian Authority — Structural Analysis
 
 The PA occupies a structurally compromised position: formally the legitimate Palestinian governance, functionally a security subcontractor for Israeli control of the West Bank. Its legitimacy deficit (no elections since 2006, governance associated with corruption and accommodation with the occupier) makes it unable to represent Palestinian interests credibly or to make the political concessions necessary for a negotiated resolution without losing what remains of its popular legitimacy.
 
-The PA's internal structure has drifted toward Consistent: Fatah's suppression of political competition, the detention of journalists and critics, the absence of meaningful democratic accountability. This is not equivalent to Hamas's Destructive character — the PA has not organized mass atrocities — but it is not an Emergent political system.
+The PA's internal structure has drifted toward Rigid: Fatah's suppression of political competition, the detention of journalists and critics, the absence of meaningful democratic accountability. This is not equivalent to Hamas's Destructive character — the PA has not organized mass atrocities — but it is not an Emergent political system.
 
 ### 2.4 Islamist Regional Actors — Iran, Hezbollah, Regional States
 
-Iran's Islamic Republic is the primary state actor sustaining the Destructive capacity of Hamas, Hezbollah, and affiliated movements. In GE terms: a Viral Consistent state sponsoring Destructive lateral systems to maintain pressure on an Emergent node (Israel) whose existence challenges the Islamist ideological framework. The strategic logic is structurally clear: Israel's existence as a successful Jewish-democratic state in the Arab-majority Middle East is a standing challenge to the Islamist claim that Jewish sovereignty in the region is cosmically illegitimate.
+Iran's Islamic Republic is the primary state actor sustaining the Destructive capacity of Hamas, Hezbollah, and affiliated movements. In GE terms: a Viral Rigid state sponsoring Destructive lateral systems to maintain pressure on an Emergent node (Israel) whose existence challenges the Islamist ideological framework. The strategic logic is structurally clear: Israel's existence as a successful Jewish-democratic state in the Arab-majority Middle East is a standing challenge to the Islamist claim that Jewish sovereignty in the region is cosmically illegitimate.
 
 ---
 
@@ -185,9 +187,9 @@ The proposal: instead of a unified Palestinian state (which has failed as a poli
 - Creates multiple nodes that can develop at different rates and in different directions — Emergent differentiation at the sub-level
 - Aligns with the "onion layers" governance model — different levels of authority nested within each other, each level controlling what it is equipped to control
 
-**The critical condition for GE compatibility:** The arrangement must provide genuine agency to Palestinian constituents — not merely administrative autonomy under Israeli military control, but real self-governance with real protection from arbitrary external interference. The distinction between genuine autonomy (Emergent) and managed occupation with civic amenities (Consistent wearing an Emergent mask) is the key diagnostic.
+**The critical condition for GE compatibility:** The arrangement must provide genuine agency to Palestinian constituents — not merely administrative autonomy under Israeli military control, but real self-governance with real protection from arbitrary external interference. The distinction between genuine autonomy (Emergent) and managed occupation with civic amenities (Rigid wearing an Emergent mask) is the key diagnostic.
 
-**The question of Palestinian consent.** A framework imposed without Palestinian consent is not Emergent — it is Consistent, regardless of its structural features. The GE requires that conscious agents participate genuinely in the arrangements that govern them. The path to an Emirates-style arrangement must include Palestinian participation in its design, which requires Palestinian political actors willing to engage with it. The current Palestinian leadership (both PA and Hamas) rejects it. Palestinian public opinion is not identical to Palestinian leadership — but the gap between them cannot be exploited without a credible mechanism for bypassing a leadership that lacks democratic legitimacy.
+**The question of Palestinian consent.** A framework imposed without Palestinian consent is not Emergent — it is Rigid, regardless of its structural features. The GE requires that conscious agents participate genuinely in the arrangements that govern them. The path to an Emirates-style arrangement must include Palestinian participation in its design, which requires Palestinian political actors willing to engage with it. The current Palestinian leadership (both PA and Hamas) rejects it. Palestinian public opinion is not identical to Palestinian leadership — but the gap between them cannot be exploited without a credible mechanism for bypassing a leadership that lacks democratic legitimacy.
 
 **The historical reality of the leadership-population gap.** Palestinian populations in the West Bank have consistently demonstrated more pragmatism than their leadership when given genuine opportunities. The Oslo period (before the Second Intifada) produced genuine economic cooperation and cross-communal relationships. The normalization agreements (Abraham Accords) have been accepted by Gulf Arab publics far more readily than by their governments' previous positions. There is a realistic basis for believing that Palestinian populations in an Emirates arrangement, with genuine economic autonomy and genuine protection from violence — from both Israeli military operations and Hamas — would find such an arrangement preferable to the current situation.
 
@@ -198,7 +200,7 @@ The proposal: instead of a unified Palestinian state (which has failed as a poli
 The Israel-Palestine conflict is not merely a territorial dispute. It is a stress test of the international system's capacity to manage competing legitimate claims with generative rather than eliminationist logic.
 
 The international community has largely failed this test. The failure has two forms:
-- Moral inconsistency (applying different standards to Israeli conduct than to comparable conduct by other states) reveals Consistent ideological bias rather than neutral evaluation
+- Moral inconsistency (applying different standards to Israeli conduct than to comparable conduct by other states) reveals Rigid ideological bias rather than neutral evaluation
 - The institutional capture of bodies like the UN Human Rights Council by states with far worse human rights records than Israel, used to produce disproportionate resolutions against Israel, is a documented structural failure of the international normative order
 
 But Israel has also contributed to this failure by treating the international normative order as irrelevant rather than engaging it seriously — withdrawing from engagement when engaged critically, using US veto power as a blanket protection rather than working within the system to improve it. A state with genuine Emergent character would be a force for improving international institutions, not withdrawing from them.
@@ -213,7 +215,7 @@ But Israel has also contributed to this failure by treating the international no
 
 **The regional normalization trajectory.** The Abraham Accords demonstrated that Arab states can normalize with Israel when their self-interest requires it. Saudi normalization — which was close before October 7 — would have been the most significant expansion. A regional normalization architecture that gave Palestinian leaders strong economic incentives to accept a realistic settlement might produce different political conditions than those that have existed for 75 years. The GE analysis: changing the incentive structure for Palestinian leadership, rather than waiting for Palestinian leadership to change its values, is a more tractable intervention.
 
-**The one-state question.** A single state with genuine equality for all citizens — the "one-state solution" in its democratic form — is theoretically Emergent: it would preserve both peoples' differentiation within a shared political structure, provided the political structure genuinely protected minority rights. It is currently not achievable because no viable form of such a state commands majority support among either population, and because a single state with a Palestinian majority (which demographics would eventually produce) is not experienced by Israeli Jews as preserving Jewish political differentiation. The GE analysis: the one-state solution's Emergent character depends entirely on the quality of the institutions within it — a one-state solution without robust minority protections and genuine power-sharing is not Emergent; it is merely a change in which community exercises Consistent control.
+**The one-state question.** A single state with genuine equality for all citizens — the "one-state solution" in its democratic form — is theoretically Emergent: it would preserve both peoples' differentiation within a shared political structure, provided the political structure genuinely protected minority rights. It is currently not achievable because no viable form of such a state commands majority support among either population, and because a single state with a Palestinian majority (which demographics would eventually produce) is not experienced by Israeli Jews as preserving Jewish political differentiation. The GE analysis: the one-state solution's Emergent character depends entirely on the quality of the institutions within it — a one-state solution without robust minority protections and genuine power-sharing is not Emergent; it is merely a change in which community exercises Rigid control.
 
 ---
 

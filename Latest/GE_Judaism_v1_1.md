@@ -1,8 +1,10 @@
 # The Generative Ethic: Judaism
 ### A structural analysis of Jewish theology, tradition, and civilization
 
-> **Status:** Working draft — v0.1
-> **Last updated:** 2026-05-27
+> **Status:** Working draft — v1.1
+> **Last updated:** 2026-06-10
+> **Changes from v1.0:** Terminology — the relational quad formerly labeled “Consistent” renamed to “Rigid” throughout, aligning with core framework v2.6. No substantive changes.
+
 > **Depends on:** The Generative Ethic (Core Framework v1.7)
 > **Note:** This paper is the first in a planned series of GE analyses of major religious traditions. Judaism is treated first because its structural features are the most directly parallel to the GE's own architecture — in some cases anticipating it by millennia. Future papers will apply the same framework to Christianity, Islam, Buddhism, and other traditions without privileging any.
 
@@ -14,7 +16,7 @@ The Generative Ethic proposes that goodness is alignment with generative emergen
 
 The central finding: the structural architecture of Judaism — its theology, its hermeneutic tradition, its ethical framework, and its civilizational adaptations over three millennia — is among the closest cultural instantiations of the GE's core principles available in the historical record. This is not a claim that Judaism is uniquely correct or that other traditions are structurally inferior. It is a structural observation: Judaism encodes, in mythological, theological, and institutional form, many of the same structural features that the GE derives from first principles.
 
-The analysis also does not romanticize. Judaism has produced Consistent strains — legalism that calcifies, exclusivism that confuses contained coherence with universal obligation, messianism that risks the "utopia as destination" error. These are examined honestly alongside the generative structures.
+The analysis also does not romanticize. Judaism has produced Rigid strains — legalism that calcifies, exclusivism that confuses contained coherence with universal obligation, messianism that risks the "utopia as destination" error. These are examined honestly alongside the generative structures.
 
 ---
 
@@ -50,7 +52,7 @@ The Talmud is the most sustained institutional implementation of generative disa
 
 **"These and these are the words of the living God."** (*Elu v'elu divrei Elohim chayyim* — Eruvin 13b.) The formula that preserves the losing position in a legal dispute alongside the winning one. In GE terms: the system is explicitly designed to preserve differentiation — the minority view is not discarded but maintained, because the productive tension between positions is itself a generative asset. The system might need the minority view later. More fundamentally: the process of sustained disagreement is itself valuable, regardless of which position wins.
 
-This is exactly what the GE means by an Emergent institution: designed to keep producing better answers, not to encode a final one. The contrast with the Consistent alternative — a single authoritative ruling body whose decisions are binding and whose minority views are suppressed — is explicit and deliberate.
+This is exactly what the GE means by an Emergent institution: designed to keep producing better answers, not to encode a final one. The contrast with the Rigid alternative — a single authoritative ruling body whose decisions are binding and whose minority views are suppressed — is explicit and deliberate.
 
 **The structure of Talmudic argument.** The Talmud does not read as a legal code. It reads as a record of live argument — questions that generate more questions, answers that open new problems, side discussions that produce independent threads. This structure is generative in the precise GE sense: each connection between ideas produces new differentiation rather than collapsing the material into resolution. The sea of Talmud (*yam shel Talmud*) — the traditional description — is not hyperbole. The system is explicitly open-ended.
 
@@ -62,7 +64,7 @@ The Hebrew prophets represent one of the most structurally unusual political fun
 
 Isaiah, Amos, Micah, Jeremiah — these are not court advisors. They are explicitly opponents of the established political order when that order violates the covenant's moral requirements. Amos preaches against the complacency of the wealthy during a period of material prosperity. Jeremiah counsels surrender to Babylon — against the nationalist consensus — because he believes the city's moral failures have made its defense illegitimate. Isaiah holds the king accountable for unjust wars.
 
-In GE terms: the prophetic tradition encodes **Anti-Authoritarian Safeguard 5 (no vanguard)** at the political level. No king, no priest, no institution is exempt from moral challenge authorized from below by conscience and above by divine mandate simultaneously. The prophet's authority derives precisely from not being embedded in the power structure — from occupying the Protective quadrant against the Consistent tendencies of political power.
+In GE terms: the prophetic tradition encodes **Anti-Authoritarian Safeguard 5 (no vanguard)** at the political level. No king, no priest, no institution is exempt from moral challenge authorized from below by conscience and above by divine mandate simultaneously. The prophet's authority derives precisely from not being embedded in the power structure — from occupying the Protective quadrant against the Rigid tendencies of political power.
 
 **Chosenness as obligation, not privilege.** Amos 3:2: *"You only have I known among all the nations of the earth; therefore I will punish you for all your iniquities."* Chosenness in the prophetic tradition is not a claim of superiority. It is a claim of proportionally greater moral responsibility. The people chosen for a specific covenant relationship with the source of all moral obligation are held to a *higher* standard, not a lower one. This maps precisely to the GE's principle: **moral responsibility scales with consciousness and proximity to the generative source**. The framework arrives at the same conclusion from a structural direction; the prophetic tradition encodes it as theology.
 
@@ -72,14 +74,14 @@ In GE terms: the prophetic tradition encodes **Anti-Authoritarian Safeguard 5 (n
 
 The destruction of the Second Temple in 70 CE is the most consequential adaptive challenge in Jewish history, and the rabbinic response to it is the most structurally impressive adaptive achievement in the civilizational record.
 
-**What was lost.** The Temple system was a *Consistent upward structure* in the GE sense: geographically anchored (Jerusalem), institutionally centralized (the priesthood), with a monopoly on access to the sacred (sacrifice as the primary mode of divine connection). Its destruction forced the Brave Choice on the surviving Jewish leadership — without the upward structure, what fills the gap?
+**What was lost.** The Temple system was a *Rigid upward structure* in the GE sense: geographically anchored (Jerusalem), institutionally centralized (the priesthood), with a monopoly on access to the sacred (sacrifice as the primary mode of divine connection). Its destruction forced the Brave Choice on the surviving Jewish leadership — without the upward structure, what fills the gap?
 
 **What emerged.** Rabbinic Judaism reconstituted the entire civilizational system around three portable substitutes:
 - *Torah study* replaces sacrifice as the primary mode of divine connection
 - *Prayer* replaces the Temple ritual — portable, requires no fixed location
 - *The rabbi* replaces the priest — authority derived from learning and argument, not lineage and ritual function
 
-Each substitution is structurally generative rather than merely compensatory. The rabbi is a fundamentally different kind of authority from the priest. You argue with a rabbi. You don't argue with a priest. The authority structure shifted from hierarchical-ritual to argumentative-textual — from Consistent to Emergent. The catastrophe became, structurally, an upgrade.
+Each substitution is structurally generative rather than merely compensatory. The rabbi is a fundamentally different kind of authority from the priest. You argue with a rabbi. You don't argue with a priest. The authority structure shifted from hierarchical-ritual to argumentative-textual — from Rigid to Emergent. The catastrophe became, structurally, an upgrade.
 
 **The halakhic portable civilization.** The genius of rabbinic halakha (Jewish law) as a civilizational design: it creates a complete portable world. Wherever Jews went, they carried with them a comprehensive legal and ritual system that constituted a self-sufficient community — separate economy, separate calendar, separate cuisine, separate domestic architecture, separate life-cycle rituals. This was not merely cultural preservation. It was the creation of a **contained generative node** capable of maintaining its internal Emergent structure regardless of the character of the host society. The ghetto, imposed from outside as a form of exclusion, was simultaneously a container for a civilization that had already internalized its own walls.
 
@@ -111,11 +113,11 @@ The GE explanation: forced Generative Separation produced a system that was *con
 
 ### 8.1 Legal Calcification
 
-Every generative system produces Consistent strains as it matures. In Judaism, the risk of halakhic over-specification is real and periodic — the accumulation of protective fences around the law (*gezerot*), each individually defensible, collectively producing a system so hedged that the underlying generative principle is obscured. The debates between Hillel and Shammai, between different schools of legal interpretation, between traditional and reform movements — these are all, in GE terms, debates about where the line falls between protective specification (necessary) and calcification (degenerative).
+Every generative system produces Rigid strains as it matures. In Judaism, the risk of halakhic over-specification is real and periodic — the accumulation of protective fences around the law (*gezerot*), each individually defensible, collectively producing a system so hedged that the underlying generative principle is obscured. The debates between Hillel and Shammai, between different schools of legal interpretation, between traditional and reform movements — these are all, in GE terms, debates about where the line falls between protective specification (necessary) and calcification (degenerative).
 
 ### 8.2 Exclusivism Misread
 
-The chosenness concept, misread as exclusivism, becomes Consistent: the claim that Jewish differentiation entitles rather than obligates, that the covenant relationship confers special status rather than special responsibility. The prophetic tradition corrects this explicitly, but the misreading recurs. In GE terms: the bone cell failing by trying to convert the liver rather than simply being the best bone cell it can be.
+The chosenness concept, misread as exclusivism, becomes Rigid: the claim that Jewish differentiation entitles rather than obligates, that the covenant relationship confers special status rather than special responsibility. The prophetic tradition corrects this explicitly, but the misreading recurs. In GE terms: the bone cell failing by trying to convert the liver rather than simply being the best bone cell it can be.
 
 ### 8.3 Messianic Terminalism
 
@@ -134,4 +136,4 @@ Certain strands of messianism — particularly when coupled with apocalyptic exp
 ---
 
 *The Generative Ethic: Judaism — v0.1*
-*To be developed further. This skeleton requires expansion on: the biblical period (Mosaic covenant structure, the Deuteronomistic history), medieval philosophy (Maimonides, Saadia Gaon — rationalism within the tradition), Hasidism as a generative movement within a Consistent environment, Reform/Conservative/Orthodox as competing responses to modernity, and the contemporary question of Jewish identity post-Holocaust.*
+*To be developed further. This skeleton requires expansion on: the biblical period (Mosaic covenant structure, the Deuteronomistic history), medieval philosophy (Maimonides, Saadia Gaon — rationalism within the tradition), Hasidism as a generative movement within a Rigid environment, Reform/Conservative/Orthodox as competing responses to modernity, and the contemporary question of Jewish identity post-Holocaust.*

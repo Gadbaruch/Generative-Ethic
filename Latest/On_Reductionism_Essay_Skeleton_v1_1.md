@@ -1,7 +1,8 @@
-# The Consistent Crust
+# On Reductionism
 ### How Science's Greatest Success Became Its Own Obstacle — and What the Emergence Community Is Actually Doing About It
 
-> **Status:** Essay skeleton. Key arguments and narrative arc are established. Requires full development, sourcing, and refinement before publication consideration.
+> **Status:** Essay skeleton (v1.1). Key arguments and narrative arc are established. Requires full development, sourcing, and refinement before publication consideration.
+> **Changes from v1 skeleton:** (1) Retitled from “The Consistent Crust” to “On Reductionism” (the crust metaphor is retained inside the essay as its governing image). (2) Terminology — the relational quad formerly labeled “Consistent” renamed to “Rigid” throughout, aligning with core framework v2.6. No substantive changes to argument.
 > **Intended audience:** Scientifically literate readers, including working scientists and philosophers of science. Meets the reductionist establishment in its own language.
 > **Relationship to core framework:** Applies the Generative Ethic's structural vocabulary to the history and current state of science. Demonstrates the framework's analytical power on a concrete case. Does not presuppose familiarity with the framework — the framework's concepts are introduced through the analysis rather than declared upfront.
 > **Companion:** This essay is the detailed treatment of the reductionism/emergence entry in the core document's Section 18, and the reductionism note in Section 6.4.
@@ -10,17 +11,17 @@
 
 ## The Thesis in One Paragraph
 
-The scientific revolution began as an act of viral goodness — a brave, generative movement that dismantled the church's Consistent grip on knowledge and created the conditions for centuries of extraordinary human flourishing. Its internal architecture was genuinely Emergent: peer review, falsifiability, open debate, the capacity to overturn any claim with better evidence. It earned and deserves immense credit. But its very success produced a hardening — a Consistent crust that formed around ontological commitments (materialism, eliminativism) that were never themselves scientifically established and that now suppress a new era of legitimate emergence work with the same institutional reflexes the church once used against Galileo. The emergence community is not smuggling God back into science. It is doing something more precise and more faithful to science's own values: restoring top-down causation as a legitimate scientific concept, and insisting that the evidence be followed wherever it leads — including upward.
+The scientific revolution began as an act of viral goodness — a brave, generative movement that dismantled the church's Rigid grip on knowledge and created the conditions for centuries of extraordinary human flourishing. Its internal architecture was genuinely Emergent: peer review, falsifiability, open debate, the capacity to overturn any claim with better evidence. It earned and deserves immense credit. But its very success produced a hardening — a Rigid crust that formed around ontological commitments (materialism, eliminativism) that were never themselves scientifically established and that now suppress a new era of legitimate emergence work with the same institutional reflexes the church once used against Galileo. The emergence community is not smuggling God back into science. It is doing something more precise and more faithful to science's own values: restoring top-down causation as a legitimate scientific concept, and insisting that the evidence be followed wherever it leads — including upward.
 
 ---
 
 ## I. The Origin: Science as Viral Goodness
 
 ### The problem it solved
-The medieval church held a Consistent monopoly on knowledge production. Theological authority determined what could be true before evidence was examined. Dissent was not just wrong — it was heresy. The system was coherent, stable, internally consistent, and catastrophically unable to self-correct against empirical reality. Classic Consistent quad: real coherence, destroyed adaptability.
+The medieval church held a Rigid monopoly on knowledge production. Theological authority determined what could be true before evidence was examined. Dissent was not just wrong — it was heresy. The system was coherent, stable, internally consistent, and catastrophically unable to self-correct against empirical reality. Classic Rigid quad: real coherence, destroyed adaptability.
 
 ### The brave choice
-The scientific revolution was not merely a methodological innovation. It was a moral act — the brave choice to dismantle a Consistent upward system (theological epistemology) despite the gap risk, betting on sufficient Emergent capacity in the intellectual lower layers to reconstitute something better. Copernicus, Galileo, Newton, Bacon, Descartes — these were not primarily technical innovators. They were agents of Protective action against a Consistent system that had captured the mechanisms of knowledge validation.
+The scientific revolution was not merely a methodological innovation. It was a moral act — the brave choice to dismantle a Rigid upward system (theological epistemology) despite the gap risk, betting on sufficient Emergent capacity in the intellectual lower layers to reconstitute something better. Copernicus, Galileo, Newton, Bacon, Descartes — these were not primarily technical innovators. They were agents of Protective action against a Rigid system that had captured the mechanisms of knowledge validation.
 
 ### Why it worked — the internal architecture
 The scientific revolution didn't just replace one authority with another. It built an internal architecture that was genuinely Emergent:
@@ -48,18 +49,18 @@ But somewhere in the 19th and 20th centuries, the working assumption hardened in
 
 This transition was never scientifically established. There was no experiment that proved higher-level properties are unreal. There was no formal derivation showing that consciousness, meaning, agency, and value reduce without remainder to physical description. The commitment was philosophical, not empirical — and it was adopted with the authority of science without the evidence science requires.
 
-### The Consistent tell
-The diagnostic for Consistent quad is: the system becomes more fragile as internal diversity increases rather than more robust. Test this against contemporary scientific culture on questions of emergence, consciousness, and higher-level causation:
+### The Rigid tell
+The diagnostic for Rigid quad is: the system becomes more fragile as internal diversity increases rather than more robust. Test this against contemporary scientific culture on questions of emergence, consciousness, and higher-level causation:
 
 - Papers on strong emergence face higher rejection rates than their empirical content warrants
 - Scientists who take seriously the irreducibility of consciousness are routinely dismissed as "not rigorous"
 - The language of top-down causation is treated with institutional suspicion
 - Appeals to higher-level properties in causal explanations are seen as methodological failure rather than legitimate scientific moves
 
-The system is not responding to the evidence on emergence by updating its commitments. It is responding to the challenge by enforcing its existing commitments more firmly. That is the Consistent tell. That is what the church did.
+The system is not responding to the evidence on emergence by updating its commitments. It is responding to the challenge by enforcing its existing commitments more firmly. That is the Rigid tell. That is what the church did.
 
 ### The irony — structurally exact
-The scientists defending ontological reductionism are using scientific authority — built on falsifiability, evidence-responsiveness, and productive progress — to protect a philosophical position that violates all three of their own stated criteria. They are wielding the social capital of science to suppress the kind of evidence-responsive inquiry that science was built to enable. The structural irony is exact: the institution built to dismantle the Consistent epistemic authority of the church has developed its own Consistent epistemic authority, enforced by the same social mechanisms, against the same kind of uncomfortable evidence.
+The scientists defending ontological reductionism are using scientific authority — built on falsifiability, evidence-responsiveness, and productive progress — to protect a philosophical position that violates all three of their own stated criteria. They are wielding the social capital of science to suppress the kind of evidence-responsive inquiry that science was built to enable. The structural irony is exact: the institution built to dismantle the Rigid epistemic authority of the church has developed its own Rigid epistemic authority, enforced by the same social mechanisms, against the same kind of uncomfortable evidence.
 
 ---
 
@@ -104,7 +105,7 @@ This is perhaps the most practically devastating point, because it catches the r
 
 **Effective field theories** — physicists deliberately work at the "wrong" level of description, ignoring lower-level detail to get tractable and predictive models. The Standard Model itself is understood to be an effective field theory — valid at accessible energy scales, not necessarily fundamental. Institutionally accepted emergence in practice, denied in principle.
 
-The reductionist uses emergence every day as their primary scientific tool while denying it philosophically. The gap between practice and ontology is the Consistent crust in action.
+The reductionist uses emergence every day as their primary scientific tool while denying it philosophically. The gap between practice and ontology is the Rigid crust in action.
 
 ---
 
@@ -134,7 +135,7 @@ A scientific claim must be falsifiable, evidence-responsive, and productive. Ont
 - **Not evidence-responsive** — Ellis's top-down causation, the behaviour of lower-level elements changing with higher-level context, the reliability of higher-level descriptions — all constitute empirical evidence for higher-level causal reality, systematically dismissed without engagement
 - **Not productive** — it actively blocks the development of sciences with demonstrably greater predictive power for complex systems
 
-By the reductionist's own stated criteria, ontological eliminativism is not science. It is dogma — a philosophical commitment maintained by institutional authority rather than empirical merit. This is the Consistent crust. And the framework names it precisely: real coherence, destroyed adaptability, indistinguishable from health until the moment it fails.
+By the reductionist's own stated criteria, ontological eliminativism is not science. It is dogma — a philosophical commitment maintained by institutional authority rather than empirical merit. This is the Rigid crust. And the framework names it precisely: real coherence, destroyed adaptability, indistinguishable from health until the moment it fails.
 
 ---
 
@@ -150,7 +151,7 @@ This is a claim about physics. It is empirically testable (Ellis has begun forma
 
 ### The fidelity argument
 
-The emergence community is not attacking science. It is being more faithful to science's core commitments than the reductionists defending the Consistent crust.
+The emergence community is not attacking science. It is being more faithful to science's core commitments than the reductionists defending the Rigid crust.
 
 Science's core commitments: follow the evidence, maintain falsifiability, update on new information, allow productive disagreement, never let philosophical commitment override empirical finding.
 
@@ -158,7 +159,7 @@ The emergence community is doing all of these things with respect to higher-leve
 
 The reductionist establishment defending eliminativism is violating most of them with respect to the same question.
 
-The emergence stream is the whistleblower here — not against science, but within it. It is doing what the scientific revolution did to the church: insisting that the evidence be followed rather than filtered through prior philosophical commitment. It is the Protective action against the Consistent crust, attempting to restore the Emergent core that the crust is suppressing.
+The emergence stream is the whistleblower here — not against science, but within it. It is doing what the scientific revolution did to the church: insisting that the evidence be followed rather than filtered through prior philosophical commitment. It is the Protective action against the Rigid crust, attempting to restore the Emergent core that the crust is suppressing.
 
 ### What it gestures toward — and why that's okay
 
@@ -172,7 +173,7 @@ That is the honest position. And it is precisely the position that science's own
 
 ## VII. What a Corrected Science Looks Like
 
-This section sketches the positive vision — not just what's wrong with the Consistent crust but what restoring the Emergent core would produce.
+This section sketches the positive vision — not just what's wrong with the Rigid crust but what restoring the Emergent core would produce.
 
 ### Methodological reductionism: fully preserved
 
@@ -204,13 +205,13 @@ If higher-level emergent systems have genuine causal reality, and if consciousne
 
 The scientific revolution was one of the most successful acts of viral goodness in human history. Its internal architecture — peer review, falsifiability, open debate, cumulative knowledge — remains a genuine achievement and a model for Emergent institutional design.
 
-The Consistent crust that formed around it is not science. It is a philosophical commitment — materialism and eliminativism — that was adopted with scientific authority without scientific evidence, and is now maintained with institutional power against the empirical evidence that challenges it.
+The Rigid crust that formed around it is not science. It is a philosophical commitment — materialism and eliminativism — that was adopted with scientific authority without scientific evidence, and is now maintained with institutional power against the empirical evidence that challenges it.
 
 The emergence community is not the enemy of science. It is doing what science has always done at its best: following the evidence, maintaining productive disagreement, and insisting that no philosophical commitment should stand between inquiry and truth.
 
-The brave choice now is the same brave choice it was in the 17th century: dismantle the Consistent crust, preserve the Emergent core, and allow a new era of inquiry to begin.
+The brave choice now is the same brave choice it was in the 17th century: dismantle the Rigid crust, preserve the Emergent core, and allow a new era of inquiry to begin.
 
-The Consistent crust protects nothing that science needs and suppresses much that it does. The question is whether the institution can recognize itself in the mirror — and whether it has retained enough of its original Emergent character to self-correct.
+The Rigid crust protects nothing that science needs and suppresses much that it does. The question is whether the institution can recognize itself in the mirror — and whether it has retained enough of its original Emergent character to self-correct.
 
 The emergence community believes it has. That belief is, structurally, an act of faith in science's own values.
 
@@ -245,5 +246,5 @@ The essay must be genuinely generous to reductionism — its history, its achiev
 
 ---
 
-*The Consistent Crust — Essay Skeleton — Work in Progress*
+*On Reductionism — Essay Skeleton — Work in Progress*
 *Not yet ready for publication consideration*
