@@ -270,17 +270,22 @@
     <div class="sidebar-section">
       <span class="sidebar-label">Core</span>
       <a class="sidebar-link" onclick="loadDoc('about')">About Me</a>
+      <a class="sidebar-link" onclick="loadDoc('summary')">The Framework in Brief</a>
       <a class="sidebar-link" onclick="loadDoc('core')">The Generative Ethic</a>
+      <a class="sidebar-link" onclick="loadDoc('metaphysics')">Extended Metaphysics</a>
     </div>
     <div class="sidebar-section">
       <span class="sidebar-label">Philosophy</span>
       <a class="sidebar-link" onclick="loadDoc('consciousness')">Consciousness as Ecosystem</a>
+      <a class="sidebar-link" onclick="loadDoc('conflict')">Conflict &amp; Suffering</a>
       <a class="sidebar-link" onclick="loadDoc('essay_nietzsche')">Nietzsche's Redemption</a>
+      <a class="sidebar-link" onclick="loadDoc('third_story')">The Third Story</a>
     </div>
     <div class="sidebar-section">
       <span class="sidebar-label">Science</span>
       <a class="sidebar-link" onclick="loadDoc('wolfram')">Wolfram's Physics Project</a>
-      <a class="sidebar-link" onclick="loadDoc('consistent_crust')">The Consistent Crust</a>
+      <a class="sidebar-link" onclick="loadDoc('geometric_unity')">Geometric Unity</a>
+      <a class="sidebar-link" onclick="loadDoc('consistent_crust')">Reductionism</a>
       <a class="sidebar-link" onclick="loadDoc('essay_dawkins')">Dawkins's Sting</a>
     </div>
     <div class="sidebar-section">
@@ -306,6 +311,15 @@
       <a class="sidebar-link" onclick="loadDoc('music2')">The Binding Technology</a>
       <a class="sidebar-link" onclick="loadDoc('music3')">The Carrier Wave</a>
       <a class="sidebar-link" onclick="loadDoc('music4')">Evolution of Music</a>
+      <a class="sidebar-link" onclick="loadDoc('music_companion')">The Participation Deficit</a>
+      <a class="sidebar-link" onclick="loadDoc('music_practice')">A Generative Sound Practice</a>
+    </div>
+    <div class="sidebar-section">
+      <span class="sidebar-label">Practice</span>
+      <a class="sidebar-link" onclick="loadDoc('psychology')">The Emotional Map</a>
+      <a class="sidebar-link" onclick="loadDoc('playbook')">The Strategic Playbook</a>
+      <a class="sidebar-link" onclick="loadDoc('charter')">The Operating Charter</a>
+      <a class="sidebar-link" onclick="loadDoc('playbook_cases')">Playbook Test Cases</a>
     </div>
     <div class="sidebar-section">
       <span class="sidebar-label">Reference</span>
@@ -386,11 +400,6 @@ const GLOSSARY = {
     source: "The Generative Ethic, §9.7",
     docId: "core", sectionId: "viral-goodness"
   },
-  "consistent crust": {
-    def: "The stable structural layer that allows an adaptive system to remain coherent while absorbing perturbation — neither so rigid it shatters nor so soft it dissolves. The concept of the 'consistent crust' distinguishes protective stability from degenerative rigidity.",
-    source: "The Consistent Crust Essay",
-    docId: "consistent_crust", sectionId: "the-thesis"
-  },
   "zoom level problem": {
     def: "The observation that any action or system can appear generative at one scale of analysis and degenerative at another. Ethical reasoning must specify its zoom level explicitly. The quad profile is the primary tool for navigating zoom level complexity.",
     source: "The Generative Ethic, §14",
@@ -427,10 +436,10 @@ const GLOSSARY = {
 
 const DOCS = {
   core: {
-    type: "Core Framework · v1.8",
+    type: "Core Framework · v2.6",
     title: "The Generative Ethic",
     subtitle: "A structural framework for existence, goodness, and the obligation of conscious agents",
-    mdFile: "The_Generative_Ethic_v2_2.md",
+    mdFile: "The_Generative_Ethic_v2_6.md",
     connections: ["generative_ground","consciousness","political","ai","judaism","music"],
     body: `
       <div style="text-align:center; margin-bottom: 48px;">
@@ -488,9 +497,10 @@ const DOCS = {
   },
 
   metaphysics: {
-    type: "Extended Framework · v1.2",
+    type: "Extended Framework · v1.4",
     title: "Extended Metaphysics",
     subtitle: "Creation, consciousness, and the framework's relationship to religious and spiritual traditions",
+    mdFile: "The_Generative_Ethic_Extended_Metaphysics_v1_4.md",
     connections: ["core","ai","judaism"],
     body: `
       <h2>Note on Status</h2>
@@ -526,7 +536,7 @@ const DOCS = {
 
   political: {
     mdFile: "The_Generative_Ethic_Political_Significance_v1_2.md",
-    type: "Application · v1.1",
+    type: "Application · v1.2",
     title: "Political Significance",
     subtitle: "Governance, institutions, and the structural conditions for civilizational emergence",
     connections: ["core","ip","antisemitism","judaism"],
@@ -696,7 +706,7 @@ const DOCS = {
   },
 
   music: {
-    mdFile: "GE_Music_Paper_1_Sound_Before_Culture_v3.md",
+    mdFile: "GE_Music_Paper_1_Sound_Before_Culture_v3_1.md",
     type: "Music Series · Paper I",
     title: "Sound Before Culture",
     subtitle: "How the universe learned to speak, and how humans used that language to build everything",
@@ -799,8 +809,8 @@ const DOCS = {
   },
 
   generative_ground: {
-    type: "Companion Paper · v1.1",
-    mdFile: "GE_Generative_Ground_v1_1.md",
+    type: "Companion Paper · v1.2",
+    mdFile: "GE_Generative_Ground_v1_2.md",
     title: "The Third Covenant",
     subtitle: "Creation, covenant, and the framework's relationship to religious and spiritual traditions",
     connections: ["core","consciousness","judaism","ai"],
@@ -838,8 +848,8 @@ const DOCS = {
   },
 
   consciousness: {
-    type: "Companion Paper · v1.6",
-    mdFile: "GE_Consciousness_Ecosystem_v1_6.md",
+    type: "Companion Paper · v1.7",
+    mdFile: "GE_Consciousness_Ecosystem_v1_7.md",
     title: "Consciousness as Ecosystem",
     subtitle: "A structural account of mind, self, and the no-self illusion",
     connections: ["core","generative_ground","ai"],
@@ -908,18 +918,18 @@ const DOCS = {
   consistent_crust: {
     mdFile: "The_Consistent_Crust_Essay_Skeleton_v1.md",
     type: "Essay Skeleton · v1.0",
-    title: "The Consistent Crust",
-    subtitle: "How science's greatest success became its own obstacle — and what the emergence community is doing about it",
+    title: "Reductionism",
+    subtitle: "How science's reductionist success hardened into a Rigid orthodoxy — and what the emergence community is doing about it",
     connections: ["core"],
     body: `
       <h2>The Thesis</h2>
-      <p>The scientific revolution began as an act of viral goodness — a brave, generative movement that dismantled the church's Rigid grip on knowledge and created the conditions for centuries of extraordinary human flourishing. Its internal architecture was genuinely Emergent: peer review, falsifiability, open debate, the capacity to overturn any claim with better evidence. But its very success produced a hardening — a <span class="term-link" data-term="consistent crust">consistent crust</span> that formed around ontological commitments (materialism, eliminativism) that were never themselves scientifically established and that now suppress a new era of legitimate emergence work with the same institutional reflexes the church once used against Galileo.</p>
+      <p>The scientific revolution began as an act of viral goodness — a brave, generative movement that dismantled the church's Rigid grip on knowledge and created the conditions for centuries of extraordinary human flourishing. Its internal architecture was genuinely Emergent: peer review, falsifiability, open debate, the capacity to overturn any claim with better evidence. But its very success produced a hardening — a Rigid orthodoxy that formed around ontological commitments (materialism, eliminativism) that were never themselves scientifically established and that now suppress a new era of legitimate emergence work with the same institutional reflexes the church once used against Galileo.</p>
       <div class="ornament">· · ·</div>
 
       <h2>The Origin: Science as Viral Goodness</h2>
       <p>The scientific revolution was not merely a methodological innovation. It was a moral act — the brave choice to dismantle a Rigid upward system (theological epistemology) despite the gap risk. And it worked because its internal architecture was genuinely Emergent: no individual's authority is sufficient; claims must survive collective scrutiny; any claim must be, in principle, refutable by evidence; knowledge is a commons. For roughly three centuries, this system produced extraordinary results. The credit is immense.</p>
 
-      <h2>How the Crust Formed</h2>
+      <h2>How Reductionism Hardened</h2>
       <p>Methodological materialism — the working assumption that scientific explanations should invoke only physical causes — was a productive heuristic. But somewhere in the 19th and 20th centuries, the working assumption hardened into an ontological commitment: only physical causes are real. Eliminativism emerged: higher-level descriptions are not just methodologically bracketed but ontologically unreal.</p>
       <p>This transition was never scientifically established. There was no experiment that proved higher-level properties are unreal. The commitment was philosophical, not empirical — adopted with the authority of science without the evidence science requires.</p>
       <blockquote>"The scientists defending ontological reductionism are wielding the social capital of science — built on falsifiability and evidence-responsiveness — to protect a philosophical position that violates all three of their own stated criteria. The institution built to dismantle the Rigid epistemic authority of the church has developed its own Rigid epistemic authority, enforced by the same social mechanisms, against the same kind of uncomfortable evidence."</blockquote>
@@ -1086,6 +1096,218 @@ const DOCS = {
     `
   },
 
+  summary: {
+    mdFile: "Generative_Ethic_Summary_v4.md",
+    type: "Overview · v4",
+    title: "The Framework in Brief",
+    subtitle: "A condensed statement of the framework's claim, contribution, and method",
+    connections: ["core","metaphysics","generative_ground"],
+    body: `
+      <h2>What This Is, and Is Not</h2>
+      <p>The Generative Ethic makes a single structural claim about the conditions under which complexity emerges, and extends it into a normative framework through an explicit foundational wager — named honestly as a wager, not a logical derivation. It is not an attempt to dissolve the distinctions between ontology, epistemology, and ethics. It operates in three distinct registers — structural, directional, and moral — and treats every transition between them as requiring explicit argument.</p>
+      <p>Its practical aim is narrow: a shared structural vocabulary precise enough to let scientific, philosophical, religious, and political traditions locate their genuine disagreements rather than talk past each other.</p>
+      <div class="ornament">· · ·</div>
+
+      <h2>The Gap It Fills</h2>
+      <p>Complexity science has produced a detailed account of <em>how</em> organised complexity emerges — Prigogine's dissipative structures, Kauffman's adjacent possible, Heylighen's evolutionary research. What it does not provide is a normative account: what conscious agents are therefore obligated to do. Normative traditions, in turn — flourishing, divine command, social contract, fitness, suffering-minimisation — each work within their domain, but none is derived from the structural conditions that make life and mind possible, and most are incommensurable across the boundaries that separate them.</p>
+      <p>The framework operates in the gap between these two bodies of work: it takes the structural findings of complexity science seriously as a normative basis, makes the is-ought transition explicit rather than concealed, and does so with the smallest vocabulary that stays accessible across all three traditions at once.</p>
+
+      <h2>Two Features That Distinguish It</h2>
+      <p>First, the diagnostic tool — the <span class="term-link" data-term="four quadrants">Four Quadrants</span> — uses structural effect rather than stated intention as its criterion, making it resistant to the motivated self-classification that undermines most integrative ethics. Second, the anti-authoritarian safeguards and epistemic humility are not appended as external caveats — they are derived from the same structural logic as the core claims. A system that invokes <span class="term-link" data-term="generative emergence">generative emergence</span> to justify coercion or suppress dissent has, by the framework's own definitions, produced Rigid rather than Emergent structure. The self-critique is internal, not decorative.</p>
+      <blockquote>"Goodness is the trajectory through which separated existence moves toward richer forms of connectedness without collapsing differentiation."</blockquote>
+    `
+  },
+
+  conflict: {
+    mdFile: "GE_Conflict_Suffering_v1_9.md",
+    type: "Companion Paper · v1.9",
+    title: "Conflict & Suffering",
+    subtitle: "Theodicy, the necessity of conflict, and the moral status of war and pain",
+    connections: ["core","metaphysics","generative_ground","psychology"],
+    body: `
+      <h2>Why Theodicy Is the Test Case</h2>
+      <p>Every total framework that says anything about goodness is eventually handed the same problem, and most die on it: if the ground of reality is good, and reality contains the death camps and the child's bone cancer, then either the ground is not good, or it is not the ground, or "good" has been redefined until it no longer means anything a sufferer would recognise. The Generative Ethic claims reality has a direction, that the direction is what goodness means, and that conscious beings are obligated to align with it. That is strong enough to owe an answer here. A framework that maps onto physics and onto Kabbalah but goes quiet in front of a grieving parent has not earned the word <em>ethic</em>.</p>
+      <div class="ornament">· · ·</div>
+
+      <h2>Correcting the Concept of God First</h2>
+      <p>The inherited problem assumes a particular God: an omnipotent personal agent who surveys outcomes and selects them, who could at any moment reach in and prevent a given harm, and who therefore owes an account of every harm not prevented. The framework does not answer by abandoning God. It identifies God with the self-initiating generative structure — power understood as <em>directional tilt</em> rather than outcome-selection, goodness understood as the tilt itself. This God allows suffering for reasons that are not excuses but structural necessities. The reader who rejects the identification can read every "God" as "the self-initiating generative structure" and lose nothing of the argument.</p>
+
+      <h2>All Creation Is Tragic-and-Good</h2>
+      <p>The reframe the paper asks the reader to hold from the outset: the problem of evil is the supreme case of a structural truth that holds at every scale. To bring any new structure into being — a universe, a life, a work — is to introduce both generative and <span class="term-link" data-term="degenerative">degenerative</span> potential and to foreclose the alternatives it displaces. Cost and shadow are intrinsic to creation as such, not accidents of bad creations. The tragic and the good are not opposed but inseparable; there is no costless good at any level, the originating act being the maximal instance.</p>
+
+      <h2>Suffering Scales With the Gradient</h2>
+      <p>Evil is not a feature of the field — it is a feature of conscious agents in it. Suffering is consciousness-dependent, and it necessarily scales with the gradient: climbing toward richer awareness raises the stakes rather than lowering them. The capacity to feel, and specifically the negative pole of feeling, is not an engineering defect to be designed away. There is no "preferable" without pain — valence requires a negative pole. The paper builds a firewall here: suffering is necessary as a <em>category</em> for a reality capable of any good at all, which is never the same as being justified in the <em>instance</em>. The structural account explains why this can happen; it does not tell a sufferer their loss was worth it.</p>
+
+      <h2>Utopia as Direction, and Its Dangerous Twin</h2>
+      <p>Goodness is directionality. Utopia functions as a regulative ideal, not a constitutive goal — a direction that orients without ever being a destination that arrives. The "End of Days" is a threshold, not a terminus: the fractal continues past it. This matters because the vision has a dangerous twin. The same grammar that orients a generative life toward a better future is, before the fact, structurally identical to the grammar every atrocity reaches for first — the justification of present harm by an imagined perfected future. The framework's safeguards exist precisely to hold that boundary.</p>
+
+      <h2>Conflict as Constitutive, and When War Is Moral</h2>
+      <p>The Paradox of the Extremes is the structural backbone: pure connection and pure separation both terminate in non-existence, so tension between them is the condition of any reality at all. Conflict is therefore constitutive, not a flaw — <span class="term-link" data-term="tzimtzum">Tzimtzum</span>, creation as self-limitation, is its theological name. Applied to force: destruction has two faces, Protective and Destructive, and force can be moral only when it dismantles a degenerative structure to restore adaptability. But the principle conceals a severe epistemic caveat, and most real cases are genuine tragic dilemmas where no option is clean. The paper deliberately ends in several places where it argues the right move is to stop.</p>
+    `
+  },
+
+  psychology: {
+    mdFile: "GE_Psychology_v1_1.md",
+    type: "Companion Paper · v1.1",
+    title: "The Emotional Map",
+    subtitle: "A practical tool for reading your own emotions, personality, and relationships",
+    connections: ["core","playbook","consciousness"],
+    body: `
+      <h2>A Map You Can Apply to Yourself</h2>
+      <p>Where the Strategic Playbook turns the framework outward — onto systems, institutions, and conflicts — this paper turns it inward, onto you. It is the framework used as a diagnostic for your own inner life: your emotions, the shape of your personality, and the way you tend to connect with or separate from the people around you. The claim is that the same connection-separation dynamic that structures reality also structures a single human psyche, which means you can read your own patterns with the same vocabulary you use to read everything else.</p>
+      <div class="ornament">· · ·</div>
+
+      <h2>Your Emotions Are Signals, Not Facts</h2>
+      <p>Emotions are not descriptions of reality. They are fast-approximation signals your mind generates from its internal model of a situation — perspectival, action-oriented, and only as accurate as that model. Read this way, a feeling stops being a verdict ("this <em>is</em> a threat") and becomes data ("my model is reading this as a threat"). The practical move is to ask, each time a strong signal fires: what is my model assuming right now, and is the assumption still true? A well-calibrated psyche produces well-approximated readings; a model distorted by old wounds, fear, or manipulation produces signals that feel just as valid from the inside while pointing the wrong way.</p>
+
+      <h2>Reading Your Personality and Your Relationships</h2>
+      <p>Your personality is, in this account, the characteristic <em>lean</em> of your two basic drives — self-maintenance (holding your own shape, autonomy, boundaries) and connection (merging, belonging, being part of something larger). Most people run a habitual bias toward one pole: over-separated patterns show up as guardedness, control, isolation; over-connected patterns show up as self-erasure, enmeshment, losing yourself in others. Your relationships are where the lean becomes visible. The same four structural modes the framework uses everywhere apply to a friendship or a marriage: a bond can be <em>Emergent</em> (you each stay differentiated and grow), <em>Rigid</em> (held together by suppression of difference), or <em>Destructive</em> (breaking the other down). The tool lets you locate a specific relationship — and your own role in it — on that map.</p>
+
+      <h2>Navigational Freedom: The Gap You Can Widen</h2>
+      <p>Your freedom is the space between an emotional signal and your response to it — what the framework calls navigational freedom, and what other traditions have called free will. The wider that gap, the more you can feel the signal fully, check it against reality, and still choose. This is trainable: psychological health and moral freedom turn out to be the same variable measured from different angles, so coherence, adaptability, and the capacity to hold the gap are what self-work is actually building. Every agent begins with a genuine orientation toward <span class="term-link" data-term="generative emergence">generative emergence</span>; <span class="term-link" data-term="degenerative">degenerative</span> behavior — in others and in yourself — is best understood as the <em>misrouting</em> of a real drive, not the presence of a different one. That reframe is also the most forgiving and the most useful: it tells you what to repair rather than what to condemn.</p>
+    `
+  },
+
+  third_story: {
+    mdFile: "GE_ThirdStory_Response_v1_0.md",
+    type: "Companion Paper · v1.0",
+    title: "The Third Story",
+    subtitle: "A contribution to the evolutionary worldview project — and what the framework adds",
+    connections: ["core","political","consciousness"],
+    body: `
+      <h2>Shared Territory</h2>
+      <p>The Third Story of the Universe identifies a civilizational gap with precision: the First Story provided meaning but can no longer serve as a literal account of reality; the Second Story provides predictive power but is structurally silent on value and purpose. Its proposed resolution — that the universe self-organizes toward greater complexity and consciousness, that mutual fit drives evolution, and that conscious agents have a role in that process — is the same structural ground the Generative Ethic builds from. The diagnosis, the direction, and the ambition are shared entirely.</p>
+      <div class="ornament">· · ·</div>
+
+      <h2>The Conflict Blindspot</h2>
+      <p>The Third Story describes a universe moving toward integration, with synergy as the engine. But it has no grammar for <span class="term-link" data-term="degenerative">degenerative</span> forces — not as the absence of fitness, but as an active structural tendency with its own logic. In that worldview, systems that fail to integrate simply fall away; conflict is friction that precedes adaptation. There is no structural account of actors that are not merely failing to cooperate but are actively oriented against generative emergence — that profit from dismantling the conditions for synergy, that propagate by consuming the complexity others build.</p>
+      <p>This is not a marginal case. Authoritarian systems, extractive institutions, viral propaganda, tribalism amplified by technology — these are not systems awaiting better integration. A worldview that cannot name them, diagnose them, or say what an agent should do when they appear will struggle to function in the real world it was designed for.</p>
+
+      <h2>What the Framework Adds</h2>
+      <p>The Generative Ethic supplies what the project needs to become operational: the generative/degenerative distinction as an active structural category, the Four Quadrants as a diagnosis that reads structural effect rather than stated intention, and an account of what aligned action requires when an agent meets a system oriented against emergence. It complements rather than replaces — it gives the evolutionary worldview the missing grammar for the central practical challenge it set out to address.</p>
+    `
+  },
+
+  geometric_unity: {
+    mdFile: "GE_Geometric_Unity_v1_0.md",
+    type: "Companion Paper · v1.0",
+    title: "Geometric Unity",
+    subtitle: "Reading Weinstein's Geometric Unity through the framework",
+    connections: ["core","wolfram"],
+    body: `
+      <h2>Why Geometric Unity Matters</h2>
+      <p>Eric Weinstein's Geometric Unity (GU) is among the most ambitious proposals for a unified theory of physics in the post-Standard Model era. Its central wager: all the fields, forces, and matter content of physics arise from a single geometric object constructed from spacetime itself — the Observerse — equipped with a unified gauge symmetry that mixes gravity and the other forces in a way the Standard Model cannot. GU is incomplete: its field equations are not fully derived, its fermion content is not rigorously calculated, its predictions are not yet specific. But its structural ambitions are precise, and they converge with the Generative Ethic at every foundational level.</p>
+      <div class="ornament">· · ·</div>
+
+      <h2>Two Frameworks, One Answer</h2>
+      <p>GU and GE were built independently from different starting points. GU asks: what geometry must the universe have? GE asks: what structure must reality have for goodness to be possible? This paper argues they arrive at the same answer — and that reading GE through GU fills several of GU's most pressing gaps, while GU provides GE with formal geometric machinery it currently lacks. The connection and separation forces map onto the geometric tension GU encodes; the four forces appear as phases of the connection/separation dynamic; the metric itself becomes the physical embodiment of that tension.</p>
+
+      <h2>The Three-Generation Problem</h2>
+      <p>GE's most specific contribution to GU is an answer to one of physics' deepest puzzles: why three generations of matter? The GE derivation proposes three stable modes of maintained distinction — three and only three ways differentiation can persist without collapsing into connection or dissolving into separation. From this the paper extracts a mass-hierarchy prediction, the kind of specific, committed claim that distinguishes a structural mapping from a loose analogy.</p>
+
+      <h2>Three Languages for One Structure</h2>
+      <p>Read alongside Wolfram's Physics Project, a three-framework synthesis emerges: WPP supplies the computational substrate, GU the geometric form, GE the ontological foundation and directional principle — three languages describing the same structure. Each contributes what the others leave open. The paper closes on the shared unanswered question all three inherit, and a registry of testable predictions that would let the convergence be confirmed or broken.</p>
+    `
+  },
+
+  music_companion: {
+    mdFile: "GE_Music_Companion_1_The_Participation_Deficit_v1_0.md",
+    type: "Music Series · Companion",
+    title: "The Participation Deficit",
+    subtitle: "How the recording industry withdrew music's most important function — and what restores it",
+    connections: ["core","music2","music_practice"],
+    body: `
+      <h2>The Thesis</h2>
+      <p>For almost all of human history, music was something you did, not something you consumed. The technologies of the 20th century — recorded sound, radio, the personal stereo, streaming — transformed music into a product delivered to a passive recipient. This was not a neutral shift. It severed the listening experience from the participation that was always music's most important dimension, withdrawing the physiological binding mechanism that every durable human culture has placed at its center. The result is a participation deficit: a society with more access to music than any in history, and measurably less of what music was always primarily for.</p>
+      <div class="ornament">· · ·</div>
+
+      <h2>What Music Was Before It Was a Product</h2>
+      <p>Before the phonograph there was no recording, no music industry — only music as a practice, something communities did together as a constitutive part of social life. Work songs accompanied collective labor; communal singing happened around tables, in fields, in worship. Children learned music by participation before instruction. The overwhelming norm was that if music was happening, the people present were making it. Professional performance existed, but as the exception, experienced infrequently. Where Paper II establishes the neurobiological binding mechanism, this essay establishes the cultural history that withdrew it — and the contemporary stakes of that withdrawal.</p>
+
+      <h2>What Restores It</h2>
+      <p>The deficit is not a content problem to be solved with better songs; it is a structural withdrawal of participation. What restores the lost function is not more or better music to consume but the deliberate reconstruction of contexts where people make music together — re-crossing the qualitative threshold between receiving music and producing it. This sets up the companion practice proposal: a participatory form designed to deliver the binding without requiring the theological or tribal content that the surviving traditions come attached to.</p>
+    `
+  },
+
+  music_practice: {
+    mdFile: "GE_Music_Practice_Design_Proposal_v1_0.md",
+    type: "Music Series · Practice Design",
+    title: "A Generative Sound Practice",
+    subtitle: "A design proposal for participatory musical practice built on the framework",
+    connections: ["core","music3","music_companion"],
+    body: `
+      <h2>Why This Practice Needs to Exist</h2>
+      <p>The music series establishes a diagnosis: the primary technology for producing collective belonging — participatory musical ritual — has been progressively withdrawn from Western civic life. The traditions that still carry it come attached to specific theological, ideological, or tribal content that not everyone can accept. A person who wants the binding without the doctrine, the belonging without the in-group opposition, the collective state without the theology has very few places to go. This practice is an attempt to create one of those places.</p>
+      <div class="ornament">· · ·</div>
+
+      <h2>What It Draws On</h2>
+      <p>It draws on what the evidence says works — kirtan, Gospel call-and-response, group vocal improvisation, toning, breathwork, the contemplative traditions of shared silence — while being theologically neutral, methodologically transparent, and explicitly designed for accessibility at any skill level and any scale. Its success is measured not by aesthetic quality but by whether it reliably produces the physiological states the research identifies as constitutive of genuine collective belonging: inter-brain synchrony, oxytocin release, respiratory entrainment, the dissolution of the felt boundary between self and group.</p>
+
+      <h2>A Design Document, Not a Finished Method</h2>
+      <p>Everything here is provisional — a sketch with enough specificity to be useful as a starting point for development, testing, and refinement with real groups. It states the non-negotiable design principles that any version of the practice must hold, while leaving the specific session elements open to iteration. It is the applied edge of the framework's music work: the point where diagnosis becomes something a community can actually do.</p>
+    `
+  },
+
+  playbook: {
+    mdFile: "GE_Strategic_Playbook_v1_2.md",
+    type: "Companion Paper · v1.2",
+    title: "The Strategic Playbook",
+    subtitle: "Acting on the framework: the repertoire of generative connection and generative separation",
+    connections: ["core","charter","playbook_cases"],
+    body: `
+      <h2>What This Paper Is Doing</h2>
+      <p>The framework establishes what is good and that conscious agents are obligated toward it. This paper asks the next question: what, then, do we do? It maps the strategic repertoire for two kinds of work — strengthening and building Emergent systems (generative connection) and dissolving the structures that foreclose emergence (generative separation) — and supplies a diagnosis stage that matches a system's profile to its appropriate treatment. Both kinds of work are generative; the actor sets out to do no degenerative work, and there is no degenerative mandate.</p>
+      <div class="ornament">· · ·</div>
+
+      <h2>Why Pathological Systems Cannot Self-Correct</h2>
+      <p>The central structural claim: Rigid and Destructive systems cannot reliably self-correct, because the property that defines them is the suppression or foreclosure of the very diversity that would permit correction. Change therefore requires a perturbation the frozen core cannot dissipate, together with a viable alternative attractor for the freed substrate to migrate into. A consequence runs through every strategy: a better story changes nothing on its own. What migrates a system is a relational environment that carries a story — never a story by itself. Offered without a real new relationship and a real basin to inhabit, a better story backfires and re-entrenches the old one.</p>
+
+      <h2>The Repertoire</h2>
+      <p>The plays divide into building (generative-connection work: strengthening Emergent systems, nesting prior identities inside larger frames, re-diversifying what has been flattened) and dissolving (non-coercive generative-separation work). Higher-gate tools — entropy injection and myth destabilization — are held behind explicit conditions. And there is a locked drawer: gated force, which the Playbook describes but places outside the acting agent's own authority, governed by the <em>Operating Charter</em>. The repertoire is presented as a whole so that no single play is mistaken for the method.</p>
+
+      <h2>What It Asks of You</h2>
+      <p>The paper ends with a reader-facing entry layer — Reflect, Build, Improve, Protect — framed around the wager rather than obligation, holding the method as a testable hypothesis rather than a command. It is the framework's most operational document: the bridge from "this is what goodness is" to "here is what an aligned actor can actually do this week."</p>
+    `
+  },
+
+  charter: {
+    mdFile: "GE_Operating_Charter_v1_0.md",
+    type: "Companion Paper · v1.0",
+    title: "The Operating Charter",
+    subtitle: "Guardrails for acting on the Generative Ethic",
+    connections: ["core","playbook","conflict"],
+    body: `
+      <h2>The Constraint Document</h2>
+      <p>A framework that names goodness and obligates agents toward it becomes dangerous the moment it is acted upon — because the grammar that justifies a generative intervention is, before the fact, structurally identical to the grammar every aggressor reaches for first. This document fixes the boundary in advance. The Strategic Playbook and every applied case-study paper reference it. Its function is to ensure the framework cannot be used to license what it forbids.</p>
+      <div class="ornament">· · ·</div>
+
+      <h2>The Governing Distinction</h2>
+      <p>It rests on a single distinction: <strong>the theory is complete; the actor is scoped far narrower than the theory.</strong> A complete moral theory must describe when coercive force is legitimate. But an agent acting under the theory binds itself to the register where its own actions remain consent-preserving, reversible, and truthful — the generative-connection work and a thin band of non-coercive generative-separation work — and places coercive force outside its own authority entirely.</p>
+
+      <h2>Seven Guardrails and a Locked Drawer</h2>
+      <p>The seven guardrails specialize the framework's anti-authoritarian safeguards into rules for an acting agent. Each is listed with the failure mode it prevents, because a guardrail whose purpose is forgotten is a guardrail that gets argued away. Coercive force is not denied as a category — it is placed in a "locked drawer," a gated-force tier the acting agent does not open on its own authority. The governing asymmetry: when in doubt, the constraint binds. This is the document that lets the rest of the framework be put into the world safely.</p>
+    `
+  },
+
+  playbook_cases: {
+    mdFile: "GE_Playbook_Cases_WIP_v0_2.md",
+    type: "Working Document · v0.2",
+    title: "Playbook Test Cases",
+    subtitle: "Diagnostic pairs run against the strategies — win and fail points",
+    connections: ["core","playbook"],
+    body: `
+      <h2>Status: Work in Progress</h2>
+      <p>Five cases across empire, biology, and civilization, run against the Strategic Playbook to find its seams. These are not illustrations. Each case is a matched pair differing on one strategic variable, the framework's prediction is committed before the outcome is narrated, and one case is included specifically to try to break the framework.</p>
+      <div class="ornament">· · ·</div>
+
+      <h2>The Method</h2>
+      <p>Single cases retrofit too easily — almost any outcome can be told as a framework success after the fact. Three disciplines guard against that. <strong>Matched pairs:</strong> two cases facing the same structural problem and differing on one decisive variable, so the framework predicts opposite outcomes and can be caught predicting wrong. <strong>Prediction first:</strong> the framework's call is stated before the result. <strong>A disconfirmation hunt:</strong> at least one case is chosen because it looks like it should break the rule, and the honest question is asked whether the framework escapes only by retreating to a higher zoom.</p>
+
+      <h2>What Is Under Test</h2>
+      <p>The variables are the Playbook's load-bearing claims: substrate versus coordination (free the people, dissolve the apparatus), attractor-building-first (dissolution without a basin produces a captured vacuum), nesting (preserve the prior identity inside a larger frame rather than negating it), and re-diversification (restore suppressed differentiation rather than ablate the bad actor). The cases that confirm matter less than the ones that strain — this document exists to locate where the strategies hold and where they fail.</p>
+    `
+  },
+
   glossary: {
     type: "Reference",
     title: "Glossary of Terms",
@@ -1248,8 +1470,18 @@ document.addEventListener('click', e => {
 
 const GRAPH_NODES = [
   { id: "core",              label: "The Generative Ethic",       type: "core",        r: 26 },
+  { id: "metaphysics",       label: "Extended Metaphysics",       type: "framework",   r: 18 },
   { id: "generative_ground", label: "The Third Covenant",      type: "framework",   r: 18 },
   { id: "consciousness",     label: "Consciousness as Ecosystem", type: "framework",   r: 17 },
+  { id: "psychology",        label: "The Emotional Map",          type: "framework",   r: 14 },
+  { id: "conflict",          label: "Conflict & Suffering",       type: "companion",   r: 16 },
+  { id: "geometric_unity",   label: "Geometric Unity",            type: "companion",   r: 13 },
+  { id: "third_story",       label: "The Third Story",            type: "companion",   r: 12 },
+  { id: "playbook",          label: "The Strategic Playbook",     type: "companion",   r: 15 },
+  { id: "charter",           label: "The Operating Charter",      type: "companion",   r: 13 },
+  { id: "playbook_cases",    label: "Playbook Test Cases",        type: "companion",   r: 11 },
+  { id: "music_companion",   label: "The Participation Deficit",  type: "application", r: 11 },
+  { id: "music_practice",    label: "A Generative Sound Practice",type: "application", r: 11 },
   { id: "political",         label: "Political Significance",     type: "application", r: 18 },
   { id: "ai",                label: "AI Alignment",               type: "application", r: 16 },
   { id: "judaism",           label: "Judaism",                    type: "case",        r: 15 },
@@ -1260,7 +1492,7 @@ const GRAPH_NODES = [
   { id: "music3",            label: "The Carrier Wave",           type: "application", r: 12 },
   { id: "music4",            label: "Evolution of Music",              type: "application", r: 11 },
   { id: "wolfram",           label: "Wolfram's Physics Project",  type: "companion",   r: 13 },
-  { id: "consistent_crust",  label: "The Consistent Crust",       type: "companion",   r: 12 },
+  { id: "consistent_crust",  label: "Reductionism",               type: "companion",   r: 12 },
   { id: "viral_taxonomy",    label: "Strategies of Propagation",  type: "companion",   r: 12 },
   { id: "essay_social_media",label: "Social Media",               type: "essay",       r: 11 },
   { id: "essay_nietzsche",   label: "Nietzsche",                  type: "essay",       r: 11 },
@@ -1268,8 +1500,25 @@ const GRAPH_NODES = [
 ];
 
 const GRAPH_LINKS = [
+  { source: "core", target: "metaphysics",        strength: 0.9 },
   { source: "core", target: "generative_ground", strength: 0.9 },
   { source: "core", target: "consciousness",      strength: 0.9 },
+  { source: "core", target: "conflict",           strength: 0.8 },
+  { source: "core", target: "psychology",         strength: 0.7 },
+  { source: "core", target: "playbook",           strength: 0.7 },
+  { source: "core", target: "geometric_unity",    strength: 0.6 },
+  { source: "core", target: "third_story",        strength: 0.6 },
+  { source: "metaphysics",       target: "generative_ground", strength: 0.6 },
+  { source: "metaphysics",       target: "conflict",          strength: 0.6 },
+  { source: "psychology",        target: "consciousness",     strength: 0.7 },
+  { source: "conflict",          target: "generative_ground", strength: 0.6 },
+  { source: "geometric_unity",   target: "wolfram",           strength: 0.7 },
+  { source: "third_story",       target: "political",         strength: 0.5 },
+  { source: "playbook",          target: "charter",           strength: 0.8 },
+  { source: "playbook",          target: "playbook_cases",    strength: 0.7 },
+  { source: "charter",           target: "conflict",          strength: 0.5 },
+  { source: "music2",            target: "music_companion",   strength: 0.7 },
+  { source: "music3",            target: "music_practice",    strength: 0.7 },
   { source: "core", target: "political",          strength: 0.9 },
   { source: "core", target: "ai",                 strength: 0.8 },
   { source: "core", target: "judaism",            strength: 0.8 },

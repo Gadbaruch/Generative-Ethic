@@ -1,11 +1,12 @@
 # The Generative Ethic: Consciousness as Ecosystem
 ### A structural account of mind, self, and the no-self illusion
 
-> **Status:** Working draft — v1.6
-> **Last updated:** 2026-06-03
-> **Depends on:** The Generative Ethic (Core Framework v1.8)
+> **Status:** Working draft — v1.7
+> **Last updated:** 2026-06-08
+> **Depends on:** The Generative Ethic (Core Framework v2.4)
 > **Replaces:** Part IV (Fractal Consciousness Hypothesis) of Extended Metaphysics, which is superseded by this paper
-> **Changes from v1.4:** Carhart-Harris Entropic Brain hypothesis integrated into §5.3. Updated to cite both 2014 original and 2018 revision. Key addition: the brain actively suppresses entropy and biases toward order — normal waking consciousness operates just below criticality as a result of this active suppression, not passive balance. 2018 upper-bound finding added — the relationship between entropy and conscious richness is a U-curve, not a slope. REBUS (Carhart-Harris & Friston, 2019) flagged as triple convergence point with GE's independent use of Friston's FEP. Empirical validation range expanded. Distinction between psychedelic high-entropy states and generative consciousness sharpened. Citation added in §5.4 at psilocybin reference.
+> **Changes from v1.6:** Three additions — (1) §3.4: Two Forms of Dissolution — the liberation-type (narrative overlay released, substrate intact, practitioner returns) vs. the annihilation-type (permanent destruction of organized substrate), with the reversibility test as the structural discriminator. (2) §5.3 addendum: connection between synaptic-pruning (infant brain) and REBUS reconstitution (contemplative practice) — advanced attainment may constitute recovery of the infant's high-plasticity state at a higher integration level. Marked interpretive. (3) §7.6 addition: Advaita and nondual traditions addressed specifically — the jivanmukta profile is structurally consistent with GE's Emergent configuration; convergence with Generative Ground non-dualism noted; the formulations-of-final-dissolution tension addressed through the liberation/annihilation distinction.
+> **Changes from v1.4:** Carhart-Harris Entropic Brain hypothesis integrated into §5.3.
 > **Note on status:** This paper contains speculative material alongside well-evidenced empirical claims. Each section is marked with its epistemic status. The core framework stands independently of the speculative sections.
 
 ---
@@ -141,6 +142,18 @@ A gentle but important qualification: the contemplative insight is real and valu
 But the claim that no-self insight reveals the ultimate nature of reality is a further step that the evidence does not support. What it reveals is the nature of the self-model: that it is a construction, not a substrate. This is valuable. It is not the same as discovering that agency, orientation, or the capacity for generative alignment are illusory. The meditator who achieves deep no-self states still eats, still makes choices, still has differential effects on the world. The ecosystem is still running. The self-model is temporarily suspended.
 
 For GE, the meditation insight is fully compatible with the framework's normative claims. A conscious agent who holds their self-model lightly — who knows it is a construction, not a fixed truth — is not thereby relieved of the obligation to align with generative emergence. They may, in fact, be better positioned to fulfill it: less defensive, less rigid, more capable of updating their model of themselves and the world in response to evidence.
+
+### 3.4 Two Forms of Dissolution — and the Reversibility Test
+
+A precision the framework requires before proceeding. The paper so far has treated dissolution as liberation — the self-model going quiet to reveal the substrate underneath. But "dissolution" covers two structurally distinct things, and conflating them generates serious error.
+
+*Liberation-dissolution* is the softening or temporary suspension of the *narrative self* — the Interpreter's rigid story-layer, the ego-as-accumulated-model — while the underlying experiential substrate remains intact. This is what contemplative traditions cultivate and what §§3.1–3.3 describe: the self-model going quiet, the ecosystem continuing to run, the practitioner returning to full individuation afterward. The substrate is freed from a constricting overlay, not destroyed. In many cases this is experienced as expansive, blissful, and connecting — the connection drive meeting the loosened resistance of the separation-drive's rigid narrative expression. It is fully consistent with healthy self-maintenance at the substrate level.
+
+*Annihilation-dissolution* is the permanent, involuntary destruction of the organized experiential substrate itself. This is structurally different: the substrate cannot reconstitute. The self-maintenance drive resists this categorically (GE Psychology §VII). It is what the framework classifies as degenerative separation at the scale of the individual.
+
+**The reversibility test** distinguishes them cleanly: a dissolution is liberation-type if the substrate can be reconstituted afterward as a distinct differentiated entity. It is annihilation-type if it permanently forecloses that reconstitution. The meditator returns from deep no-self states with the substrate intact — liberation-type. This test is structural, connected to the irreversibility criterion in the Operating Charter (§II.3), and applicable across scales.
+
+The practical consequence: the meditative practices that cultivate ego-dissolution, and the psychedelic states that temporarily replicate it, are generative precisely because they perform liberation-dissolution rather than annihilation-dissolution. They increase navigational freedom (GE Psychology §VI–VII) by releasing the rigid narrative layer; they do not destroy the navigator. The deepest contemplative claims — including those in nondual traditions — are addressed through this distinction in §7.6.
 
 ---
 
@@ -344,6 +357,12 @@ We are not the authors of this optimization. We are its current leading edge.
 >
 > *Epistemic status: The convergence with the Entropic Brain hypothesis is independently derived and noted as supportive, not as a derivation. Carhart-Harris's empirical claims are peer-reviewed across multiple independent studies. GE's normative extension — that the generative ethical zone maps onto the critical zone neurologically — goes beyond what the empirical data alone establishes and is the framework's own claim.*
 
+> **A structural connection between the two findings above.** The synaptic pruning account (Level 4) and the REBUS reconstitution account suggest a single developmental arc. The infant brain begins in a high-plasticity, high-connectivity state — roughly 100 trillion synapses, enormous flexibility, minimal compression. Pruning progressively sacrifices this plasticity for efficiency and specialization: the adult brain is faster and more capable but has traded connection-density for compression depth. The REBUS model suggests that advanced contemplative practice and psychedelic experience accomplish a partial reversal of this trajectory: they reconstitute the high-plasticity, high-entropy state, but within a mind that retains the full integration and comprehension the infant never possessed. Not regression but a higher-order spiral — the same connectivity properties recovered at a higher turn of the developmental cycle.
+>
+> This is the structural meaning of "becoming like a child" across wisdom traditions: not infantile naivety, but the recovery of the original high-emergence configuration while retaining adult comprehension. The practitioner achieves world-openness without losing the adult's capacity for discernment. If the GE account of high-emergence states is correct, mature contemplative attainment represents one of the clearest biological examples of a system completing a settling phase (childhood specialization) and returning to the high-emergence configuration at a higher level of integration. This connection is developed further in the forthcoming *High Emergent States* companion paper.
+>
+> *(Epistemic status: Interpretive. The REBUS and synaptic pruning findings are empirical. The developmental-spiral claim — that advanced contemplative attainment constitutes recovery of infant-brain plasticity at adult integration — is GE's structural extension. It is consistent with the empirical data and with phenomenological reports from contemplative traditions, but it is not established neuroscience.)*
+
 ---
 
 **Consciousness Is the Optimization Becoming Self-Aware**
@@ -509,6 +528,14 @@ The no-self insight from contemplative traditions says: the unified self is a co
 GE agrees that the unified self is a construction. Part II of this paper is devoted to establishing exactly that. The ecosystem model concedes the point entirely — the unified self is a real emergent property, not a fundamental entity.
 
 But constructions are real. The ecosystem is the subject. It is distributed, dynamic, without a fixed center — but it has causal power, it produces acts, and it is capable of orientation toward generative or degenerative configurations. The dissolution of the self-model in deep meditation does not dissolve the ecosystem's ongoing effects on other systems. The meditator who achieves profound no-self experience still eats, still acts, still has differential effects on the world. The insight that the self is constructed does not exit the wager — it clarifies who is making it.
+
+A refinement specific to Advaita Vedanta and comparable nondual traditions: these go further than the no-self claim. They assert that the individual self (*jivatman*) is identical with the universal ground (*Brahman*) — that liberation (*moksha*) is the recognition of a non-duality that was always the case, not the destruction of something real. The liberated sage (*jivanmukta*) continues to act, eat, teach, and maintain full individuation in the world; the change is epistemic — a recognition of non-separation from the ground, not a cessation of differentiated being.
+
+This claim is not in conflict with GE's framework. GE's own account of the Generative Ground (companion paper) holds that God is structurally identical with the generative dynamic itself — not a separate entity standing outside the system but the system's own deepest organizing principle. This is a structural non-dualism that GE arrives at independently through the framework's own logic. The *jivanmukta* who functions as a fully differentiated person while recognizing non-dual identity with the ground is, in GE's structural vocabulary, a maximally Emergent configuration: maximum connection to the whole, retained differentiation, loosened rigid narrative self. The two accounts — Advaita's phenomenological report from inside the attainment, GE's structural account from outside — may be pointing at the same attractor.
+
+One area of genuine interpretive tension: some formulations within these traditions describe the highest attainment as final dissolution without residue — a *moksha* that leaves no distinct practitioner behind. If taken literally as permanent annihilation of the differentiated substrate, this would conflict with GE's differentiation-preservation requirement. GE's response, via the reversibility test (§3.4): the language of "dissolution" in these contexts may be pointing at liberation-dissolution — the narrative self permanently released, the substrate permanently freed from rigid identification — rather than annihilation of the experiential substrate itself. Whether the traditions intend the stronger or the weaker reading remains an interpretive question the framework respects without resolving.
+
+*(Epistemic status: Interpretive. GE cannot adjudicate metaphysical claims about ultimate reality. The convergence claim is structural: the observable behavioral and psychological profile of realized states in these traditions is consistent with what GE predicts for a maximally Emergent conscious configuration. The tension with formulations of final dissolution is noted and held open, not resolved.)*
 
 ### 7.7 The One Exit: Solipsism
 
