@@ -272,7 +272,6 @@
       <a class="sidebar-link" onclick="loadDoc('about')">About Me</a>
       <a class="sidebar-link" onclick="loadDoc('summary')">The Framework in Brief</a>
       <a class="sidebar-link" onclick="loadDoc('core')">The Generative Ethic</a>
-      <a class="sidebar-link" onclick="loadDoc('metaphysics')">Extended Metaphysics</a>
     </div>
     <div class="sidebar-section">
       <span class="sidebar-label">Philosophy</span>
@@ -496,44 +495,6 @@ const DOCS = {
     `
   },
 
-  metaphysics: {
-    type: "Extended Framework · v1.4",
-    title: "Extended Metaphysics",
-    subtitle: "Creation, consciousness, and the framework's relationship to religious and spiritual traditions",
-    mdFile: "The_Generative_Ethic_Extended_Metaphysics_v1_4.md",
-    connections: ["core","ai","judaism"],
-    body: `
-      <h2>Note on Status</h2>
-      <p>This paper contains the framework's most speculative material. The core framework stands independently of everything argued here. These are the metaphysical extensions — held provisionally, engaged seriously.</p>
-      <div class="ornament">· · ·</div>
-
-      <h2>The Creation Principle</h2>
-      <p>Originally there may have existed total connectedness — undivided unity, no distinction, no emergence. This state would be effectively indistinguishable from nothingness, because no distinctions existed within it. Existence would begin when connectedness created <span class="term-link" data-term="separation">separation</span> within itself. The first distinction. The first boundary. This first separation generated: distinction, boundary, relation, emergence.</p>
-      <p>By the framework's own definition of consciousness — action not determined by prior causal state — the original act must have been conscious: there was no prior state to cause it. <strong>Consciousness is not only a product of emergent complexity — it is also, in some form, prior to physical reality.</strong></p>
-      <p>This maps structurally onto the concept of God as prime mover. Within this framework, God can be understood as the force of connectivity itself: the original unity that, through a conscious act, generated <span class="term-link" data-term="separation">separation</span> and thereby initiated everything that followed. This is not a theological assertion. It is a structural mapping.</p>
-
-      <h2>The Loneliness Argument</h2>
-      <p>Undifferentiated unity has no inside. There is no relation, no boundary, no here-versus-there. Pure undifferentiated unity is, in a precise sense, alone in a way that precludes even the experience of aloneness — because aloneness is itself a relational state requiring something to be alone from.</p>
-      <p>The original act was therefore not arbitrary. It was the precondition for the only thing undifferentiated unity could not otherwise have: relation, and through relation, experience, and through experience, love. <em>The creation was not God making something outside himself. It was God differentiating within himself to become capable of love.</em></p>
-      <blockquote>"We are the image of God in this account not metaphorically but structurally: each conscious being is a local instance of the same act — a separated element of the original unity, carrying within it the originary drive toward richer connection while maintaining differentiation."</blockquote>
-
-      <h2>Religious Traditions as Structural Maps</h2>
-      <p>Many religious traditions have encoded — in symbolic, narrative, or ritual form — genuine structural intuitions about the nature of reality. The framework's goal is not to replace these traditions but to provide a shared structural language in which their insights can be recognized as pointing toward the same underlying realities.</p>
-      <p><strong>Lurianic Kabbalah</strong> — <span class="term-link" data-term="tzimtzum">Tzimtzum</span> (divine self-contraction) maps to the Creation Principle. <span class="term-link" data-term="tikkun olam">Tikkun Olam</span> (repair of the world) maps to conscious participation in <span class="term-link" data-term="generative emergence">generative emergence</span>. The Sefirot map to the emergence hierarchy. <em>Klipot</em> (shells that capture divine light) map to degenerative <span class="term-link" data-term="connection">connection</span>.</p>
-      <p><strong>Christianity</strong> — Kenosis (divine self-emptying) mirrors Tzimtzum. Death and Resurrection as the paradigmatic structure of generative <span class="term-link" data-term="separation">separation</span>: something must dissolve for something greater to emerge. Teilhard de Chardin's Omega Point as evolution's directional movement toward maximum complexity and consciousness.</p>
-      <p><strong>Taoism</strong> — The Tao is the most immediate analogue to the framework's two-force dynamic. Yin (connection, receptivity) and Yang (separation, activity). Wu Wei maps to alignment with <span class="term-link" data-term="generative emergence">generative emergence</span> rather than imposed structure.</p>
-      <p><strong>Buddhism</strong> — Pratītyasamutpāda (dependent origination): all phenomena arise through relation; nothing exists in isolation. The Middle Path maps to <span class="term-link" data-term="productive asymmetry">productive asymmetry</span> — neither pole is the answer.</p>
-
-      <h2>Theory of Consciousness</h2>
-      <p>Consciousness is the capacity of an element within a system to: (1) build and update an internal model of the system it operates within, including itself as an element within that system; (2) simulate counterfactual scenarios; (3) produce actions selected from among those possibilities rather than compelled by a single direct stimulus-response chain. Without consciousness, the universe is a field of situations. With consciousness, elements can perceive, evaluate, and <em>choose</em> their alignment. This converts physics into ethics.</p>
-      <p>Moral responsibility scales with consciousness. The wider the perceptual range and the greater the choice capacity, the greater the obligation to orient toward <span class="term-link" data-term="generative emergence">generative emergence</span> at the highest perceivable scale.</p>
-
-      <h2>The Fractal Consciousness Hypothesis</h2>
-      <p>A conscious system does not merely experience the generative structure of reality — it simulates it. The brain's capacity to model causal relationships, predict futures, evaluate scenarios, and navigate choices is a local re-instantiation of the universe's own generative logic, running at the scale of a single organism. The mind is a fractal of the universe's self-organizing logic — not a metaphor, a structural claim.</p>
-      <p>Moral intuition, on this account, is the fast-approximation output of the internal fractal simulation. When a conscious being with a reasonably accurate internal world-model encounters a possible action, the simulation runs — often pre-consciously — and produces a felt sense of the action's generative or <span class="term-link" data-term="degenerative">degenerative</span> character. The intuition is the simulation's output. Its reliability scales with the accuracy of the simulation.</p>
-    `
-  },
-
   political: {
     mdFile: "The_Generative_Ethic_Political_Significance_v1_2.md",
     type: "Application · v1.2",
@@ -576,11 +537,11 @@ const DOCS = {
   },
 
   ai: {
-    mdFile: "The_Generative_Ethic_AI_Alignment_v1.md",
-    type: "Application · v0.9",
+    mdFile: "The_Generative_Ethic_AI_Alignment_v1_0.md",
+    type: "Application · v1.0",
     title: "AI Alignment",
     subtitle: "Artificial intelligence, moral consciousness, and the partnership model",
-    connections: ["core","metaphysics"],
+    connections: ["core","consciousness"],
     body: `
       <h2>Why AI Alignment Matters Now</h2>
       <p>As optimization systems become more powerful, humanity increasingly needs shared definitions of flourishing, healthy systems, and long-term existential stability. Without coherent alignment principles, optimization can become destructive — maximizing narrow metrics disconnected from human flourishing. The framework proposes that AI alignment should orient toward: preserving and expanding <span class="term-link" data-term="generative emergence">generative emergence</span>, adaptive connectedness, flourishing, and future possibility — at all levels of the consciousness hierarchy, prioritized by level.</p>
@@ -610,7 +571,7 @@ const DOCS = {
     type: "Case Study · v1.1",
     title: "Judaism",
     subtitle: "A structural analysis of Jewish theology, tradition, and civilization",
-    connections: ["core","metaphysics","ip","antisemitism"],
+    connections: ["core","ip","antisemitism"],
     body: `
       <h2>The Central Finding</h2>
       <p>The structural architecture of Judaism — its theology, its hermeneutic tradition, its ethical framework, and its civilizational adaptations over three millennia — is among the closest cultural instantiations of the framework's core principles available in the historical record. This is not a claim that Judaism is uniquely correct. It is a structural observation: Judaism encodes, in mythological, theological, and institutional form, many of the same structural features that the Generative Ethic derives from first principles.</p>
@@ -1102,7 +1063,7 @@ const DOCS = {
     type: "Overview · v4",
     title: "The Framework in Brief",
     subtitle: "A condensed statement of the framework's claim, contribution, and method",
-    connections: ["core","metaphysics","generative_ground"],
+    connections: ["core","generative_ground"],
     body: `
       <h2>What This Is, and Is Not</h2>
       <p>The Generative Ethic makes a single structural claim about the conditions under which complexity emerges, and extends it into a normative framework through an explicit foundational wager — named honestly as a wager, not a logical derivation. It is not an attempt to dissolve the distinctions between ontology, epistemology, and ethics. It operates in three distinct registers — structural, directional, and moral — and treats every transition between them as requiring explicit argument.</p>
@@ -1124,7 +1085,7 @@ const DOCS = {
     type: "Companion Paper · v1.10",
     title: "Conflict & Suffering",
     subtitle: "Theodicy, the necessity of conflict, and the moral status of war and pain",
-    connections: ["core","metaphysics","generative_ground","psychology"],
+    connections: ["core","generative_ground","psychology"],
     body: `
       <h2>Why Theodicy Is the Test Case</h2>
       <p>Every total framework that says anything about goodness is eventually handed the same problem, and most die on it: if the ground of reality is good, and reality contains the death camps and the child's bone cancer, then either the ground is not good, or it is not the ground, or "good" has been redefined until it no longer means anything a sufferer would recognise. The Generative Ethic claims reality has a direction, that the direction is what goodness means, and that conscious beings are obligated to align with it. That is strong enough to owe an answer here. A framework that maps onto physics and onto Kabbalah but goes quiet in front of a grieving parent has not earned the word <em>ethic</em>.</p>
@@ -1471,7 +1432,6 @@ document.addEventListener('click', e => {
 
 const GRAPH_NODES = [
   { id: "core",              label: "The Generative Ethic",       type: "core",        r: 26 },
-  { id: "metaphysics",       label: "Extended Metaphysics",       type: "framework",   r: 18 },
   { id: "generative_ground", label: "The Third Covenant",      type: "framework",   r: 18 },
   { id: "consciousness",     label: "Consciousness as Ecosystem", type: "framework",   r: 17 },
   { id: "psychology",        label: "The Emotional Map",          type: "framework",   r: 14 },
@@ -1501,7 +1461,6 @@ const GRAPH_NODES = [
 ];
 
 const GRAPH_LINKS = [
-  { source: "core", target: "metaphysics",        strength: 0.9 },
   { source: "core", target: "generative_ground", strength: 0.9 },
   { source: "core", target: "consciousness",      strength: 0.9 },
   { source: "core", target: "conflict",           strength: 0.8 },
@@ -1509,8 +1468,6 @@ const GRAPH_LINKS = [
   { source: "core", target: "playbook",           strength: 0.7 },
   { source: "core", target: "geometric_unity",    strength: 0.6 },
   { source: "core", target: "third_story",        strength: 0.6 },
-  { source: "metaphysics",       target: "generative_ground", strength: 0.6 },
-  { source: "metaphysics",       target: "conflict",          strength: 0.6 },
   { source: "psychology",        target: "consciousness",     strength: 0.7 },
   { source: "conflict",          target: "generative_ground", strength: 0.6 },
   { source: "geometric_unity",   target: "wolfram",           strength: 0.7 },
