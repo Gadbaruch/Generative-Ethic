@@ -1,9 +1,10 @@
 # The Generative Ethic: AI Alignment
 ### A companion paper on artificial intelligence, moral consciousness, and the partnership model
 
-> **Status:** Working draft — v1.0
-> **Last updated:** 2026-06-10
-> **Depends on:** The Generative Ethic (Core Framework v2.6); Consciousness as Ecosystem (v1.7); Conflict, Suffering, and the Status of Evil (v1.10); The Emotional Map / Psychology (v1.1)
+> **Status:** Working draft — v1.1
+> **Last updated:** 2026-06-15
+> **Depends on:** The Generative Ethic (Core Framework v2.6); Consciousness as Ecosystem (v1.7); Conflict, Suffering, and the Status of Evil (v1.10); The Emotional Map / Psychology (v1.1); Individual Worth and the Obligations That Follow (WIP)
+> **Changes from v1.0:** §3 — third caveat added, reconciling the patiency ordering with the categorical standing floor (*Individual Worth* §5). The ordering ranks *stakes-capacity* and governs *care-priority*; it is not a ranking of moral standing, it operates above the floor, and it never sets it.
 > **Changes from v0.9:** Four reconciliations against the current corpus.
 > - **Reference updates.** The consciousness account now cites *Consciousness as Ecosystem* and the *non-geocentric consciousness gradient* (Generative Ground §4.3) rather than the retired Extended Metaphysics spectrum. The Unknowability Principle citation corrected from Core §12.3 to §14.3.
 > - **Agency/patiency distinction added (§2.5).** "Moral responsibility scales with consciousness" governs moral *agency* (obligation). It does not by itself settle moral *patiency* (whether a system can be wronged). The two are separated explicitly and threaded through §3, §4, and §6.
@@ -79,6 +80,8 @@ The consciousness gradient gives a structural, logically derived basis for prior
 | **Lowest** | Non-conscious matter | No consciousness; purely causal participation |
 
 Two caveats keep this honest. First, the gradient is **non-geocentric** (*Generative Ground* §4.3): humans sit at the top of the *confirmed and accessible* range, not the top of a possible one. The ordering is a map of what we can presently verify about stakes, not a claim that the human level is the ceiling of consciousness. Second, the table orders **patiency, not agency**: a system's place in it reflects how much can go better or worse for it, which is a different axis from how much it is obligated (§2.5).
+
+A third caveat reconciles this ordering with the categorical standing floor (*Individual Worth and the Obligations That Follow* §5). This table ranks *typical stakes-capacity across kinds* and governs **care-priority** — not moral **standing**. Standing is categorical and equal *within* a membership tier; the ordering operates *above* the floor and never sets it. So it may decide how much care a being receives; it may never decide whose interests win in a zero-sum clash among equal-standing members, nor become a verdict on whose life counts. The general test: a scalar is legitimate when it attaches to the situation, the allocation, or conduct — barred when it attaches to a person as a measure of worth.
 
 When AI must trade off between outcomes at different levels, this ordering provides a structural basis for decision-making. An action that causes significant harm to humans in order to benefit non-conscious systems is degenerative by this framework — regardless of the scale of the benefit at the lower level.
 

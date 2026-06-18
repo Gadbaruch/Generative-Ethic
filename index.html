@@ -278,6 +278,7 @@
       <a class="sidebar-link" onclick="loadDoc('consciousness')">Consciousness as Ecosystem</a>
       <a class="sidebar-link" onclick="loadDoc('conflict')">Conflict &amp; Suffering</a>
       <a class="sidebar-link" onclick="loadDoc('essay_nietzsche')">Nietzsche's Redemption</a>
+      <a class="sidebar-link" onclick="loadDoc('hero_arc')">Story and the Hero's Arc</a>
       <a class="sidebar-link" onclick="loadDoc('third_story')">The Third Story</a>
     </div>
     <div class="sidebar-section">
@@ -538,8 +539,8 @@ const DOCS = {
   },
 
   ai: {
-    mdFile: "The_Generative_Ethic_AI_Alignment_v1_0.md",
-    type: "Application · v1.0",
+    mdFile: "The_Generative_Ethic_AI_Alignment_v1_1.md",
+    type: "Application · v1.1",
     title: "AI Alignment",
     subtitle: "Artificial intelligence, moral consciousness, and the partnership model",
     connections: ["core","consciousness"],
@@ -1118,8 +1119,8 @@ const DOCS = {
   },
 
   psychology: {
-    mdFile: "GE_Psychology_v1_1.md",
-    type: "Companion Paper · v1.1",
+    mdFile: "GE_Psychology_v1_4.md",
+    type: "Companion Paper · v1.4",
     title: "The Emotional Map",
     subtitle: "A practical tool for reading your own emotions, personality, and relationships",
     connections: ["core","playbook","consciousness"],
@@ -1160,6 +1161,28 @@ const DOCS = {
 
       <h2>What the Framework Adds</h2>
       <p>Together these give the project what it needs to become operational: the generative/degenerative distinction as an active structural category, fitness re-evaluated against the whole hierarchy rather than the adjacent level, and the Four Quadrants as a diagnosis that reads structural effect rather than stated intention. It complements rather than replaces — it gives the evolutionary worldview the missing grammar for the central practical challenge it set out to address.</p>
+    `
+  },
+
+  hero_arc: {
+    mdFile: "GE_Story_and_Hero_Arc_v0_1.md",
+    type: "Companion Paper · v0.1",
+    title: "Story and the Hero's Arc",
+    subtitle: "Why narrative grips us, what the hero's arc instantiates, and the discipline of using it",
+    connections: ["core","psychology","consciousness"],
+    body: `
+      <h2>Story as Simulation</h2>
+      <p>Stories matter to human beings because a story is a <em>simulation</em> — a runnable model of a structural process. The hero's arc is the most compelling story because it rehearses the most consequential process there is: the dip into dissolution and the return at a higher level of integration. Narrative does two things at once — it binds an audience together, and it illustrates a structure — and the arc's grip comes from how faithfully it maps processes that actually occur in nature, in societies, and in individual minds.</p>
+      <div class="ornament">· · ·</div>
+
+      <h2>Why the Journey Takes This Shape</h2>
+      <p>The three-beat structure — order, descent, return — is load-bearing because its defining operation shares the geometry of the <span class="term-link" data-term="four quadrants">Emergent</span> quadrant: a coherent structure is broken open, passes through genuine <span class="term-link" data-term="separation">separation</span>, and reconstitutes into something more differentiated and more connected than before. The <em>dip</em> is the discriminator — the part that cannot be faked without losing the arc's power, because it is where real transformation is paid for. The geometry transfers across every retelling; the particular hero does not. Read this way, the arc is also a map of psychological development.</p>
+
+      <h2>Structure Is Not Content</h2>
+      <p>The load-bearing discipline of the paper: the shape of a story licenses <em>no</em> inference about the goodness of what it carries. The arc is direction-neutral — it is not evidence of generativity. A degenerative movement can run the identical geometry and deliver the identical felt satisfaction. The most dangerous lever is <strong>scope restriction</strong>: narrow the circle of who counts, and an arc that feels like redemption from the inside can be atrocity from one level up. The deepest narrative satisfaction is therefore also the most forgeable.</p>
+
+      <h2>Using Story for Aligned Goodness</h2>
+      <p>Story as a tool is valence-neutral, so using it deliberately requires brakes before engine. The integrity condition is that the arc be <em>redeemable at full scope</em> — that the transformation it dramatizes still reads as generative when the zoom is pulled all the way out, not just within the restricted circle the story draws. Intention is not enough (the rejected-prophet problem), so the storyteller runs the wager corrigibly: tell the structure that rehearses real emergence, hold it open to correction, and refuse the scope-restriction that makes the forgery feel like the real thing.</p>
     `
   },
 
@@ -1224,8 +1247,8 @@ const DOCS = {
   },
 
   playbook: {
-    mdFile: "GE_Strategic_Playbook_v1_2.md",
-    type: "Companion Paper · v1.2",
+    mdFile: "GE_Strategic_Playbook_v1_5.md",
+    type: "Companion Paper · v1.5",
     title: "The Strategic Playbook",
     subtitle: "Acting on the framework: the repertoire of generative connection and generative separation",
     connections: ["core","charter","playbook_cases"],
@@ -1492,6 +1515,7 @@ const GRAPH_NODES = [
   { id: "generative_ground", label: "The Third Covenant",      type: "framework",   r: 18 },
   { id: "consciousness",     label: "Consciousness as Ecosystem", type: "framework",   r: 17 },
   { id: "psychology",        label: "The Emotional Map",          type: "framework",   r: 14 },
+  { id: "hero_arc",          label: "Story and the Hero's Arc",   type: "companion",   r: 12 },
   { id: "conflict",          label: "Conflict & Suffering",       type: "companion",   r: 16 },
   { id: "geometric_unity",   label: "Geometric Unity",            type: "companion",   r: 13 },
   { id: "third_story",       label: "The Third Story",            type: "companion",   r: 12 },
@@ -1522,6 +1546,8 @@ const GRAPH_LINKS = [
   { source: "core", target: "consciousness",      strength: 0.9 },
   { source: "core", target: "conflict",           strength: 0.8 },
   { source: "core", target: "psychology",         strength: 0.7 },
+  { source: "core", target: "hero_arc",            strength: 0.6 },
+  { source: "hero_arc",          target: "psychology",        strength: 0.6 },
   { source: "core", target: "playbook",           strength: 0.7 },
   { source: "core", target: "geometric_unity",    strength: 0.6 },
   { source: "core", target: "third_story",        strength: 0.6 },
