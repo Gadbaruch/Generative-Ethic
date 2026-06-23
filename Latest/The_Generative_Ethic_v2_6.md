@@ -1,5 +1,5 @@
 # The Generative Ethic
-### A structural framework for existence, goodness, and the obligation of conscious agents
+### A structural framework for existence, goodness, and the meaningful choices of conscious agents
 
 > **Version:** v2.6
 > **Status:** Living document
