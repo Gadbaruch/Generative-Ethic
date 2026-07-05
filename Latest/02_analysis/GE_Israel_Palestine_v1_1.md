@@ -3,7 +3,8 @@
 
 > **Status:** Working draft — v1.1
 > **Last updated:** 2026-06-10
-> **Changes from v1.0:** Terminology — the relational quad formerly labeled “Consistent” renamed to “Rigid” throughout, aligning with core framework v2.6. No substantive changes.
+> **Latest change (v1.1):** Terminology — the relational quad formerly labeled “Consistent” renamed to “Rigid” throughout, aligning with core framework v2.6. No substantive changes.
+> **Full changelog:** end of document.
 
 > **Depends on:** The Generative Ethic (Core Framework v1.7), Political Significance (v1.1), GE: Antisemitism, GE: Judaism
 > **Note:** This paper is a moral case study, not a political advocacy document. It applies the GE framework consistently across all actors. It is written with the awareness that no analysis of this conflict is fully neutral, and the framework's own anti-authoritarian safeguards apply to the analysis itself: the paper should be read critically, its conclusions should be contested where they are wrong, and no part of it should be treated as a final verdict.
@@ -216,6 +217,10 @@ But Israel has also contributed to this failure by treating the international no
 **The regional normalization trajectory.** The Abraham Accords demonstrated that Arab states can normalize with Israel when their self-interest requires it. Saudi normalization — which was close before October 7 — would have been the most significant expansion. A regional normalization architecture that gave Palestinian leaders strong economic incentives to accept a realistic settlement might produce different political conditions than those that have existed for 75 years. The GE analysis: changing the incentive structure for Palestinian leadership, rather than waiting for Palestinian leadership to change its values, is a more tractable intervention.
 
 **The one-state question.** A single state with genuine equality for all citizens — the "one-state solution" in its democratic form — is theoretically Emergent: it would preserve both peoples' differentiation within a shared political structure, provided the political structure genuinely protected minority rights. It is currently not achievable because no viable form of such a state commands majority support among either population, and because a single state with a Palestinian majority (which demographics would eventually produce) is not experienced by Israeli Jews as preserving Jewish political differentiation. The GE analysis: the one-state solution's Emergent character depends entirely on the quality of the institutions within it — a one-state solution without robust minority protections and genuine power-sharing is not Emergent; it is merely a change in which community exercises Rigid control.
+
+## Changelog
+
+**Changes from v1.0:** Terminology — the relational quad formerly labeled "Consistent" renamed to "Rigid" throughout, aligning with core framework v2.6. No substantive changes.
 
 ---
 

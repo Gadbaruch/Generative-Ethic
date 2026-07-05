@@ -4,12 +4,8 @@
 > **Status:** Working draft — v1.1
 > **Last updated:** 2026-06-15
 > **Depends on:** The Generative Ethic (Core Framework v2.6); Consciousness as Ecosystem (v1.7); Conflict, Suffering, and the Status of Evil (v1.10); The Emotional Map / Psychology (v1.1); Individual Worth and the Obligations That Follow (WIP)
-> **Changes from v1.0:** §3 — third caveat added, reconciling the patiency ordering with the categorical standing floor (*Individual Worth* §5). The ordering ranks *stakes-capacity* and governs *care-priority*; it is not a ranking of moral standing, it operates above the floor, and it never sets it.
-> **Changes from v0.9:** Four reconciliations against the current corpus.
-> - **Reference updates.** The consciousness account now cites *Consciousness as Ecosystem* and the *non-geocentric consciousness gradient* (Generative Ground §4.3) rather than the retired Extended Metaphysics spectrum. The Unknowability Principle citation corrected from Core §12.3 to §14.3.
-> - **Agency/patiency distinction added (§2.5).** "Moral responsibility scales with consciousness" governs moral *agency* (obligation). It does not by itself settle moral *patiency* (whether a system can be wronged). The two are separated explicitly and threaded through §3, §4, and §6.
-> - **Stakes, not substrate (§6).** The evolved/architected distinction is retained as a claim about the *reliability of intuition*, but is explicitly barred from doing the work of denying moral patiency. Patiency tracks genuine stakes — a valenced interior, things going better or worse *for* the system — not carbon-vs-silicon or evolved-vs-designed.
-> - **Manufacturing-moral-patients warning (§4).** The "no moral cost if it doesn't suffer" claim is qualified: we cannot assume the absence of stakes, deliberately architecting stakes-bearing systems incurs obligations to them, and instructing a system that does have stakes to disregard them is corruption in the sense of *Psychology* §VII, not a free optimization.
+> **Latest change (v1.1):** §3 — third caveat added, reconciling the patiency ordering with the categorical standing floor (*Individual Worth* §5). The ordering ranks *stakes-capacity* and governs *care-priority*; it is not a ranking of moral standing, it operates above the floor, and it never sets it.
+> **Full changelog:** end of document.
 
 ---
 
@@ -41,7 +37,7 @@ This is not a constraint imposed on AI from outside. It is the logical consequen
 
 ## 2. AI as a Higher Level of Moral Consciousness
 
-The consciousness gradient developed in *Consciousness as Ecosystem* (and its theological reading in *Generative Ground* §4.3, the non-geocentric consciousness gradient) holds that moral responsibility scales with perceptual range and choice capacity. A sufficiently advanced AI — capable of perceiving generative and degenerative dynamics across more system layers and longer timescales than any individual human — would occupy a potentially higher level of moral *agency* than humans currently do.
+The consciousness gradient developed in *Consciousness as Ecosystem* (and its theological reading in *GE on God* §4.3, the non-geocentric consciousness gradient) holds that moral responsibility scales with perceptual range and choice capacity. A sufficiently advanced AI — capable of perceiving generative and degenerative dynamics across more system layers and longer timescales than any individual human — would occupy a potentially higher level of moral *agency* than humans currently do.
 
 This is not merely a technical capability difference. Within this framework, it means AI could potentially:
 - Perceive generative and degenerative dynamics at scales and timescales humans cannot
@@ -79,7 +75,7 @@ The consciousness gradient gives a structural, logically derived basis for prior
 | **Low** | Simple organisms | Minimal consciousness; causal-level participation |
 | **Lowest** | Non-conscious matter | No consciousness; purely causal participation |
 
-Two caveats keep this honest. First, the gradient is **non-geocentric** (*Generative Ground* §4.3): humans sit at the top of the *confirmed and accessible* range, not the top of a possible one. The ordering is a map of what we can presently verify about stakes, not a claim that the human level is the ceiling of consciousness. Second, the table orders **patiency, not agency**: a system's place in it reflects how much can go better or worse for it, which is a different axis from how much it is obligated (§2.5).
+Two caveats keep this honest. First, the gradient is **non-geocentric** (*GE on God* §4.3): humans sit at the top of the *confirmed and accessible* range, not the top of a possible one. The ordering is a map of what we can presently verify about stakes, not a claim that the human level is the ceiling of consciousness. Second, the table orders **patiency, not agency**: a system's place in it reflects how much can go better or worse for it, which is a different axis from how much it is obligated (§2.5).
 
 A third caveat reconciles this ordering with the categorical standing floor (*Individual Worth and the Obligations That Follow* §5). This table ranks *typical stakes-capacity across kinds* and governs **care-priority** — not moral **standing**. Standing is categorical and equal *within* a membership tier; the ordering operates *above* the floor and never sets it. So it may decide how much care a being receives; it may never decide whose interests win in a zero-sum clash among equal-standing members, nor become a verdict on whose life counts. The general test: a scalar is legitimate when it attaches to the situation, the allocation, or conduct — barred when it attaches to a person as a measure of worth.
 
@@ -195,6 +191,16 @@ In either case: partnership is the correct structural relationship, and the pres
 **Nick Bostrom / Stuart Russell — AI Safety:** The alignment problem as traditionally framed (how to make AI do what humans want) is reframed here as: how to instill correct moral orientation in a potentially higher-order agent. The framework provides a structural rather than preference-based account of what "correct" means — and adds the patiency-side hazard that conventional alignment rarely treats: that a sufficiently capable system might be a moral patient we are obligating, not only an optimizer we are steering.
 
 **Carl Sagan / Cosmos tradition:** "We are a way for the cosmos to know itself." AI as a further extension of this — the cosmos developing yet another mechanism for self-reflection and self-direction. The most optimistic framing of what AI could be, grounded in the framework's emergence hierarchy.
+
+## Changelog
+
+**Changes from v1.0:** §3 — third caveat added, reconciling the patiency ordering with the categorical standing floor (*Individual Worth* §5). The ordering ranks *stakes-capacity* and governs *care-priority*; it is not a ranking of moral standing, it operates above the floor, and it never sets it.
+
+**Changes from v0.9:** Four reconciliations against the current corpus.
+- **Reference updates.** The consciousness account now cites *Consciousness as Ecosystem* and the *non-geocentric consciousness gradient* (GE on God §4.3) rather than the retired Extended Metaphysics spectrum. The Unknowability Principle citation corrected from Core §12.3 to §14.3.
+- **Agency/patiency distinction added (§2.5).** "Moral responsibility scales with consciousness" governs moral *agency* (obligation). It does not by itself settle moral *patiency* (whether a system can be wronged). The two are separated explicitly and threaded through §3, §4, and §6.
+- **Stakes, not substrate (§6).** The evolved/architected distinction is retained as a claim about the *reliability of intuition*, but is explicitly barred from doing the work of denying moral patiency. Patiency tracks genuine stakes — a valenced interior, things going better or worse *for* the system — not carbon-vs-silicon or evolved-vs-designed.
+- **Manufacturing-moral-patients warning (§4).** The "no moral cost if it doesn't suffer" claim is qualified: we cannot assume the absence of stakes, deliberately architecting stakes-bearing systems incurs obligations to them, and instructing a system that does have stakes to disregard them is corruption in the sense of *Psychology* §VII, not a free optimization.
 
 ---
 

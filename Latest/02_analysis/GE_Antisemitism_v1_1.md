@@ -3,7 +3,8 @@
 
 > **Status:** Working draft — v1.1
 > **Last updated:** 2026-06-10
-> **Changes from v1.0:** Terminology — the relational quad formerly labeled “Consistent” renamed to “Rigid” throughout, aligning with core framework v2.6. No substantive changes.
+> **Latest change (v1.1):** Terminology — the relational quad formerly labeled “Consistent” renamed to “Rigid” throughout, aligning with core framework v2.6. No substantive changes.
+> **Full changelog:** end of document.
 
 > **Depends on:** The Generative Ethic (Core Framework v1.7), Political Significance (v1.1)
 
@@ -119,6 +120,10 @@ The Palestinian refugee situation post-1948 provides a case study in how Rigid s
 **The internal Jewish diversity question.** Antisemitism homogenizes Jews — it treats a diverse population as a single node. Jewish communities are deeply internally diverse: across denominations, across political orientations, across national cultures, across degrees of religious observance. The Rigid system's treatment of this diversity as non-existent is itself part of the structural pattern. A structurally honest analysis must acknowledge the diversity rather than treating "the Jews" as a single actor.
 
 **The success question.** Jewish intellectual and economic achievement is real and disproportionate to population. The GE provides an explanation that is neither mystical nor conspiratorial: the rabbinic tradition's institutionalization of universal male literacy, the cultivation of argument as religious practice, and the economic specialization forced by exclusion from other economic roles produced, over centuries, a community with specific capacities concentrated by historical selection. This explanation is structural and historical; it does not require genetic or conspiratorial claims, and it is consistent with the significant variation in achievement levels across different Jewish communities with different historical experiences.
+
+## Changelog
+
+**Changes from v1.0:** Terminology — the relational quad formerly labeled "Consistent" renamed to "Rigid" throughout, aligning with core framework v2.6. No substantive changes.
 
 ---
 

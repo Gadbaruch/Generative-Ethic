@@ -3,7 +3,8 @@
 
 > **Status:** Working draft — v1.1
 > **Last updated:** 2026-06-10
-> **Changes from v1.0:** Terminology — the relational quad formerly labeled “Consistent” renamed to “Rigid” throughout, aligning with core framework v2.6. No substantive changes.
+> **Latest change (v1.1):** Terminology — the relational quad formerly labeled “Consistent” renamed to “Rigid” throughout, aligning with core framework v2.6. No substantive changes.
+> **Full changelog:** end of document.
 
 > **Depends on:** The Generative Ethic (Core Framework v1.7)
 > **Note:** This paper is the first in a planned series of GE analyses of major religious traditions. Judaism is treated first because its structural features are the most directly parallel to the GE's own architecture — in some cases anticipating it by millennia. Future papers will apply the same framework to Christianity, Islam, Buddhism, and other traditions without privileging any.
@@ -132,6 +133,10 @@ Certain strands of messianism — particularly when coupled with apocalyptic exp
 **Zionism as theological problem.** The relationship between Zionism and Jewish theology is genuinely contested within Judaism. Secular Zionism bracketed the theological question. Religious Zionism integrated it. Anti-Zionist Orthodox movements (Neturei Karta) rejected it on theological grounds. The GE analysis of Zionism as a political and civilizational project is developed in the companion paper on the Israel-Palestine conflict.
 
 **The survival question.** How much of Jewish civilizational survival is structural (the adaptive architecture described above) and how much is contingent (specific historical accidents that could easily have gone otherwise)? The GE cannot answer this — the unknowability principle applies at full force to historical counterfactuals.
+
+## Changelog
+
+**Changes from v1.0:** Terminology — the relational quad formerly labeled "Consistent" renamed to "Rigid" throughout, aligning with core framework v2.6. No substantive changes.
 
 ---
 
